@@ -1,0 +1,34 @@
+---
+import HeroDemo from "@/components/HeroDemo.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Kagura Player - Watch, keep, and clip faster."
+  description="Kagura Player is a Windows video player for favorites, A-B repeat, and quick clipping."
+  canonicalPath="/en/"
+  lang="en"
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Windows video player</p>
+        <h1>Watch. Keep. Clip fast.</h1>
+        <p class="lead">Favorites, folders, A-B repeat, and quick clips in one focused local video player.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="/en/download/">Download for Windows</a>
+          <a class="button secondary" href="/en/features/quick-clip/">See quick clip</a>
+        </div>
+      </div>
+      <HeroDemo />
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Built around the moment you find something worth saving.</h2>
+        <p>Kagura Player keeps watching, organizing, repeating, and clipping close together.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

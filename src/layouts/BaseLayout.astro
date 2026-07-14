@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+import { navEn, navJa, site } from "@/data/site";
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: "ja" | "en";
+  canonicalPath: string;
+}
+
+const { title, description, lang = "ja", canonicalPath } = Astro.props;
+const nav = lang === "ja" ? navJa : navEn;
+const opposite = lang === "ja" ? "/en/" : "/ja/";
+const oppositeLabel = lang === "ja" ? "English" : "日本語";
+const canonical = new URL(canonicalPath, site.origin).toString();
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="ja" href={new URL("/ja/", site.origin).toString()} />
+    <link rel="alternate" hreflang="en" href={new URL("/en/", site.origin).toString()} />
+    <link rel="alternate" hreflang="x-default" href={new URL("/ja/", site.origin).toString()} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#07080d" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: site.name,
+      applicationCategory: "MultimediaApplication",
+      operatingSystem: "Windows",
+      description,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "JPY",
+        availability: "https://schema.org/PreOrder"
+      }
+    })} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{lang === "ja" ? "本文へ移動" : "Skip to content"}</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href={lang === "ja" ? "/ja/" : "/en/"} aria-label={site.name}>
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>{site.name}</span>
+          </a>
+          <nav class="nav" aria-label={lang === "ja" ? "主要ナビゲーション" : "Main navigation"}>
+            {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+          </nav>
+          <div class="header-actions">
+            <a class="lang-link" href={opposite}>{oppositeLabel}</a>
+            <a class="button primary" href={lang === "ja" ? "/ja/download/" : "/en/download/"}>
+              {lang === "ja" ? "ダウンロード" : "Download"}
+            </a>
+          </div>
+        </div>
+      </header>
+      <main id="main">
+        <slot />
+      </main>
+      <footer class="footer">
+        <div class="container footer-inner">
+          <span>{site.name} - {site.version}</span>
+          <span>{lang === "ja" ? "未完成機能は予定として明記します。" : "Planned features are labeled clearly."}</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

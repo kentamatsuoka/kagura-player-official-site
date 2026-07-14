@@ -1,0 +1,97 @@
+---
+import HeroDemo from "@/components/HeroDemo.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Kagura Player - 見る。残す。すぐ切り抜く。"
+  description="Kagura Playerは、お気に入り管理、A-Bリピート、高速切り抜きを一つにしたWindows向け動画プレイヤーです。"
+  canonicalPath="/ja/"
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Windows向け動画プレイヤー</p>
+        <h1>見る。残す。すぐ切り抜く。</h1>
+        <p class="lead">
+          お気に入り管理、A-Bリピート、爆速カット。毎日の動画視聴を、一つのプレイヤーでもっと快適に。
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="/ja/download/">Windows版を無料ダウンロード</a>
+          <a class="button secondary" href="#demo">15秒で機能を見る</a>
+        </div>
+        <ul class="facts">
+          <li>ローカル動画中心</li>
+          <li>A-B範囲保存</li>
+          <li>AI字幕は開発中</li>
+        </ul>
+      </div>
+      <HeroDemo />
+    </div>
+  </section>
+
+  <section class="section alt" id="demo">
+    <div class="container">
+      <div class="section-head">
+        <h2>動画を見る流れの中で、そのまま残せる。</h2>
+        <p>
+          編集ソフトを開く前に、まず必要な場面を見つける。Kagura Playerは、視聴・整理・繰り返し・切り抜きを近い距離に置くためのプレイヤーです。
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>見たい動画へ戻る</h3>
+          <p>お気に入りとフォルダで、ローカル動画コレクションを用途ごとに整理できます。</p>
+        </article>
+        <article class="card">
+          <h3>同じ区間を繰り返す</h3>
+          <p>A-Bリピートで、確認したい場面や学習したい区間に集中できます。</p>
+        </article>
+        <article class="card">
+          <h3>必要な範囲を保存</h3>
+          <p>A地点とB地点を決めて、再生の流れを止めずに切り抜き保存できます。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <h2>高速切り抜きは、視聴の延長にある。</h2>
+        <p>
+          A地点、B地点、ハサミ。複雑な編集画面に移動せず、今見ている動画から必要な範囲だけを素早く保存する体験を目指しています。
+        </p>
+        <a class="button secondary" href="/ja/features/quick-clip/">高速切り抜きを見る</a>
+      </div>
+      <div class="steps">
+        <div class="step"><div><strong>A地点を決める</strong><p>開始したい場面でAを設定します。</p></div></div>
+        <div class="step"><div><strong>B地点を決める</strong><p>終了したい場面でBを設定します。</p></div></div>
+        <div class="step"><div><strong>保存する</strong><p>保存中も次の確認へ移れるようにします。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container two-col">
+      <div>
+        <p class="eyebrow">Pro planned</p>
+        <h2>ローカルAI字幕は、完成済みとしては出さない。</h2>
+        <p>
+          AI字幕、字幕付き切り抜き、字幕デザイン調整はPro版の計画です。公式サイトでは、完成済み機能と予定機能を分けて伝えます。
+        </p>
+      </div>
+      <div class="notice">
+        現時点の公開コピーでは「開発中」「予定」と明記します。実装後に、対応GPU、処理時間、保存形式を実測で掲載します。
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-head">
+      <h2>いつもの動画を、もっと扱いやすく。</h2>
+      <p>まずはWindows版から。実アプリのデモ動画とダウンロードリンクを差し込めば、集客用LPとして公開できる形に育てていきます。</p>
+      <a class="button primary" href="/ja/download/">Windows版を無料ダウンロード</a>
+    </div>
+  </section>
+</BaseLayout>
