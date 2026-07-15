@@ -4,25 +4,29 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Kagura Player - 見る。残す。すぐ切り抜く。"
-  description="Kagura Playerは、お気に入り管理、A-Bリピート、高速切り抜きを一つにしたWindows向け動画プレイヤーです。"
+  title="Kagura Player - 見て、すぐ切る。"
+  description="Kagura Playerは、動画を見る、好きな場面に戻る、A-Bで切る、保存する、を一つにしたWindows向け動画プレイヤーです。"
   canonicalPath="/ja/"
 >
   <section class="hero">
+    <div class="motion-field" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow">Windows向け動画プレイヤー</p>
-        <h1>見る。残す。すぐ切り抜く。</h1>
+        <p class="eyebrow">Windows動画プレイヤー / 切り抜き特化</p>
+        <h1><span>見て、</span><span>すぐ切る。</span></h1>
         <p class="lead">
-          お気に入り管理、A-Bリピート、爆速カット。毎日の動画視聴を、一つのプレイヤーでもっと快適に。
+          動画の「ここ欲しい」を、AとBを押すだけで保存。Kagura Playerは、切り抜きまで速い動画プレイヤーです。
         </p>
         <div class="hero-actions">
           <a class="button primary" href="/ja/download/">Windows版を無料ダウンロード</a>
           <a class="button secondary" href="#demo">15秒で機能を見る</a>
         </div>
         <ul class="facts">
-          <li>ローカル動画中心</li>
-          <li>A-B範囲保存</li>
+          <li>動画を見る</li>
+          <li>好きな場面を残す</li>
+          <li>切り抜きを速くする</li>
           <li>AI字幕は開発中</li>
         </ul>
       </div>

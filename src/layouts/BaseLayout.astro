@@ -32,7 +32,9 @@ const canonical = new URL(canonicalPath, site.origin).toString();
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={new URL("/media/generated/kagura-player-icon-512.png", site.origin).toString()} />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="/media/generated/kagura-player-context-menu-32.png" />
     <meta name="theme-color" content="#07080d" />
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -55,7 +57,7 @@ const canonical = new URL(canonicalPath, site.origin).toString();
       <header class="site-header">
         <div class="container header-inner">
           <a class="brand" href={lang === "ja" ? "/ja/" : "/en/"} aria-label={site.name}>
-            <span class="brand-mark" aria-hidden="true"></span>
+            <img class="brand-mark" src="/media/generated/kagura-player-context-menu-32.png" width="32" height="32" alt="" aria-hidden="true" />
             <span>{site.name}</span>
           </a>
           <nav class="nav" aria-label={lang === "ja" ? "主要ナビゲーション" : "Main navigation"}>
