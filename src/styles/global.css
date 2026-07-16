@@ -958,9 +958,17 @@ body {
   text-transform: uppercase;
 }
 
+.hero-emotional {
+  margin: 0.9rem 0 0;
+  color: var(--soft);
+  font-size: 1rem;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
 .hero-promise {
   display: grid;
-  margin: 0.8rem 0 0;
+  margin: 0.45rem 0 0;
   color: var(--text);
   font-size: clamp(2.7rem, 4.5vw, 4rem);
   font-weight: 900;
