@@ -1,6 +1,14 @@
 # DEPLOY
 
-Target: Cloudflare Workers or Pages after the first public build is stable.
+Primary public preview: GitHub Pages. Cloudflare Pages can be connected to the same repository later for a branded domain.
+
+Public URL:
+
+```text
+https://kentamatsuoka.github.io/kagura-player-official-site/
+```
+
+Every push to `main` runs `.github/workflows/deploy-pages.yml` and publishes the static build automatically.
 
 Initial static build:
 

@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { navEn, navJa, site } from "@/data/site";
+import { navEn, navJa, site, withBase } from "@/data/site";
 
 interface Props {
   title: string;
@@ -11,9 +11,50 @@ interface Props {
 
 const { title, description, lang = "ja", canonicalPath } = Astro.props;
 const nav = lang === "ja" ? navJa : navEn;
-const opposite = lang === "ja" ? "/en/" : "/ja/";
+const sharedRoutes = new Set(["", "download/", "features/quick-clip/", "features/favorites/", "features/ai-subtitles/"]);
+const routeWithoutLanguage = canonicalPath.replace(/^\/(ja|en)\//, "");
+const opposite = sharedRoutes.has(routeWithoutLanguage)
+  ? `/${lang === "ja" ? "en" : "ja"}/${routeWithoutLanguage}`
+  : lang === "ja" ? "/en/" : "/ja/";
 const oppositeLabel = lang === "ja" ? "English" : "日本語";
-const canonical = new URL(canonicalPath, site.origin).toString();
+const absoluteUrl = (path: string) => site.origin ? new URL(withBase(path), `${site.origin}/`).toString() : undefined;
+const canonical = absoluteUrl(canonicalPath);
+const alternateJa = absoluteUrl(`/ja/${sharedRoutes.has(routeWithoutLanguage) ? routeWithoutLanguage : ""}`);
+const alternateEn = absoluteUrl(`/en/${sharedRoutes.has(routeWithoutLanguage) ? routeWithoutLanguage : ""}`);
+const isHome = canonicalPath === "/ja/" || canonicalPath === "/en/";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    ...(isHome ? [{
+      "@type": "WebSite",
+      "@id": absoluteUrl("/#website"),
+      url: absoluteUrl("/"),
+      name: site.name,
+      alternateName: "Kagura",
+      inLanguage: ["ja", "en"]
+    }] : []),
+    {
+      "@type": "SoftwareApplication",
+      "@id": absoluteUrl("/#software"),
+      name: site.name,
+      url: canonical,
+      applicationCategory: "MultimediaApplication",
+      applicationSubCategory: "Video player and video clipping software",
+      operatingSystem: "Windows",
+      inLanguage: lang,
+      description,
+      featureList: lang === "ja"
+        ? ["動画再生", "A-Bリピート", "A-B高速切り抜き", "お気に入りとフォルダ整理", "先頭3分を先行表示するAI字幕・翻訳", "字幕のバックグラウンド生成"]
+        : ["Video playback", "A-B repeat", "Quick A-B clipping", "Favorites and folders", "Progressive AI subtitles and translation", "Background subtitle generation"],
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: lang === "ja" ? "JPY" : "USD",
+        availability: "https://schema.org/PreOrder"
+      }
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -23,49 +64,60 @@ const canonical = new URL(canonicalPath, site.origin).toString();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="ja" href={new URL("/ja/", site.origin).toString()} />
-    <link rel="alternate" hreflang="en" href={new URL("/en/", site.origin).toString()} />
-    <link rel="alternate" hreflang="x-default" href={new URL("/ja/", site.origin).toString()} />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {alternateJa && <link rel="alternate" hreflang="ja" href={alternateJa} />}
+    {alternateEn && <link rel="alternate" hreflang="en" href={alternateEn} />}
+    {site.origin && <link rel="alternate" hreflang="x-default" href={absoluteUrl("/ja/")} />}
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
+    {canonical && <meta property="og:url" content={canonical} />}
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:image" content={new URL("/media/generated/kagura-player-icon-512.png", site.origin).toString()} />
+    <meta property="og:locale" content={lang === "ja" ? "ja_JP" : "en_US"} />
+    <meta property="og:locale:alternate" content={lang === "ja" ? "en_US" : "ja_JP"} />
+    {site.origin && <meta property="og:image" content={absoluteUrl("/og.png")} />}
+    {site.origin && <meta property="og:image:width" content="1729" />}
+    {site.origin && <meta property="og:image:height" content="910" />}
+    {site.origin && <meta property="og:image:alt" content={lang === "ja" ? "Kagura Player - AI字幕でわかる。A-B指定ですぐ切れる。" : "Kagura Player - Understand with AI subtitles. Clip with A-B."} />}
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/png" href="/media/generated/kagura-player-context-menu-32.png" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {site.origin && <meta name="twitter:image" content={absoluteUrl("/og.png")} />}
+    <link rel="icon" type="image/png" href={withBase("/media/generated/kagura-player-context-menu-32.png")} />
     <meta name="theme-color" content="#07080d" />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: site.name,
-      applicationCategory: "MultimediaApplication",
-      operatingSystem: "Windows",
-      description,
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "JPY",
-        availability: "https://schema.org/PreOrder"
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script is:inline>
+      try {
+        const savedMotion = localStorage.getItem("kagura-motion");
+        const systemReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        document.documentElement.dataset.motion = savedMotion === "on" || (savedMotion !== "off" && !systemReduced) ? "on" : "off";
+      } catch {
+        document.documentElement.dataset.motion = "on";
       }
-    })} />
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">{lang === "ja" ? "本文へ移動" : "Skip to content"}</a>
+    <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
+    <div class="pointer-aura" data-pointer-aura aria-hidden="true"></div>
     <div class="site-shell">
       <header class="site-header">
         <div class="container header-inner">
-          <a class="brand" href={lang === "ja" ? "/ja/" : "/en/"} aria-label={site.name}>
-            <img class="brand-mark" src="/media/generated/kagura-player-context-menu-32.png" width="32" height="32" alt="" aria-hidden="true" />
+          <a class="brand" href={withBase(lang === "ja" ? "/ja/" : "/en/")} aria-label={site.name}>
+            <img class="brand-mark" src={withBase("/media/generated/kagura-player-context-menu-32.png")} width="32" height="32" alt="" aria-hidden="true" />
             <span>{site.name}</span>
           </a>
           <nav class="nav" aria-label={lang === "ja" ? "主要ナビゲーション" : "Main navigation"}>
-            {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+            {nav.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
           </nav>
           <div class="header-actions">
-            <a class="lang-link" href={opposite}>{oppositeLabel}</a>
-            <a class="button primary" href={lang === "ja" ? "/ja/download/" : "/en/download/"}>
+            <button class="motion-toggle" type="button" data-motion-toggle aria-label={lang === "ja" ? "サイト演出のオン・オフを切り替える" : "Toggle site motion"} title={lang === "ja" ? "サイト演出を切り替える" : "Toggle site motion"}>
+              <span class="motion-toggle-mark" aria-hidden="true"></span>
+              <span data-motion-label>{lang === "ja" ? "演出" : "Motion"}</span>
+            </button>
+            <a class="lang-link" href={withBase(opposite)} data-language-choice={lang === "ja" ? "en" : "ja"}>{oppositeLabel}</a>
+            <a class="button primary" href={withBase(lang === "ja" ? "/ja/download/" : "/en/download/")}>
               {lang === "ja" ? "ダウンロード" : "Download"}
             </a>
           </div>
@@ -76,10 +128,143 @@ const canonical = new URL(canonicalPath, site.origin).toString();
       </main>
       <footer class="footer">
         <div class="container footer-inner">
-          <span>{site.name} - {site.version}</span>
+          <span>{site.name} - {lang === "ja" ? "開発プレビュー" : site.version}</span>
           <span>{lang === "ja" ? "未完成機能は予定として明記します。" : "Planned features are labeled clearly."}</span>
         </div>
       </footer>
     </div>
+    <script is:inline>
+      try {
+        const languageKey = "kagura-language";
+        const savedLanguage = localStorage.getItem(languageKey);
+        const validLanguage = savedLanguage === "ja" || savedLanguage === "en" ? savedLanguage : null;
+        if (location.pathname.endsWith("/ja/") && !validLanguage && !navigator.language.toLowerCase().startsWith("ja")) {
+          location.replace(location.pathname.replace(/\/ja\/$/, "/en/"));
+        }
+        document.querySelectorAll("[data-language-choice]").forEach((link) => {
+          link.addEventListener("click", () => {
+            const choice = link.getAttribute("data-language-choice");
+            if (choice === "ja" || choice === "en") localStorage.setItem(languageKey, choice);
+          });
+        });
+      } catch {
+        // Japanese remains the fallback when browser language storage is unavailable.
+      }
+
+      const motionEnabled = document.documentElement.dataset.motion === "on";
+      const motionToggle = document.querySelector("[data-motion-toggle]");
+      const motionLabel = document.querySelector("[data-motion-label]");
+      if (motionToggle instanceof HTMLButtonElement) {
+        motionToggle.setAttribute("aria-pressed", String(motionEnabled));
+        motionToggle.classList.toggle("is-on", motionEnabled);
+        if (motionLabel) motionLabel.textContent = `${motionLabel.textContent} ${motionEnabled ? "ON" : "OFF"}`;
+        motionToggle.addEventListener("click", () => {
+          localStorage.setItem("kagura-motion", motionEnabled ? "off" : "on");
+          location.reload();
+        });
+      }
+      const aura = document.querySelector("[data-pointer-aura]");
+      const updateProgress = () => {
+        const travel = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = travel > 0 ? window.scrollY / travel : 0;
+        document.documentElement.style.setProperty("--scroll-progress", String(ratio));
+      };
+      updateProgress();
+      window.addEventListener("scroll", updateProgress, { passive: true });
+
+      if (motionEnabled) {
+        const revealTargets = document.querySelectorAll(".section .container, .flow-item, .use-grid article, .roadmap-list article");
+        revealTargets.forEach((element) => element.classList.add("reveal-ready"));
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-revealed");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        revealTargets.forEach((element) => observer.observe(element));
+
+        if (aura instanceof HTMLElement && matchMedia("(pointer: fine)").matches) {
+          window.addEventListener("pointermove", (event) => {
+            aura.style.setProperty("--pointer-x", `${event.clientX}px`);
+            aura.style.setProperty("--pointer-y", `${event.clientY}px`);
+            aura.classList.add("is-active");
+          }, { passive: true });
+        }
+
+        const canvas = document.querySelector("[data-signal-field]");
+        if (canvas instanceof HTMLCanvasElement) {
+          const context = canvas.getContext("2d");
+          const compact = window.innerWidth < 600;
+          const points = Array.from({ length: compact ? 24 : 52 }, (_, index) => ({
+            x: Math.random(), y: Math.random(),
+            vx: (Math.random() - 0.5) * 0.0002,
+            vy: (Math.random() - 0.5) * 0.00015,
+            phase: index * 0.71
+          }));
+          const streaks = Array.from({ length: compact ? 2 : 5 }, (_, index) => ({
+            offset: index / (compact ? 2 : 5),
+            speed: 0.000055 + index * 0.000008,
+            y: 0.12 + Math.random() * 0.7
+          }));
+          const resizeCanvas = () => {
+            if (!context) return;
+            const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+            canvas.width = Math.floor(canvas.clientWidth * ratio);
+            canvas.height = Math.floor(canvas.clientHeight * ratio);
+            context.setTransform(ratio, 0, 0, ratio, 0, 0);
+          };
+          const drawField = (time) => {
+            if (!context) return;
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+            context.clearRect(0, 0, width, height);
+            points.forEach((point, index) => {
+              point.x = (point.x + point.vx + 1) % 1;
+              point.y = (point.y + point.vy + 1) % 1;
+              const x = point.x * width;
+              const y = point.y * height;
+              const glow = 0.38 + Math.sin(time * 0.001 + point.phase) * 0.24;
+              context.fillStyle = index % 3 === 0 ? `rgba(118,244,255,${glow})` : `rgba(166,126,255,${glow})`;
+              context.beginPath();
+              context.arc(x, y, index % 5 === 0 ? 2.1 : 1.1, 0, Math.PI * 2);
+              context.fill();
+              for (let next = index + 1; next < points.length; next += 1) {
+                const other = points[next];
+                const ox = other.x * width;
+                const oy = other.y * height;
+                const distance = Math.hypot(x - ox, y - oy);
+                if (distance < 135) {
+                  context.strokeStyle = `rgba(132,172,255,${0.12 * (1 - distance / 135)})`;
+                  context.lineWidth = 1;
+                  context.beginPath();
+                  context.moveTo(x, y);
+                  context.lineTo(ox, oy);
+                  context.stroke();
+                }
+              }
+            });
+            streaks.forEach((streak) => {
+              const x = ((time * streak.speed + streak.offset) % 1.35 - 0.18) * width;
+              const y = streak.y * height;
+              const gradient = context.createLinearGradient(x - 160, y + 70, x, y);
+              gradient.addColorStop(0, "rgba(118,244,255,0)");
+              gradient.addColorStop(1, "rgba(241,183,255,0.8)");
+              context.strokeStyle = gradient;
+              context.lineWidth = 1.5;
+              context.beginPath();
+              context.moveTo(x - 160, y + 70);
+              context.lineTo(x, y);
+              context.stroke();
+            });
+            requestAnimationFrame(drawField);
+          };
+          resizeCanvas();
+          window.addEventListener("resize", resizeCanvas, { passive: true });
+          requestAnimationFrame(drawField);
+        }
+      }
+    </script>
   </body>
 </html>

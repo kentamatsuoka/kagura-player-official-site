@@ -1,25 +1,55 @@
-<div class="hero-stage" aria-label="Kagura Player operation preview">
+---
+interface Props {
+  lang?: "ja" | "en";
+}
+
+import { withBase } from "@/data/site";
+
+const { lang = "ja" } = Astro.props;
+const ja = lang === "ja";
+---
+
+<div class="hero-stage" aria-label={ja ? "Kagura Playerの機能コンセプト" : "Kagura Player feature concept"}>
   <div class="orbital-glow" aria-hidden="true"></div>
   <div class="icon-orbit" aria-hidden="true">
-    <img src="/media/generated/kagura-player-icon-512.png" alt="" />
+    <img src={withBase("/media/generated/kagura-player-icon-512.png")} alt="" />
   </div>
+
   <div class="player-demo">
     <div class="player-top">
-      <span>Kagura Player</span>
-      <span class="status-live">Ready to clip</span>
+      <span class="window-title">Kagura Player</span>
+      <span class="concept-label">{ja ? "Pro機能コンセプト" : "Pro feature concept"}</span>
     </div>
+
     <div class="screen">
-      <div class="scanline" aria-hidden="true"></div>
-      <span class="play-icon" aria-hidden="true"></span>
-      <div class="caption-strip">A地点を押す → B地点を押す → そのまま保存</div>
-    </div>
-    <div class="timeline">
-      <div class="timeline-track" aria-hidden="true"><span></span></div>
-      <div class="markers">
-        <span>A 01:12</span>
-        <span>Quick clip</span>
-        <span>B 01:48</span>
+      <div class="screen-grid" aria-hidden="true"></div>
+      <div class="caption-preview" aria-live="off">
+        <span class="caption-source">The story starts here.</span>
+        <strong>{ja ? "物語は、ここから始まる。" : "The story starts here."}</strong>
+        <span class="caption-state">{ja ? "AI字幕・翻訳 / 開発中" : "AI subtitles + translation / In development"}</span>
       </div>
+      <div class="audio-wave" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-meta">
+        <span>01:12</span>
+        <span>{ja ? "欲しい場面を選択中" : "Selecting the moment"}</span>
+        <span>01:48</span>
+      </div>
+      <div class="timeline-track" aria-hidden="true">
+        <span></span>
+        <b class="marker-a">A</b>
+        <b class="marker-b">B</b>
+      </div>
+    </div>
+
+    <div class="clip-tray">
+      <span class="clip-ready">{ja ? "切り抜き 03" : "Clips 03"}</span>
+      <div class="clip-strip" aria-hidden="true"><i></i><i></i><i></i></div>
+      <span class="join-state">{ja ? "ドラッグして結合 / 開発中" : "Drag to join / In development"}</span>
     </div>
   </div>
 </div>

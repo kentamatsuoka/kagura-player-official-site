@@ -1,101 +1,159 @@
 ---
 import HeroDemo from "@/components/HeroDemo.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBase } from "@/data/site";
 ---
 
 <BaseLayout
-  title="Kagura Player - 見て、すぐ切る。"
-  description="Kagura Playerは、動画を見る、好きな場面に戻る、A-Bで切る、保存する、を一つにしたWindows向け動画プレイヤーです。"
+  title="Kagura Player - AI字幕でわかる。A-B指定ですぐ切れる。"
+  description="Kagura Playerは、先頭3分から先に表示するAI字幕・翻訳とA-B高速切り抜きを備えたWindows動画プレイヤーです。字幕キャッシュの即時切替、残り字幕のバックグラウンド生成に対応します。"
   canonicalPath="/ja/"
 >
-  <section class="hero">
+  <section class="hero hero-next">
+    <canvas class="signal-canvas" data-signal-field aria-hidden="true"></canvas>
     <div class="motion-field" aria-hidden="true">
       <span></span><span></span><span></span><span></span>
     </div>
     <div class="container hero-grid">
-      <div>
-        <p class="eyebrow">Windows動画プレイヤー / 切り抜き特化</p>
-        <h1><span>見て、</span><span>すぐ切る。</span></h1>
+      <div class="hero-copy">
+        <p class="eyebrow">Windows向け 動画プレイヤー</p>
+        <h1>Kagura Player</h1>
+        <p class="hero-promise"><span>AI字幕でわかる。</span><span>A-Bですぐ切れる。</span><span>見るだけが、作品になる。</span></p>
         <p class="lead">
-          動画の「ここ欲しい」を、AとBを押すだけで保存。Kagura Playerは、切り抜きまで速い動画プレイヤーです。
+          動画を開く。先頭3分の字幕を先に表示し、残りは見ている間にバックグラウンド生成。欲しい瞬間はA-B指定で、そのまま切り抜けます。
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="/ja/download/">Windows版を無料ダウンロード</a>
-          <a class="button secondary" href="#demo">15秒で機能を見る</a>
+          <a class="button primary" href={withBase("/ja/download/")}>Windows版の公開状況を見る</a>
+          <a class="button secondary" href="#experience">できることを見る</a>
         </div>
-        <ul class="facts">
-          <li>動画を見る</li>
-          <li>好きな場面を残す</li>
-          <li>切り抜きを速くする</li>
-          <li>AI字幕は開発中</li>
-        </ul>
+        <div class="status-rail" aria-label="機能の開発状況">
+          <span><b class="status-dot available"></b>高速切り抜き 利用可能</span>
+          <span><b class="status-dot beta"></b>先行表示型AI字幕・翻訳 試作実装済み</span>
+          <span><b class="status-dot planned"></b>クリップ結合 Pro開発中</span>
+        </div>
       </div>
       <HeroDemo />
     </div>
+    <a class="scroll-cue" href="#experience" aria-label="次のセクションへ">SCROLL <span></span></a>
   </section>
 
-  <section class="section alt" id="demo">
+  <section class="section journey" id="experience">
     <div class="container">
-      <div class="section-head">
-        <h2>動画を見る流れの中で、そのまま残せる。</h2>
-        <p>
-          編集ソフトを開く前に、まず必要な場面を見つける。Kagura Playerは、視聴・整理・繰り返し・切り抜きを近い距離に置くためのプレイヤーです。
-        </p>
+      <div class="section-kicker">視聴から作品まで</div>
+      <div class="section-head wide-head">
+        <h2>見るだけで終わらない。<br />一本の動画になるまで、ここで。</h2>
+        <p>重い編集ソフトへ移る回数を減らし、見つけた瞬間の熱をそのまま形にするための3ステップです。</p>
       </div>
-      <div class="grid-3">
-        <article class="card">
-          <h3>見たい動画へ戻る</h3>
-          <p>お気に入りとフォルダで、ローカル動画コレクションを用途ごとに整理できます。</p>
+      <div class="flow-grid">
+        <article class="flow-item current">
+          <span class="flow-number">01</span>
+          <span class="feature-state ready">利用可能</span>
+          <h3>見つける</h3>
+          <p>お気に入り、フォルダ、A-Bリピートで、残したい場面へすばやく戻る。</p>
+          <div class="flow-visual seek-visual" aria-hidden="true"><i></i><i></i><i></i><b>A</b><b>B</b></div>
         </article>
-        <article class="card">
-          <h3>同じ区間を繰り返す</h3>
-          <p>A-Bリピートで、確認したい場面や学習したい区間に集中できます。</p>
+        <article class="flow-item current">
+          <span class="flow-number">02</span>
+          <span class="feature-state ready">利用可能</span>
+          <h3>切り抜く</h3>
+          <p>A地点とB地点を決めて保存。再生を続けながら、次の場面を探せる。</p>
+          <div class="flow-visual clip-visual" aria-hidden="true"><span></span><span></span><span></span></div>
         </article>
-        <article class="card">
-          <h3>必要な範囲を保存</h3>
-          <p>A地点とB地点を決めて、再生の流れを止めずに切り抜き保存できます。</p>
+        <article class="flow-item future">
+          <span class="flow-number">03</span>
+          <span class="feature-state pro">Pro開発中</span>
+          <h3>つなげる</h3>
+          <p>切り抜きをドラッグ＆ドロップで並べて、オムニバスやまとめ動画へ。</p>
+          <div class="flow-visual join-visual" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container two-col">
+  <section class="section subtitle-lab" id="ai-subtitles">
+    <div class="container subtitle-layout">
+      <div class="subtitle-copy">
+        <div class="section-kicker">AI字幕 β / 試作実装済み</div>
+        <h2>長い動画でも、<br />先頭3分から字幕が出る。</h2>
+        <p class="lead-small">
+          最初の3分を先に字幕化して表示し、残りは視聴中にバックグラウンド処理。すべて終わるまで待たずに、内容を追い始められます。
+        </p>
+        <ul class="plain-list">
+          <li><span>01</span>先頭3分を先行表示、残りはバックグラウンド生成</li>
+          <li><span>02</span>作品ジャンルと前後の文脈から自然な語彙へ補正</li>
+          <li><span>03</span>キャッシュ済み字幕は待たずに即時ON/OFF</li>
+        </ul>
+      </div>
+      <div class="translation-stage" aria-label="AI字幕・翻訳の開発コンセプト">
+        <div class="translation-head"><span>AI字幕 β</span><span class="pulse-label">残りを生成中</span></div>
+        <div class="translation-frame">
+          <div class="translation-line line-one"><small>EN</small><span>You do not have to understand every word.</span></div>
+          <div class="translation-line line-two"><small>JA</small><strong>すべての言葉がわからなくても、楽しめる。</strong></div>
+          <div class="translation-line line-three"><small>保存</small><span>字幕付きでこの場面を残す</span></div>
+        </div>
+        <p>試作実装の体験イメージ。音声認識はPC内で処理し、API設定時は文脈補正・翻訳にGeminiを利用します。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section use-cases">
+    <div class="container">
+      <div class="section-kicker">手元の動画をもっと自由に</div>
+      <div class="section-head wide-head">
+        <h2>見る人にも、作る人にも。</h2>
+        <p>動画を理解したいときも、好きな瞬間をまとめたいときも、入口をひとつに。</p>
+      </div>
+      <div class="use-grid">
+        <article><small class="use-status">試作実装済み</small><span>字幕</span><h3>海外コンテンツを理解する</h3><p>AI字幕と日本語翻訳で、外国語の動画も内容を追いやすくする。</p></article>
+        <article><span>反復</span><h3>アニメ・映画を見返す</h3><p>お気に入りの場面をA-Bで繰り返す。</p></article>
+        <article><span>保存</span><h3>欲しい瞬間を残す</h3><p>再生中に範囲を決め、そのまま切り抜く。</p></article>
+        <article><small class="use-status">Pro開発中</small><span>結合</span><h3>まとめ動画を作る</h3><p>複数クリップを並べ、一本の流れにする機能を開発中。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section roadmap" id="roadmap">
+    <div class="container roadmap-layout">
       <div>
-        <h2>高速切り抜きは、視聴の延長にある。</h2>
-        <p>
-          A地点、B地点、ハサミ。複雑な編集画面に移動せず、今見ている動画から必要な範囲だけを素早く保存する体験を目指しています。
-        </p>
-        <a class="button secondary" href="/ja/features/quick-clip/">高速切り抜きを見る</a>
+        <div class="section-kicker">開発状況</div>
+        <h2>できること。<br />これからできること。</h2>
+        <p>未完成の機能を、完成したようには見せません。現在地を明確にして、実装と検証が終わったものから公開します。</p>
       </div>
-      <div class="steps">
-        <div class="step"><div><strong>A地点を決める</strong><p>開始したい場面でAを設定します。</p></div></div>
-        <div class="step"><div><strong>B地点を決める</strong><p>終了したい場面でBを設定します。</p></div></div>
-        <div class="step"><div><strong>保存する</strong><p>保存中も次の確認へ移れるようにします。</p></div></div>
+      <div class="roadmap-list">
+        <article><span class="feature-state ready">利用可能</span><h3>動画再生・お気に入り・フォルダ</h3></article>
+        <article><span class="feature-state ready">利用可能</span><h3>A-Bリピート・高速切り抜き・バックグラウンド保存</h3></article>
+        <article><span class="feature-state beta">試作実装済み</span><h3>先頭3分を先行表示するAI字幕生成・翻訳</h3></article>
+        <article><span class="feature-state pro">Pro開発中</span><h3>再生と同時に流れるリアルタイム字幕・翻訳</h3></article>
+        <article><span class="feature-state pro">Pro開発中</span><h3>字幕付き切り抜き・ドラッグ＆ドロップ結合</h3></article>
       </div>
     </div>
   </section>
 
-  <section class="section alt">
-    <div class="container two-col">
+  <section class="section faq" id="faq">
+    <div class="container faq-layout">
       <div>
-        <p class="eyebrow">Pro planned</p>
-        <h2>ローカルAI字幕は、完成済みとしては出さない。</h2>
-        <p>
-          AI字幕、字幕付き切り抜き、字幕デザイン調整はPro版の計画です。公式サイトでは、完成済み機能と予定機能を分けて伝えます。
-        </p>
+        <div class="section-kicker">よくある質問</div>
+        <h2>よくある質問</h2>
       </div>
-      <div class="notice">
-        現時点の公開コピーでは「開発中」「予定」と明記します。実装後に、対応GPU、処理時間、保存形式を実測で掲載します。
+      <div class="faq-list">
+        <details open><summary>今すぐ使える機能は？</summary><p>動画再生、お気に入りとフォルダ整理、A-Bリピート、A-B範囲の高速切り抜き、再生を続けながらの保存です。</p></details>
+        <details><summary>AI字幕と翻訳は使えますか？</summary><p>動画を解析して字幕を生成・翻訳する方式は試作実装済みで、現在は公開に向けた検証段階です。再生と同時に字幕が流れるリアルタイム方式はPro版として開発中です。</p></details>
+        <details><summary>複数の切り抜きを結合できますか？</summary><p>ドラッグ＆ドロップで並べ替え、一本に結合する機能を開発中です。</p></details>
+        <details><summary>どんな動画に使えますか？</summary><p>手元にある動画の視聴、反復、切り抜き、整理を想定しています。利用する動画の権利と各サービスの規約を守ってお使いください。</p></details>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container section-head">
-      <h2>いつもの動画を、もっと扱いやすく。</h2>
-      <p>まずはWindows版から。実アプリのデモ動画とダウンロードリンクを差し込めば、集客用LPとして公開できる形に育てていきます。</p>
-      <a class="button primary" href="/ja/download/">Windows版を無料ダウンロード</a>
+  <section class="section final-cta">
+    <div class="container final-cta-inner">
+      <img src={withBase("/media/generated/kagura-player-icon-512.png")} alt="" width="168" height="168" />
+      <div>
+        <p class="section-kicker">Kagura Player Windows版</p>
+        <h2>わからない動画を、わかる動画へ。<br />残したい瞬間を、すぐクリップへ。</h2>
+        <p>AI字幕・翻訳からA-B高速切り抜きまで。見る、理解する、残すをひとつのプレイヤーに。</p>
+        <a class="button primary" href={withBase("/ja/download/")}>Windows版の公開状況を見る</a>
+      </div>
     </div>
   </section>
+
 </BaseLayout>
