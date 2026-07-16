@@ -9,6 +9,9 @@ export const GET: APIRoute = () => {
     "User-agent: OAI-SearchBot",
     "Allow: /",
     "",
+    "User-agent: ChatGPT-User",
+    "Allow: /",
+    "",
     "User-agent: GPTBot",
     "Disallow: /",
   ];
