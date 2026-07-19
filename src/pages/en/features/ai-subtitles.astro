@@ -2,15 +2,11 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="AI Subtitles - Kagura Player" description="Planned local AI subtitle features for Kagura Player Pro." canonicalPath="/en/features/ai-subtitles/" lang="en">
-  <section class="section">
-    <div class="container two-col">
-      <div>
-        <p class="eyebrow">In development</p>
-        <h1>AI subtitles are planned for Pro.</h1>
-        <p class="lead">Local subtitle generation, subtitle-burned clips, and timing controls are planned features, not current claims.</p>
-      </div>
-      <div class="notice">This page will be updated after real implementation and benchmark verification.</div>
-    </div>
-  </section>
+<BaseLayout title="AI Subtitles and Translation - Kagura Player" description="Fast local draft subtitles, high-accuracy background transcription, translation, and correction memory in Kagura Player." canonicalPath="/en/features/ai-subtitles/" lang="en">
+  <header class="page-hero"><div class="container"><p class="eyebrow">AI subtitles / implemented</p><h1>See subtitles sooner.<br />Improve them in the background.</h1><p class="lead">Kagura Player shows a short draft around the current position first, then replaces it with a high-accuracy full-video result.</p></div></header>
+  <section class="content-band"><div class="container release-facts"><div><small>First response</small><strong>Current position first</strong></div><div><small>Final result</small><strong>High-accuracy full pass</strong></div><div><small>Reuse</small><strong>Per-video, per-language cache</strong></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>Speed and accuracy are separate passes</h2><div class="prose"><p>Pressing the subtitle button transcribes a short range around the playhead with a fast model. A high-accuracy model continues over the full video and replaces the draft without resetting playback.</p><p>Seeking or skipping into an uncovered section requests a new local draft around that position.</p></div></div></section>
+  <section class="content-band"><div class="container content-grid"><h2>Use context to reduce mishearing</h2><div class="prose"><p>Filename hints, opening dialogue, genre, neighboring captions, and prior user corrections can help resolve names and natural vocabulary. If cloud assistance is unavailable, local Whisper output and repetition filtering still complete the subtitle flow.</p></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>Correct it where you watch it</h2><div class="prose"><ul><li>Pause and double-click the visible subtitle</li><li>Store corrections separately from generated cache</li><li>Reuse corrections for the same video or identified work</li><li>Follow the Windows display language or choose manually</li></ul></div></div></section>
+  <section class="content-band"><div class="container content-grid"><h2>Privacy boundary</h2><div class="prose"><p>Audio extraction and Whisper recognition run on the PC. When configured cloud correction or translation is used, recognized text, the filename, and limited context may be sent to the AI provider. The video file itself is not uploaded by this flow.</p></div></div></section>
 </BaseLayout>

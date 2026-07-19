@@ -5,8 +5,8 @@ import { withBase } from "@/data/site";
 ---
 
 <BaseLayout
-  title="Kagura Player - AI字幕でわかる。A-B指定ですぐ切れる。"
-  description="Kagura Playerは、先頭3分から先に表示するAI字幕・翻訳とA-B高速切り抜きを備えたWindows動画プレイヤーです。字幕キャッシュの即時切替、残り字幕のバックグラウンド生成に対応します。"
+  title="Kagura Player - AI字幕でわかる。切り抜いて、つなげる。"
+  description="Kagura Playerは、高速ドラフトAI字幕・自動翻訳、A-B高速切り抜き、字幕編集、切り抜きライブラリ、動画結合を備えたWindows動画プレイヤーです。"
   canonicalPath="/ja/"
 >
   <section class="hero hero-next">
@@ -18,10 +18,10 @@ import { withBase } from "@/data/site";
       <div class="hero-copy">
         <p class="eyebrow">Windows向け 動画プレイヤー</p>
         <h1>Kagura Player</h1>
-        <p class="hero-emotional">ずっと探してた瞬間を、すぐ手元に。</p>
-        <p class="hero-promise"><span>欲しい瞬間を、</span><span>待たずに切り抜く。</span><span>AI字幕で、動画を読む。</span></p>
+        <p class="hero-emotional">ずっと探してた。が、ここにある。</p>
+        <p class="hero-promise"><span>AI字幕でわかる。</span><span>一瞬で切り抜く。</span><span>そのまま、一本につなげる。</span></p>
         <p class="lead">
-          動画を開く。先頭3分の字幕を先に表示し、残りは見ている間にバックグラウンド生成。欲しい瞬間はA-B指定で、そのまま切り抜けます。
+          動画を開く。現在位置の字幕を先に出し、全体は見ている間に高精度化。欲しい瞬間をA-Bで切り抜き、順番を並べて一本にできます。
         </p>
         <div class="hero-actions">
           <a class="button primary" href={withBase("/ja/download/")}>Windows版の公開状況を見る</a>
@@ -29,8 +29,8 @@ import { withBase } from "@/data/site";
         </div>
         <div class="status-rail" aria-label="機能の開発状況">
           <span><b class="status-dot available"></b>高速切り抜き 利用可能</span>
-          <span><b class="status-dot beta"></b>先行表示型AI字幕・翻訳 試作実装済み</span>
-          <span><b class="status-dot planned"></b>クリップ結合 Pro開発中</span>
+          <span><b class="status-dot available"></b>二段AI字幕・自動翻訳 実装済み</span>
+          <span><b class="status-dot available"></b>切り抜きライブラリ・動画結合 実装済み</span>
         </div>
       </div>
       <HeroDemo />
@@ -62,7 +62,7 @@ import { withBase } from "@/data/site";
         </article>
         <article class="flow-item future">
           <span class="flow-number">03</span>
-          <span class="feature-state pro">Pro開発中</span>
+          <span class="feature-state ready">利用可能</span>
           <h3>つなげる</h3>
           <p>切り抜きをドラッグ＆ドロップで並べて、オムニバスやまとめ動画へ。</p>
           <div class="flow-visual join-visual" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
@@ -74,15 +74,15 @@ import { withBase } from "@/data/site";
   <section class="section subtitle-lab" id="ai-subtitles">
     <div class="container subtitle-layout">
       <div class="subtitle-copy">
-        <div class="section-kicker">AI字幕 β / 試作実装済み</div>
-        <h2>長い動画でも、<br />先頭3分から字幕が出る。</h2>
+        <div class="section-kicker">AI字幕 / 二段生成</div>
+        <h2>今いる場面から、<br />先に字幕が出る。</h2>
         <p class="lead-small">
-          最初の3分を先に字幕化して表示し、残りは視聴中にバックグラウンド処理。すべて終わるまで待たずに、内容を追い始められます。
+          現在位置付近を高速モデルで先に字幕化し、全体は高精度モデルでバックグラウンド生成。シーク後も、その場面からドラフトを作り直します。
         </p>
         <ul class="plain-list">
-          <li><span>01</span>先頭3分を先行表示、残りはバックグラウンド生成</li>
-          <li><span>02</span>作品ジャンルと前後の文脈から自然な語彙へ補正</li>
-          <li><span>03</span>キャッシュ済み字幕は待たずに即時ON/OFF</li>
+          <li><span>01</span>現在位置の短いドラフトを最優先表示</li>
+          <li><span>02</span>高精度全体字幕へバックグラウンドで差し替え</li>
+          <li><span>03</span>字幕編集と修正記憶で、次回の文脈補正へ反映</li>
         </ul>
       </div>
       <div class="translation-stage" aria-label="AI字幕・翻訳の開発コンセプト">
@@ -92,7 +92,7 @@ import { withBase } from "@/data/site";
           <div class="translation-line line-two"><small>JA</small><strong>すべての言葉がわからなくても、楽しめる。</strong></div>
           <div class="translation-line line-three"><small>保存</small><span>字幕付きでこの場面を残す</span></div>
         </div>
-        <p>試作実装の体験イメージ。音声認識はPC内で処理し、API設定時は文脈補正・翻訳にGeminiを利用します。</p>
+        <p>音声認識はPC内で処理し、API設定時だけ文脈補正・翻訳に外部AIを利用します。動画本体はこの処理で送信しません。</p>
       </div>
     </div>
   </section>
@@ -105,10 +105,10 @@ import { withBase } from "@/data/site";
         <p>動画を理解したいときも、好きな瞬間をまとめたいときも、入口をひとつに。</p>
       </div>
       <div class="use-grid">
-        <article><small class="use-status">試作実装済み</small><span>字幕</span><h3>海外コンテンツを理解する</h3><p>AI字幕と日本語翻訳で、外国語の動画も内容を追いやすくする。</p></article>
+        <article><small class="use-status">実装済み</small><span>字幕</span><h3>海外コンテンツを理解する</h3><p>音声言語を検出し、Windowsの表示言語または選択した言語へ翻訳する。</p></article>
         <article><span>反復</span><h3>アニメ・映画を見返す</h3><p>お気に入りの場面をA-Bで繰り返す。</p></article>
         <article><span>保存</span><h3>欲しい瞬間を残す</h3><p>再生中に範囲を決め、そのまま切り抜く。</p></article>
-        <article><small class="use-status">Pro開発中</small><span>結合</span><h3>まとめ動画を作る</h3><p>複数クリップを並べ、一本の流れにする機能を開発中。</p></article>
+        <article><small class="use-status">実装済み</small><span>結合</span><h3>まとめ動画を作る</h3><p>複数クリップを並べ替え、プレビューして一本に高速結合する。</p></article>
       </div>
     </div>
   </section>
@@ -123,9 +123,10 @@ import { withBase } from "@/data/site";
       <div class="roadmap-list">
         <article><span class="feature-state ready">利用可能</span><h3>動画再生・お気に入り・フォルダ</h3></article>
         <article><span class="feature-state ready">利用可能</span><h3>A-Bリピート・高速切り抜き・バックグラウンド保存</h3></article>
-        <article><span class="feature-state beta">試作実装済み</span><h3>先頭3分を先行表示するAI字幕生成・翻訳</h3></article>
-        <article><span class="feature-state pro">Pro開発中</span><h3>再生と同時に流れるリアルタイム字幕・翻訳</h3></article>
-        <article><span class="feature-state pro">Pro開発中</span><h3>字幕付き切り抜き・ドラッグ＆ドロップ結合</h3></article>
+        <article><span class="feature-state ready">実装済み</span><h3>高速ドラフトから高精度全体字幕へ切り替えるAI字幕・翻訳</h3></article>
+        <article><span class="feature-state ready">実装済み</span><h3>字幕のダブルクリック編集・修正記憶</h3></article>
+        <article><span class="feature-state ready">実装済み</span><h3>Pro字幕付き切り抜き・切り抜きライブラリ・動画結合</h3></article>
+        <article><span class="feature-state beta">公開準備中</span><h3>本番ライセンス・安全な自動更新・公開インストーラー</h3></article>
       </div>
     </div>
   </section>
@@ -138,8 +139,8 @@ import { withBase } from "@/data/site";
       </div>
       <div class="faq-list">
         <details open><summary>今すぐ使える機能は？</summary><p>動画再生、お気に入りとフォルダ整理、A-Bリピート、A-B範囲の高速切り抜き、再生を続けながらの保存です。</p></details>
-        <details><summary>AI字幕と翻訳は使えますか？</summary><p>動画を解析して字幕を生成・翻訳する方式は試作実装済みで、現在は公開に向けた検証段階です。再生と同時に字幕が流れるリアルタイム方式はPro版として開発中です。</p></details>
-        <details><summary>複数の切り抜きを結合できますか？</summary><p>ドラッグ＆ドロップで並べ替え、一本に結合する機能を開発中です。</p></details>
+        <details><summary>AI字幕と翻訳は使えますか？</summary><p>実装済みです。音声認識はローカルで行い、クラウド補正・翻訳はAPIが設定されている場合だけ使用します。公開版でのPro/BYOK提供方法を最終調整中です。</p></details>
+        <details><summary>複数の切り抜きを結合できますか？</summary><p>できます。切り抜きタブから結合画面へ追加し、ドラッグで並べ替えてプレビュー後に一本へ結合します。</p></details>
         <details><summary>どんな動画に使えますか？</summary><p>手元にある動画の視聴、反復、切り抜き、整理を想定しています。利用する動画の権利と各サービスの規約を守ってお使いください。</p></details>
       </div>
     </div>

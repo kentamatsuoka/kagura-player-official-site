@@ -2,12 +2,8 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="更新履歴 - Kagura Player" description="Kagura Playerの更新履歴を掲載します。" canonicalPath="/ja/changelog/">
-  <section class="section">
-    <div class="container section-head">
-      <p class="eyebrow">Changelog</p>
-      <h1>更新履歴</h1>
-      <p>正式な配布開始後、バージョン、更新日、変更点、既知の問題を掲載します。</p>
-    </div>
-  </section>
+<BaseLayout title="更新履歴 - Kagura Player" description="Kagura Player 0.6.0 PreviewのAI字幕、字幕編集、切り抜き、動画結合、Pro認証、更新機構の実装状況。" canonicalPath="/ja/changelog/">
+  <header class="page-hero"><div class="container"><p class="eyebrow">更新履歴</p><h1>何が変わったか。<br />何を確かめたか。</h1><p class="lead">現在の公開候補は0.6.0 Previewです。一般配布はまだ開始していません。</p></div></header>
+  <section class="content-band"><div class="container content-grid"><h2>0.6.0 Preview</h2><div class="prose"><h3>字幕</h3><ul><li>現在位置の高速ドラフトと高精度全体生成の二段構成</li><li>シーク後の字幕再生成と再生位置保持</li><li>音声言語自動検出と表示言語への翻訳</li><li>字幕ダブルクリック編集と修正記憶</li><li>反復誤認識のローカルフィルタ</li></ul><h3>切り抜き・結合</h3><ul><li>Pro字幕焼き込み切り抜き</li><li>切り抜き履歴のSQLite永続化</li><li>ドラッグ並べ替えとプレビュー付き結合画面</li><li>互換動画のFFmpeg高速結合</li></ul><h3>製品基盤</h3><ul><li>Stripe状態を検証するライセンスサーバー</li><li>署名付きオフラインライセンス</li><li>署名付き更新マニフェスト検証</li><li>内部テスター用インストーラー検証</li></ul></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>検証状況</h2><div class="prose"><p>アプリ156件、ライセンスサーバー14件、合計170件の自動テストが合格しています。</p><p>一般公開にはFFmpeg配布資料、本番Stripeと署名鍵、更新配布先、インストール・更新・アンインストールの最終マトリクスが必要です。</p></div></div></section>
 </BaseLayout>

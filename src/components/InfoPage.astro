@@ -1,0 +1,49 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+interface Section {
+  title: string;
+  paragraphs?: string[];
+  bullets?: string[];
+}
+
+interface Props {
+  lang: "ja" | "en";
+  canonicalPath: string;
+  title: string;
+  description: string;
+  eyebrow: string;
+  headline: string;
+  lead: string;
+  notice?: { title: string; body: string };
+  sections: Section[];
+}
+
+const { lang, canonicalPath, title, description, eyebrow, headline, lead, notice, sections } = Astro.props;
+---
+
+<BaseLayout {lang} {canonicalPath} {title} {description}>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{headline}</h1>
+      <p class="lead">{lead}</p>
+    </div>
+  </header>
+  {notice && (
+    <section class="content-band">
+      <div class="container status-callout"><strong>{notice.title}</strong>{notice.body}</div>
+    </section>
+  )}
+  {sections.map((section, index) => (
+    <section class:list={["content-band", { alt: index % 2 === 1 }]}>
+      <div class="container content-grid">
+        <h2>{section.title}</h2>
+        <div class="prose">
+          {section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+          {section.bullets && <ul>{section.bullets.map((item) => <li>{item}</li>)}</ul>}
+        </div>
+      </div>
+    </section>
+  ))}
+</BaseLayout>

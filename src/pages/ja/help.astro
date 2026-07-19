@@ -1,20 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site } from "@/data/site";
 ---
 
-<BaseLayout title="ヘルプ - Kagura Player" description="Kagura Playerの使い方とよくある質問です。" canonicalPath="/ja/help/">
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">使い方</p>
-        <h1>ヘルプ</h1>
-        <p>初回起動、動画の開き方、お気に入り、A-Bリピート、切り抜き保存の手順をここにまとめます。</p>
-      </div>
-      <div class="grid-3">
-        <article class="card"><h3>動画を開く</h3><p>ローカルファイルを選んで再生します。</p></article>
-        <article class="card"><h3>A-Bリピート</h3><p>開始地点と終了地点を決めて繰り返します。</p></article>
-        <article class="card"><h3>切り抜き</h3><p>保存先と形式を確認して保存します。</p></article>
-      </div>
-    </div>
-  </section>
+<BaseLayout title="ヘルプ - Kagura Player" description="動画再生、AI字幕、字幕編集、A-B切り抜き、切り抜きライブラリ、動画結合の使い方。" canonicalPath="/ja/help/">
+  <header class="page-hero"><div class="container"><p class="eyebrow">ヘルプ</p><h1>開くところから、<br />一本にするまで。</h1><p class="lead">Kagura Playerの基本操作を、実際の作業順にまとめました。</p></div></header>
+  <section class="content-band"><div class="container content-grid"><h2>動画を開く</h2><div class="prose"><ol><li>ファイルまたはフォルダをウィンドウへドラッグします。</li><li>複数動画はプレイリストへ追加されます。</li><li>よく見る動画は星ボタンでお気に入りへ保存できます。</li></ol></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>AI字幕を出す</h2><div class="prose"><ol><li>字幕ボタンを押します。未生成動画はこの操作で初めて音声認識を開始します。</li><li>現在位置付近のドラフト字幕が先に表示されます。</li><li>高精度な全体字幕はバックグラウンドで生成され、自動的に差し替わります。</li><li>一時停止中に表示字幕をダブルクリックすると編集できます。</li></ol><p>音声認識はローカルです。クラウド補正・翻訳はAPI設定時だけ使用します。</p></div></div></section>
+  <section class="content-band"><div class="container content-grid"><h2>切り抜く</h2><div class="prose"><ol><li>Aボタンで開始、Bボタンで終了を決めます。</li><li>ハサミボタンから保存先とファイル名を確認します。</li><li>字幕がありPro権限が有効な場合は「字幕を付ける」を選べます。</li><li>保存中も再生を続けられます。完成動画は切り抜きタブへ追加されます。</li></ol></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>結合する</h2><div class="prose"><ol><li>切り抜きタブで動画を右クリックし「結合画面に追加」を選びます。</li><li>ドラッグまたは上下ボタンで順番を変更します。</li><li>左のプレビューで内容を確認します。</li><li>「この順番で結合する」を押します。</li></ol><p>同一系統の形式・コーデック向けの高速結合です。異なる動画の自動変換は現在の対象外です。</p></div></div></section>
+  <section class="content-band"><div class="container content-grid"><h2>困ったとき</h2><div class="prose"><p>設定画面からログフォルダを開き、発生時刻、操作手順、動画形式、表示されたエラーを確認してください。</p>{site.supportUrl ? <p><a class="button primary" href={site.supportUrl}>サポートへ連絡</a></p> : <p class="status-callout"><strong>問い合わせ窓口は公開準備中です</strong>正式公開前にサポートURLを掲載します。</p>}</div></div></section>
 </BaseLayout>

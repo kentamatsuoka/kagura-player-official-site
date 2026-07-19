@@ -1,13 +1,11 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site, withBase } from "@/data/site";
 ---
 
-<BaseLayout title="Download - Kagura Player" description="Download page for Kagura Player for Windows." canonicalPath="/en/download/" lang="en">
-  <section class="section">
-    <div class="container section-head">
-      <p class="eyebrow">Download</p>
-      <h1>Windows build coming soon.</h1>
-      <p>The public download link, version, file size, and release notes will be added after verification.</p>
-    </div>
-  </section>
+<BaseLayout title="Download - Kagura Player" description="Release status, requirements, installation, and safety information for Kagura Player 0.6.0 Preview on Windows." canonicalPath="/en/download/" lang="en">
+  <header class="page-hero"><div class="container"><p class="eyebrow">Windows / 0.6.0 Preview</p><h1>The release candidate<br />is in final verification.</h1><p class="lead">The app and installer work internally. Public FFmpeg materials, signed updates, and production Pro services remain launch gates.</p><div class="hero-actions">{site.downloadUrl ? <a class="button primary" href={site.downloadUrl}>Download for Windows</a> : <span class="button secondary" aria-disabled="true">Public release in preparation</span>}<a class="button secondary" href={withBase("/en/changelog/")}>Read the changelog</a></div></div></header>
+  <section class="content-band" id="release-status"><div class="container release-facts"><div><small>Current version</small><strong>{site.version}</strong></div><div><small>Planned support</small><strong>Windows 10 / 11 x64</strong></div><div><small>Verification</small><strong>156 app + 14 licensing tests pass</strong></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>Why it is not public yet</h2><div class="prose"><p>The internal installer has been tested with its bundled FFmpeg tools. Public distribution still requires matching corresponding source, license text, source location, and final review.</p><p>Paid Pro launch also requires production Stripe, signing keys, license endpoints, and signed update manifests embedded in the public build.</p></div></div></section>
+  <section class="content-band"><div class="container content-grid"><h2>Installation after launch</h2><div class="prose"><ol><li>Download the verified installer from this page.</li><li>Choose optional Explorer integration and file associations.</li><li>Run later installers as in-place updates. Favorites, subtitles, and settings stay in the user data directory.</li></ol><p><a href={withBase("/en/system-requirements/")}>Review system requirements</a></p></div></div></section>
 </BaseLayout>

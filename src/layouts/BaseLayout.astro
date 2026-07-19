@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { navEn, navJa, site, withBase } from "@/data/site";
+import { footerEn, footerJa, navEn, navJa, site, withBase } from "@/data/site";
 
 interface Props {
   title: string;
@@ -11,7 +11,8 @@ interface Props {
 
 const { title, description, lang = "ja", canonicalPath } = Astro.props;
 const nav = lang === "ja" ? navJa : navEn;
-const sharedRoutes = new Set(["", "download/", "features/quick-clip/", "features/favorites/", "features/ai-subtitles/"]);
+const footerNav = lang === "ja" ? footerJa : footerEn;
+const sharedRoutes = new Set(["", "download/", "help/", "pricing/", "terms/", "privacy/", "licenses/", "changelog/", "system-requirements/", "features/", "features/quick-clip/", "features/favorites/", "features/ai-subtitles/", "features/clip-library/", "features/merge-editor/"]);
 const routeWithoutLanguage = canonicalPath.replace(/^\/(ja|en)\//, "");
 const opposite = sharedRoutes.has(routeWithoutLanguage)
   ? `/${lang === "ja" ? "en" : "ja"}/${routeWithoutLanguage}`
@@ -43,15 +44,17 @@ const structuredData = {
       operatingSystem: "Windows",
       inLanguage: lang,
       description,
+      softwareVersion: site.version,
       featureList: lang === "ja"
-        ? ["動画再生", "A-Bリピート", "A-B高速切り抜き", "お気に入りとフォルダ整理", "先頭3分を先行表示するAI字幕・翻訳", "字幕のバックグラウンド生成"]
-        : ["Video playback", "A-B repeat", "Quick A-B clipping", "Favorites and folders", "Progressive AI subtitles and translation", "Background subtitle generation"],
-      offers: {
+        ? ["動画再生", "A-Bリピート", "A-B高速切り抜き", "お気に入りとフォルダ整理", "段階的AI字幕・自動翻訳", "字幕編集学習", "字幕付き切り抜き", "切り抜きライブラリ", "ドラッグ操作対応の動画結合"]
+        : ["Video playback", "A-B repeat", "Quick A-B clipping", "Favorites and folders", "Progressive AI subtitles and translation", "Subtitle correction memory", "Clips with burned-in subtitles", "Clip library", "Drag-and-drop video joining"],
+      ...(site.checkoutUrl && site.proPrice && site.proCurrency ? { offers: {
         "@type": "Offer",
-        price: "0",
-        priceCurrency: lang === "ja" ? "JPY" : "USD",
-        availability: "https://schema.org/PreOrder"
-      }
+        price: site.proPrice,
+        priceCurrency: site.proCurrency,
+        availability: "https://schema.org/InStock",
+        url: site.checkoutUrl
+      }} : {})
     }
   ]
 };
@@ -87,15 +90,7 @@ const structuredData = {
     <link rel="icon" type="image/png" href={withBase("/media/generated/kagura-player-context-menu-32.png")} />
     <meta name="theme-color" content="#07080d" />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <script is:inline>
-      try {
-        const savedMotion = localStorage.getItem("kagura-motion");
-        const systemReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-        document.documentElement.dataset.motion = savedMotion === "on" || (savedMotion !== "off" && !systemReduced) ? "on" : "off";
-      } catch {
-        document.documentElement.dataset.motion = "on";
-      }
-    </script>
+    <script is:inline>document.documentElement.dataset.motion = "on";</script>
   </head>
   <body>
     <a class="skip-link" href="#main">{lang === "ja" ? "本文へ移動" : "Skip to content"}</a>
@@ -112,10 +107,6 @@ const structuredData = {
             {nav.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
           </nav>
           <div class="header-actions">
-            <button class="motion-toggle" type="button" data-motion-toggle aria-label={lang === "ja" ? "サイト演出のオン・オフを切り替える" : "Toggle site motion"} title={lang === "ja" ? "サイト演出を切り替える" : "Toggle site motion"}>
-              <span class="motion-toggle-mark" aria-hidden="true"></span>
-              <span data-motion-label>{lang === "ja" ? "演出" : "Motion"}</span>
-            </button>
             <a class="lang-link" href={withBase(opposite)} data-language-choice={lang === "ja" ? "en" : "ja"}>{oppositeLabel}</a>
             <a class="button primary" href={withBase(lang === "ja" ? "/ja/download/" : "/en/download/")}>
               {lang === "ja" ? "ダウンロード" : "Download"}
@@ -127,9 +118,15 @@ const structuredData = {
         <slot />
       </main>
       <footer class="footer">
-        <div class="container footer-inner">
-          <span>{site.name} - {lang === "ja" ? "開発プレビュー" : site.version}</span>
-          <span>{lang === "ja" ? "未完成機能は予定として明記します。" : "Planned features are labeled clearly."}</span>
+        <div class="container footer-grid">
+          <div class="footer-brand">
+            <img src={withBase("/media/generated/kagura-player-context-menu-32.png")} width="32" height="32" alt="" />
+            <div><strong>{site.name}</strong><span>{site.version} / Windows</span></div>
+          </div>
+          <nav class="footer-nav" aria-label={lang === "ja" ? "フッターナビゲーション" : "Footer navigation"}>
+            {footerNav.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
+          </nav>
+          <p class="footer-note">{lang === "ja" ? "手元の動画を、理解して、切り抜いて、つなげる。" : "Understand, clip, and join the videos on your PC."}</p>
         </div>
       </footer>
     </div>
@@ -151,18 +148,7 @@ const structuredData = {
         // Japanese remains the fallback when browser language storage is unavailable.
       }
 
-      const motionEnabled = document.documentElement.dataset.motion === "on";
-      const motionToggle = document.querySelector("[data-motion-toggle]");
-      const motionLabel = document.querySelector("[data-motion-label]");
-      if (motionToggle instanceof HTMLButtonElement) {
-        motionToggle.setAttribute("aria-pressed", String(motionEnabled));
-        motionToggle.classList.toggle("is-on", motionEnabled);
-        if (motionLabel) motionLabel.textContent = `${motionLabel.textContent} ${motionEnabled ? "ON" : "OFF"}`;
-        motionToggle.addEventListener("click", () => {
-          localStorage.setItem("kagura-motion", motionEnabled ? "off" : "on");
-          location.reload();
-        });
-      }
+      const motionEnabled = true;
       const aura = document.querySelector("[data-pointer-aura]");
       const updateProgress = () => {
         const travel = document.documentElement.scrollHeight - window.innerHeight;

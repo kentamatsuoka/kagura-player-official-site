@@ -1,0 +1,14 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site, withBase } from "@/data/site";
+---
+
+<BaseLayout title="Pricing - Kagura Player" description="Compare the planned Kagura Player Free and Pro feature boundaries. Final pricing and trial terms will be published before launch." canonicalPath="/en/pricing/" lang="en">
+  <header class="page-hero"><div class="container"><p class="eyebrow">Pricing</p><h1>Useful first.<br />More power when you need it.</h1><p class="lead">Playback, organization, and fast clipping are planned as the free foundation. Burned-in subtitle clips and cloud-assisted intelligence are the proposed Pro boundary.</p></div></header>
+  <section class="content-band"><div class="container status-callout"><strong>Price and trial terms are not final</strong>Checkout stays disabled until production Stripe, seller details, terms, and refund conditions are complete.</div></section>
+  <section class="content-band alt"><div class="container plan-grid">
+    <article class="plan"><p class="section-kicker">FREE</p><h2>Watch, organize, and clip</h2><p class="price">Planned free tier</p><ul><li>Local playback</li><li>Playlists and favorites</li><li>A-B repeat</li><li>Fast clipping</li><li>Local AI subtitles and cache</li><li>Subtitle edits and correction memory</li><li>Clip library and compatible-media joining</li></ul><a class="button secondary" href={withBase("/en/download/")}>See release status</a></article>
+    <article class="plan pro"><p class="section-kicker">PRO</p><h2>Carry subtitles into the clip</h2><p class="price">Monthly and annual options under review</p><ul><li>Burned-in subtitle clips</li><li>Cloud context correction</li><li>Automatic translation</li><li>Future advanced subtitle and editing tools</li><li>Signed offline license leases</li><li>Up to three installations planned</li></ul>{site.checkoutUrl ? <a class="button primary" href={site.checkoutUrl}>Start Pro</a> : <span class="button secondary" aria-disabled="true">Coming soon</span>}</article>
+  </div></section>
+  <section class="content-band"><div class="container content-grid"><h2>Do not paywall zero-cost basics</h2><div class="prose"><p>Features that run entirely on your PC should remain useful without a recurring API bill. Cloud correction and translation need a transparent Pro or bring-your-own-key boundary.</p><p>Final plans will follow real usage, API cost, and support testing.</p></div></div></section>
+</BaseLayout>

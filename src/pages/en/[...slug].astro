@@ -1,0 +1,12 @@
+---
+import InfoPage from "@/components/InfoPage.astro";
+import { enContentPages } from "@/data/contentPages";
+
+export function getStaticPaths() {
+  return enContentPages.map((page) => ({ params: { slug: page.slug }, props: { page } }));
+}
+
+const { page } = Astro.props;
+---
+
+<InfoPage lang="en" canonicalPath={`/en/${page.slug}/`} {...page} />

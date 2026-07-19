@@ -6,7 +6,7 @@ import { withBase } from "@/data/site";
 
 <BaseLayout
   title="Kagura Player - Understand it. Clip it. Make it yours."
-  description="Kagura Player brings A-B quick clipping together with planned realtime AI subtitles, translation, and drag-and-drop clip joining for Windows."
+  description="Kagura Player combines fast local AI subtitles, translation, A-B clipping, subtitle correction, a clip library, and drag-and-drop video joining for Windows."
   canonicalPath="/en/"
   lang="en"
 >
@@ -17,16 +17,16 @@ import { withBase } from "@/data/site";
       <div class="hero-copy">
         <p class="eyebrow">Video player for Windows</p>
         <h1>Kagura Player</h1>
-        <p class="hero-promise"><span>Understand it.</span><span>Clip it fast.</span><span>Make more of it.</span></p>
-        <p class="lead">Watch local video, mark an A-B range, and save the moment. Kagura Player Pro is being built to carry that flow from realtime AI subtitles and translation through clip joining.</p>
+        <p class="hero-promise"><span>Understand it.</span><span>Clip it fast.</span><span>Join the story.</span></p>
+        <p class="lead">Show a fast subtitle draft near the playhead, refine the full video in the background, clip the moment, and arrange clips into one video.</p>
         <div class="hero-actions">
           <a class="button primary" href={withBase("/en/download/")}>See Windows release status</a>
           <a class="button secondary" href="#experience">Explore the workflow</a>
         </div>
         <div class="status-rail" aria-label="Feature status">
           <span><b class="status-dot available"></b>Quick clipping available</span>
-          <span><b class="status-dot planned"></b>Realtime AI subtitles in development</span>
-          <span><b class="status-dot planned"></b>Clip joining in development</span>
+          <span><b class="status-dot available"></b>Two-pass AI subtitles implemented</span>
+          <span><b class="status-dot available"></b>Clip library and joining implemented</span>
         </div>
       </div>
       <HeroDemo lang="en" />
@@ -43,7 +43,7 @@ import { withBase } from "@/data/site";
       <div class="flow-grid">
         <article class="flow-item current"><span class="flow-number">01</span><span class="feature-state ready">AVAILABLE</span><h3>Find it</h3><p>Favorites, folders, and A-B repeat bring the right moment back fast.</p><div class="flow-visual seek-visual" aria-hidden="true"><i></i><i></i><i></i><b>A</b><b>B</b></div></article>
         <article class="flow-item current"><span class="flow-number">02</span><span class="feature-state ready">AVAILABLE</span><h3>Clip it</h3><p>Set A and B, then save in the background while playback continues.</p><div class="flow-visual clip-visual" aria-hidden="true"><span></span><span></span><span></span></div></article>
-        <article class="flow-item future"><span class="flow-number">03</span><span class="feature-state pro">IN DEVELOPMENT</span><h3>Join it</h3><p>Arrange clips by drag and drop and turn them into one sequence.</p><div class="flow-visual join-visual" aria-hidden="true"><span></span><span></span><span></span><i></i></div></article>
+        <article class="flow-item future"><span class="flow-number">03</span><span class="feature-state ready">AVAILABLE</span><h3>Join it</h3><p>Arrange clips by drag and drop and turn them into one sequence.</p><div class="flow-visual join-visual" aria-hidden="true"><span></span><span></span><span></span><i></i></div></article>
       </div>
     </div>
   </section>
@@ -51,15 +51,15 @@ import { withBase } from "@/data/site";
   <section class="section subtitle-lab" id="ai-subtitles">
     <div class="container subtitle-layout">
       <div class="subtitle-copy">
-        <div class="section-kicker">KAGURA PLAYER PRO / IN DEVELOPMENT</div>
-        <h2>Understand video as it plays.</h2>
-        <p class="lead-small">Realtime AI subtitles and translation are being developed for animation, films, international video, and language learning. On-demand transcription and translation already exist in the app code; the live experience is the next step.</p>
-        <ul class="plain-list"><li><span>01</span>Follow subtitles without stopping playback</li><li><span>02</span>Clip the moment with its subtitles</li><li><span>03</span>Keep a local-first workflow on your PC</li></ul>
+        <div class="section-kicker">AI SUBTITLES / TWO PASSES</div>
+        <h2>Understand video sooner.</h2>
+        <p class="lead-small">A fast draft appears around the current position first. A high-accuracy model continues over the full video in the background and replaces the draft.</p>
+        <ul class="plain-list"><li><span>01</span>Current-position draft first</li><li><span>02</span>High-accuracy full pass in the background</li><li><span>03</span>Edit captions and reuse correction memory</li></ul>
       </div>
       <div class="translation-stage" aria-label="AI subtitle concept preview">
         <div class="translation-head"><span>LIVE CAPTION</span><span class="pulse-label">ANALYZING</span></div>
         <div class="translation-frame"><div class="translation-line line-one"><small>JP</small><span>物語は、ここから始まる。</span></div><div class="translation-line line-two"><small>EN</small><strong>The story starts here.</strong></div><div class="translation-line line-three"><small>CLIP</small><span>Save this moment with subtitles</span></div></div>
-        <p>Concept preview. Realtime subtitles and translation are in development for Pro.</p>
+        <p>Implemented experience preview. Recognition is local; configured cloud assistance handles context correction and translation.</p>
       </div>
     </div>
   </section>
@@ -70,9 +70,10 @@ import { withBase } from "@/data/site";
       <div class="roadmap-list">
         <article><span class="feature-state ready">AVAILABLE</span><h3>Playback, favorites, folders, and A-B repeat</h3></article>
         <article><span class="feature-state ready">AVAILABLE</span><h3>Quick A-B clipping and background export</h3></article>
-        <article><span class="feature-state beta">PROTOTYPE BUILT</span><h3>On-demand AI transcription and translation</h3></article>
-        <article><span class="feature-state pro">PRO / BUILDING</span><h3>Subtitles and translation generated during playback</h3></article>
-        <article><span class="feature-state pro">PRO / BUILDING</span><h3>Subtitle clips and drag-and-drop joining</h3></article>
+        <article><span class="feature-state ready">IMPLEMENTED</span><h3>Fast draft and high-accuracy full AI subtitles</h3></article>
+        <article><span class="feature-state ready">IMPLEMENTED</span><h3>Language detection, translation, subtitle editing, correction memory</h3></article>
+        <article><span class="feature-state ready">IMPLEMENTED</span><h3>Pro subtitle burn-in clips, clip library, drag-and-drop joining</h3></article>
+        <article><span class="feature-state beta">RELEASE PREP</span><h3>Production licensing, signed updates, and public installer</h3></article>
       </div>
     </div>
   </section>
@@ -82,8 +83,8 @@ import { withBase } from "@/data/site";
       <div><div class="section-kicker">FAQ</div><h2>Questions, answered.</h2></div>
       <div class="faq-list">
         <details open><summary>What can I use now?</summary><p>Playback, favorites, folders, A-B repeat, quick A-B clipping, and background export are implemented.</p></details>
-        <details><summary>Are AI subtitles and translation available?</summary><p>On-demand transcription and translation exist as a prototype. Subtitles generated during playback are still in development for Pro.</p></details>
-        <details><summary>Can Kagura Player join multiple clips?</summary><p>Not yet. Drag-and-drop clip arrangement and joining are planned Pro features in development.</p></details>
+        <details><summary>Are AI subtitles and translation available?</summary><p>They are implemented. Recognition runs locally. Cloud correction and translation are used only when configured; the final Pro/BYOK release path is still being prepared.</p></details>
+        <details><summary>Can Kagura Player join multiple clips?</summary><p>Yes. Add items from the Clip tab, drag them into order, preview them, then join them into one compatible-media output.</p></details>
       </div>
     </div>
   </section>
@@ -91,7 +92,7 @@ import { withBase } from "@/data/site";
   <section class="section final-cta">
     <div class="container final-cta-inner">
       <img src={withBase("/media/generated/kagura-player-icon-512.png")} alt="" width="168" height="168" />
-      <div><p class="section-kicker">KAGURA PLAYER FOR WINDOWS</p><h2>Do more with the moment you just watched.</h2><p>Start with fast clipping. Follow the roadmap toward AI subtitles, translation, and clip joining.</p><a class="button primary" href={withBase("/en/download/")}>See release status</a></div>
+      <div><p class="section-kicker">KAGURA PLAYER FOR WINDOWS</p><h2>Do more with the moment you just watched.</h2><p>Understand it with AI subtitles, clip it, and join it without leaving the player workflow.</p><a class="button primary" href={withBase("/en/download/")}>See release status</a></div>
     </div>
   </section>
 </BaseLayout>

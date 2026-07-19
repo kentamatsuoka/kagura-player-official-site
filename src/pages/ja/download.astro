@@ -1,21 +1,11 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { site } from "@/data/site";
+import { site, withBase } from "@/data/site";
 ---
 
-<BaseLayout title="ダウンロード - Kagura Player" description="Kagura Player Windows版のダウンロード準備ページです。" canonicalPath="/ja/download/">
-  <section class="section">
-    <div class="container two-col">
-      <div>
-        <p class="eyebrow">Windows版</p>
-        <h1>Windows版を準備中。</h1>
-        <p class="lead">正式な配布ファイル、バージョン、ファイルサイズ、更新日が確定したら、このページに掲載します。</p>
-        <a class="button primary" href={site.downloadUrl}>ダウンロード準備中</a>
-      </div>
-      <div class="card" id="release-status">
-        <h2>公開前に必要な情報</h2>
-        <p>対応OS、対応形式、インストール方法、アンインストール方法、既知の問題、プライバシー説明を確定します。</p>
-      </div>
-    </div>
-  </section>
+<BaseLayout title="ダウンロード - Kagura Player" description="Kagura Player 0.6.0 Preview Windows版の公開状況、動作環境、インストール方法、安全確認情報。" canonicalPath="/ja/download/">
+  <header class="page-hero"><div class="container"><p class="eyebrow">Windows版 / 0.6.0 Preview</p><h1>公開候補版を、<br />最終確認中。</h1><p class="lead">アプリ本体とインストーラーは動作しています。一般公開用FFmpeg資料、署名付き更新、Pro本番環境を揃えてから配布を開始します。</p><div class="hero-actions">{site.downloadUrl ? <a class="button primary" href={site.downloadUrl}>Windows版をダウンロード</a> : <span class="button secondary" aria-disabled="true">一般公開準備中</span>}<a class="button secondary" href={withBase("/ja/changelog/")}>更新内容を見る</a></div></div></header>
+  <section class="content-band" id="release-status"><div class="container release-facts"><div><small>現在の版</small><strong>{site.version}</strong></div><div><small>対応予定</small><strong>Windows 10 / 11 x64</strong></div><div><small>検証</small><strong>アプリ156 + 認証14テスト合格</strong></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>なぜ、まだ配らないのか</h2><div class="prose"><p>内部テスター版はインストール・起動・FFmpeg同梱まで検証済みです。ただし一般公開には、出荷するFFmpegと一致するソース、ライセンス文書、入手先の確定が必要です。</p><p>またPro販売を有効にする場合は、本番Stripe、ライセンス署名鍵、更新マニフェストを公開ビルドへ設定します。未設定のまま決済だけを開くことはしません。</p></div></div></section>
+  <section class="content-band"><div class="container content-grid"><h2>公開後のインストール</h2><div class="prose"><ol><li>このページから署名・ハッシュ確認済みのインストーラーを取得します。</li><li>インストーラーを開き、必要な右クリック統合やファイル関連付けを選びます。</li><li>新しい版は同じインストーラーで上書き更新できます。お気に入りや字幕キャッシュはユーザーデータ領域に保持されます。</li></ol><p><a href={withBase("/ja/system-requirements/")}>動作環境を確認する</a></p></div></div></section>
 </BaseLayout>

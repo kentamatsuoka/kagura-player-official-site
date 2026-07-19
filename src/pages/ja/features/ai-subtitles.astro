@@ -2,17 +2,11 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="AI字幕予定 - Kagura Player" description="Kagura Player Proで計画中のローカルAI字幕機能を紹介します。" canonicalPath="/ja/features/ai-subtitles/">
-  <section class="section">
-    <div class="container two-col">
-      <div>
-        <p class="eyebrow">In development</p>
-        <h1>AI字幕は、Pro版の計画です。</h1>
-        <p class="lead">ローカルGPUによる字幕生成、字幕付き切り抜き、字幕表示タイミング調整を予定しています。</p>
-      </div>
-      <div class="notice">
-        まだ完成済み機能としては掲載しません。対応環境と実測速度が確認できた段階で、このページを更新します。
-      </div>
-    </div>
-  </section>
+<BaseLayout title="AI字幕・自動翻訳 - Kagura Player" description="現在位置を先に字幕化し、高精度全体字幕へ差し替えるKagura PlayerのローカルAI字幕、自動翻訳、字幕編集学習。" canonicalPath="/ja/features/ai-subtitles/">
+  <header class="page-hero"><div class="container"><p class="eyebrow">AI字幕 / 実装済み</p><h1>待ち時間を短く。<br />字幕は、あとからもっと正確に。</h1><p class="lead">現在位置付近の短いドラフトを先に表示し、見ている間に高精度な全体字幕へ差し替えます。</p></div></header>
+  <section class="content-band"><div class="container release-facts"><div><small>最初の表示</small><strong>現在位置付近を優先</strong></div><div><small>完成字幕</small><strong>高精度モデルで全体生成</strong></div><div><small>再利用</small><strong>動画・言語ごとにキャッシュ</strong></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>速度と精度を、二者択一にしない</h2><div class="prose"><p>字幕ボタンを押すと、現在位置の少し前から短い範囲を高速モデルで処理します。そのドラフトを先に表示したあと、高精度モデルで動画全体を処理し、再生位置を保ったまま差し替えます。</p><p>早送りや5秒スキップで未生成区間へ移動した場合も、その位置を基準にドラフトを再生成します。</p></div></div></section>
+  <section class="content-band"><div class="container content-grid"><h2>文脈で、聞き間違いを減らす</h2><div class="prose"><p>ファイル名、冒頭の会話、作品ジャンル、前後の字幕、ユーザーが以前直した表現を使って、固有名詞や自然な語彙を補正します。</p><p>外部AIが利用できない場合も、Whisperのローカル結果と反復フィルタで字幕生成を継続します。</p></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>字幕を、その場で育てる</h2><div class="prose"><ul><li>一時停止中の字幕をダブルクリックして編集</li><li>修正内容を生成キャッシュとは別に保存</li><li>同じ動画と同じ作品の次回補正へ利用</li><li>表示言語の自動追従または手動選択</li></ul></div></div></section>
+  <section class="content-band"><div class="container content-grid"><h2>プライバシー境界</h2><div class="prose"><p>音声抽出とWhisper認識はPC内で処理します。クラウド補正・翻訳を設定して使う場合は、認識済みテキスト、ファイル名、限定された文脈を外部AIへ送ることがあります。動画ファイル本体はこの処理では送信しません。</p></div></div></section>
 </BaseLayout>
