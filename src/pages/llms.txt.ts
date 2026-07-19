@@ -14,7 +14,7 @@ export const GET: APIRoute = () => {
 - Local by default: video playback, audio extraction, and Whisper recognition run on the PC.
 - Optional cloud assistance: configured context correction and translation may send recognized text, the filename, and limited context to the selected provider; this flow does not upload the video file itself.
 - Free: JPY 0.
-- Pro: JPY 980 per month or JPY 9,800 per year.
+- Pro: JPY 1,480 per month or JPY 14,800 per year.
 - Trial: seven days with 30 cloud minutes.
 - Pro cloud allowance: 600 minutes per month; users can continue with their own supported API key through BYOK after the quota.
 - Release status: the public installer and paid checkout are not active yet.

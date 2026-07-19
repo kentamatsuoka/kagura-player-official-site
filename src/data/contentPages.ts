@@ -57,7 +57,7 @@ export const jaContentPages: ContentPage[] = [
     description: "Kagura Playerの利用条件、禁止事項、AI機能、免責、契約に関する利用規約です。",
     eyebrow: "利用規約 / 発売前版",
     headline: "Kagura Player 利用規約",
-    lead: "本規約は正式販売開始前の公開草案です。Free ¥0、Pro月額¥980・年額¥9,800、7日間無料試用を前提とし、事業者情報と法定条件は購入受付前に確定します。",
+    lead: "本規約は正式販売開始前の公開草案です。Free ¥0、Pro月額¥1,480・年額¥14,800、7日間無料試用を前提とし、事業者情報と法定条件は購入受付前に確定します。",
     notice: { title: "現在は公開草案です", body: "購入・課金導線はまだ有効化されていません。正式販売時には適用開始日と変更履歴を明記します。" },
     sections: [
       { title: "1. 適用", paragraphs: ["本規約はKagura Playerおよび付随サービスの利用条件を定めます。利用者は本規約とアプリ内表示に従って利用します。"] },
@@ -65,7 +65,7 @@ export const jaContentPages: ContentPage[] = [
       { title: "3. 禁止事項", bullets: ["法令または第三者の権利を侵害する利用", "ライセンス認証、利用制限、署名検証の回避", "サービスや他の利用者へ不正な負荷を与える行為", "マルウェア配布、認証情報の不正取得、無断再配布"] },
       { title: "4. 動画と著作権", paragraphs: ["切り抜き、字幕生成、翻訳、結合の対象となる動画について、必要な権利や許可を確認する責任は利用者にあります。本ソフトウェアは第三者コンテンツの利用許諾を与えません。"] },
       { title: "5. AI機能", paragraphs: ["音声認識・翻訳・文脈補正の結果には誤りが含まれる可能性があります。重要な用途では原音と照合してください。クラウド機能を使う場合、画面に示した範囲のテキスト情報が外部AIサービスへ送信されることがあります。"] },
-      { title: "6. Pro・試用・支払い", paragraphs: ["Freeは¥0です。Proは月額¥980または年額¥9,800で、7日間の無料試用にクラウド処理30分、Proに毎月600分を含みます。枠を超えた後はBYOKを利用できます。自動更新、解約期限、返金条件、税の取扱いは購入確定前に表示します。"] },
+      { title: "6. Pro・試用・支払い", paragraphs: ["Freeは¥0です。Proは月額¥1,480または年額¥14,800で、7日間の無料試用にクラウド処理30分、Proに毎月600分を含みます。枠を超えた後はBYOKを利用できます。自動更新、解約期限、返金条件、税の取扱いは購入確定前に表示します。"] },
       { title: "7. 更新と終了", paragraphs: ["安全性、互換性、機能改善のため更新を提供することがあります。重大な規約違反や不正利用がある場合、法令の範囲でライセンス利用を停止することがあります。"] },
       { title: "8. 保証と責任", paragraphs: ["本ソフトウェアは現状有姿で提供されます。適用法令で認められる範囲において、特定目的適合性や完全な無停止動作を保証しません。故意または重過失による場合を除き、責任範囲は適用法令および購入時に示す条件に従います。"] },
       { title: "9. 規約変更・準拠法", paragraphs: ["重要な変更はサイトまたはアプリ内で告知します。正式版では準拠法、裁判管轄、問い合わせ窓口を事業者情報とともに確定します。"] },
@@ -110,7 +110,7 @@ export const jaContentPages: ContentPage[] = [
       { title: "販売事業者", paragraphs: ["【公開前に要入力：戸籍・登記等の表示と一致する販売事業者の正式名称】"] },
       { title: "運営責任者", paragraphs: ["【公開前に要入力：販売業務の責任者氏名】"] },
       { title: "所在地・連絡先", paragraphs: ["【公開前に要入力：販売事業者の住所、問い合わせ用メールアドレス】", "電話番号を掲載する場合は【公開前に要入力：電話番号】。請求に応じて遅滞なく開示する方式を採用できる場合は、その旨、請求先、受付方法を具体的に表示してください。適用可否は公開前に専門家へ確認してください。"] },
-      { title: "販売価格・追加費用", paragraphs: ["Freeは¥0、Proは月額¥980または年額¥9,800です。7日間無料試用にはクラウド処理30分、Proには毎月600分を含み、超過後はBYOKを利用できます。BYOK先のAPI利用料と通信費は利用者負担です。", "【公開前に要確認・入力：表示価格の税込区分、課金通貨、適用税、その他必須費用】"] },
+      { title: "販売価格・追加費用", paragraphs: ["Freeは¥0、Proは月額¥1,480または年額¥14,800です。7日間無料試用にはクラウド処理30分、Proには毎月600分を含み、超過後はBYOKを利用できます。BYOK先のAPI利用料と通信費は利用者負担です。", "【公開前に要確認・入力：表示価格の税込区分、課金通貨、適用税、その他必須費用】"] },
       { title: "支払方法・時期", paragraphs: ["Stripeによるクレジットカード等の決済を予定しています。【公開前に要入力：利用可能な支払方法、初回課金日、無料試用終了後の課金時期、自動更新日】"] },
       { title: "提供時期", paragraphs: ["決済完了およびライセンス認証後にPro機能を提供します。【公開前に要入力：障害・認証失敗時の提供時期と問い合わせ方法】"] },
       { title: "解約・返品・返金", paragraphs: ["【公開前に要入力：試用期間中の解約方法、次回更新前の解約期限、デジタル商品の返品・返金条件】法令上認められる権利を制限しません。"] },
@@ -127,13 +127,13 @@ export const jaContentPages: ContentPage[] = [
       { title: "字幕を待つ時間を短くする", paragraphs: ["現在の再生位置付近を高速モデルで先に字幕化し、その後に高精度モデルの全体結果へ差し替えます。字幕を作り終えるまで動画を見始められない、という待ち時間を減らします。"] },
       { title: "ローカル認識とクラウド支援", paragraphs: ["音声抽出とWhisper認識はPC内で実行します。クラウド文脈補正や翻訳を利用する場合だけ、認識済みテキスト、動画ファイル名、限定された文脈を設定先へ送信します。この処理で動画ファイル本体は送信しません。"] },
       { title: "字幕を直し、切り抜きへ残す", bullets: ["表示字幕をダブルクリックして編集", "修正内容を次回の文脈補正へ活用", "A-B範囲を字幕付き動画として書き出し", "字幕キャッシュで次回すぐ表示"] },
-      { title: "料金", paragraphs: ["Freeは¥0です。Proは月額¥980または年額¥9,800で、7日間無料試用にクラウド30分、毎月600分のクラウド処理、超過後のBYOKを含みます。"] },
+      { title: "料金", paragraphs: ["Freeは¥0です。Proは月額¥1,480または年額¥14,800で、7日間無料試用にクラウド30分、毎月600分のクラウド処理、超過後のBYOKを含みます。"] },
       { title: "精度上の注意", paragraphs: ["音声認識と翻訳には誤りがあり得ます。固有名詞、専門用語、重要な引用は原音と照合してください。"] },
     ],
     faqs: [
       { question: "AI字幕は動画をクラウドへアップロードしますか？", answer: "ローカル音声認識では動画をアップロードしません。クラウド補正・翻訳を使う場合は、認識済みテキストなど画面で示す限定情報だけを送信します。" },
       { question: "Windows 10とWindows 11で使えますか？", answer: "64-bit版Windows 10とWindows 11を対象としています。CUDA対応GPUがあると認識を高速化でき、非対応環境ではCPUで処理します。" },
-      { question: "AI字幕は無料ですか？", answer: "ローカルAI字幕を含むFreeは¥0です。クラウド補正・翻訳と字幕焼き込みなどのPro機能は月額¥980または年額¥9,800です。" },
+      { question: "AI字幕は無料ですか？", answer: "ローカルAI字幕を含むFreeは¥0です。クラウド補正・翻訳と字幕焼き込みなどのPro機能は月額¥1,480または年額¥14,800です。" },
     ],
   },
   {
@@ -146,7 +146,7 @@ export const jaContentPages: ContentPage[] = [
     sections: [
       { title: "再生から切り抜きまで一つの画面", bullets: ["A-Bリピートで範囲を確認", "開始・終了位置を細かく調整", "再生を続けたままバックグラウンド保存", "完成クリップを専用ライブラリへ自動登録"] },
       { title: "速さと互換性", paragraphs: ["高速切り抜きはFFmpegを使い、元動画のコンテナ、コーデック、キーフレーム配置に影響されます。入力によっては指定位置と実際の境界に差が出るため、出力をプレビューして確認できます。"] },
-      { title: "字幕付きクリップ", paragraphs: ["ProではAI字幕や翻訳を映像へ焼き込んだクリップを書き出せます。Freeは¥0、Proは月額¥980または年額¥9,800です。"] },
+      { title: "字幕付きクリップ", paragraphs: ["ProではAI字幕や翻訳を映像へ焼き込んだクリップを書き出せます。Freeは¥0、Proは月額¥1,480または年額¥14,800です。"] },
       { title: "権利を確認して使う", paragraphs: ["自分で撮影した動画、利用許諾を得た素材、規約上切り抜きが認められた動画を対象にしてください。Kagura Playerは第三者コンテンツの利用許諾を与えません。"] },
     ],
     faqs: [
@@ -166,7 +166,7 @@ export const jaContentPages: ContentPage[] = [
       { title: "切り抜きライブラリからそのまま結合", bullets: ["完成クリップを結合画面へ追加", "ドラッグまたは上下ボタンで順番変更", "選択した動画をその場でプレビュー", "不要な項目だけ取り外し"] },
       { title: "互換動画は画質を変えず高速結合", paragraphs: ["同一系統のコンテナ、コーデック、解像度など、互換性のある動画はFFmpeg concat demuxerで再エンコードせず結合します。画質を変えず、全編再圧縮の待ち時間を避けられます。"] },
       { title: "現在の制限", paragraphs: ["形式や解像度が異なる動画の自動統一、トランジション、テロップ、フレーム単位編集は対象外です。互換性がない入力は不足・不一致を確認し、必要に応じて専門編集ソフトで正規化してください。"] },
-      { title: "料金", paragraphs: ["Free ¥0に切り抜きライブラリと互換動画の結合が含まれます。Proは月額¥980または年額¥9,800で、AI字幕・翻訳や字幕付き切り抜きの制作フローを拡張します。"] },
+      { title: "料金", paragraphs: ["Free ¥0に切り抜きライブラリと互換動画の結合が含まれます。Proは月額¥1,480または年額¥14,800で、AI字幕・翻訳や字幕付き切り抜きの制作フローを拡張します。"] },
     ],
     faqs: [
       { question: "WindowsでMP4動画を結合できますか？", answer: "LibVLCとFFmpegが扱える一般的な動画を対象とし、コンテナ、コーデック、解像度などが互換であれば高速結合できます。入力ごとの互換性確認が必要です。" },
@@ -236,14 +236,14 @@ export const enContentPages: ContentPage[] = [
     description: "Pre-release terms covering the Kagura Player software, AI features, subscriptions, and acceptable use.",
     eyebrow: "Terms / pre-release draft",
     headline: "Kagura Player Terms of Use",
-    lead: "This public pre-release draft uses the stated Free ¥0 and Pro ¥980/month or ¥9,800/year terms. Seller identity and mandatory consumer terms must be completed before checkout opens.",
+    lead: "This public pre-release draft uses the stated Free ¥0 and Pro ¥1,480/month or ¥14,800/year terms. Seller identity and mandatory consumer terms must be completed before checkout opens.",
     notice: { title: "Checkout is not active", body: "These terms do not represent an active paid offer yet. Material changes will be identified before launch." },
     sections: [
       { title: "License", paragraphs: ["Users receive a limited, non-exclusive, non-transferable right to use the software within the scope of their plan. Ownership of the software is not transferred."] },
       { title: "Acceptable use", bullets: ["Follow applicable law and third-party rights", "Do not bypass licensing or signature checks", "Do not disrupt the service or distribute malware", "Do not redistribute the application without permission"] },
       { title: "Your media", paragraphs: ["You are responsible for having the rights required to subtitle, translate, clip, or join each video. Kagura Player does not grant rights to third-party media."] },
       { title: "AI output", paragraphs: ["Transcription and translation may be inaccurate. Verify important output against the original media. Cloud-assisted features may send the disclosed text context to an external AI provider."] },
-      { title: "Pro, trials, and payment", paragraphs: ["Free is ¥0. Pro is ¥980/month or ¥9,800/year. The seven-day trial includes 30 cloud minutes; Pro includes 600 cloud minutes each month, with BYOK after quota. Renewal, cancellation, refund, and tax terms will be shown before purchase confirmation."] },
+      { title: "Pro, trials, and payment", paragraphs: ["Free is ¥0. Pro is ¥1,480/month or ¥14,800/year. The seven-day trial includes 30 cloud minutes; Pro includes 600 cloud minutes each month, with BYOK after quota. Renewal, cancellation, refund, and tax terms will be shown before purchase confirmation."] },
       { title: "Updates and termination", paragraphs: ["Updates may be provided for security, compatibility, and functionality. Access may be suspended for material abuse where permitted by law."] },
       { title: "Warranty and liability", paragraphs: ["The software is provided as-is to the extent permitted by law. Final consumer-law, liability, governing-law, and dispute terms will be reviewed before paid launch."] },
     ],
@@ -311,7 +311,7 @@ export const enContentPages: ContentPage[] = [
     notice: { title: "Pre-launch gate", body: "No paid checkout should be published until every required seller and consumer term is verified." },
     sections: [
       { title: "Seller and contact", paragraphs: ["[REQUIRED BEFORE LAUNCH: legal seller name, responsible person, physical address, support email, and legally compliant telephone disclosure.] Do not enable checkout while these fields are incomplete."] },
-      { title: "Price and additional costs", paragraphs: ["Free is ¥0. Pro is ¥980/month or ¥9,800/year. The seven-day trial includes 30 cloud minutes; Pro includes 600 cloud minutes each month, with BYOK beyond quota. Provider charges for BYOK and network charges are separate.", "[REQUIRED BEFORE LAUNCH: tax treatment, billing currency, applicable taxes, and any other mandatory charge.]" ] },
+      { title: "Price and additional costs", paragraphs: ["Free is ¥0. Pro is ¥1,480/month or ¥14,800/year. The seven-day trial includes 30 cloud minutes; Pro includes 600 cloud minutes each month, with BYOK beyond quota. Provider charges for BYOK and network charges are separate.", "[REQUIRED BEFORE LAUNCH: tax treatment, billing currency, applicable taxes, and any other mandatory charge.]" ] },
       { title: "Payment and delivery", paragraphs: ["Stripe-based card payment is planned. Pro access activates after verified payment and license activation. [REQUIRED BEFORE LAUNCH: supported payment methods, trial-end charge timing, renewal date, and failed-delivery support process.]" ] },
       { title: "Cancellation and refunds", paragraphs: ["[REQUIRED BEFORE LAUNCH: cancellation steps, cancellation deadline before renewal, and refund terms for digital services.] Mandatory consumer rights remain unaffected."] },
     ],
@@ -327,13 +327,13 @@ export const enContentPages: ContentPage[] = [
       { title: "Start watching before the full transcript is done", paragraphs: ["A fast model prioritizes the current position. A higher-accuracy model continues across the full video in the background and replaces the draft when ready."] },
       { title: "Local recognition, optional cloud assistance", paragraphs: ["Audio extraction and Whisper recognition run on your PC. When cloud context correction or translation is enabled, recognized text, the filename, and limited context may be sent to the configured provider. This flow does not send the video file itself."] },
       { title: "Correct captions and keep the result", bullets: ["Double-click a visible subtitle to edit it", "Reuse correction memory in later context correction", "Export an A-B range with burned-in subtitles", "Load cached subtitles immediately next time"] },
-      { title: "Pricing", paragraphs: ["Free is ¥0. Pro is ¥980/month or ¥9,800/year, with a seven-day trial, 30 trial cloud minutes, 600 cloud minutes each month, and BYOK beyond quota."] },
+      { title: "Pricing", paragraphs: ["Free is ¥0. Pro is ¥1,480/month or ¥14,800/year, with a seven-day trial, 30 trial cloud minutes, 600 cloud minutes each month, and BYOK beyond quota."] },
       { title: "Accuracy boundary", paragraphs: ["Transcription and translation can be wrong. Check names, technical terms, and important quotations against the original audio."] },
     ],
     faqs: [
       { question: "Does AI subtitle generation upload my video?", answer: "Local recognition does not upload the video. If you enable cloud correction or translation, only the limited disclosed text context is sent to the configured provider." },
       { question: "Does it support Windows 10 and Windows 11?", answer: "Kagura Player targets 64-bit Windows 10 and Windows 11. A compatible CUDA GPU can accelerate recognition; unsupported systems use the CPU." },
-      { question: "Are AI subtitles free?", answer: "Local AI subtitles are included in Free at ¥0. Pro cloud correction, translation, and subtitle-burned creation are ¥980/month or ¥9,800/year." },
+      { question: "Are AI subtitles free?", answer: "Local AI subtitles are included in Free at ¥0. Pro cloud correction, translation, and subtitle-burned creation are ¥1,480/month or ¥14,800/year." },
     ],
   },
   {
@@ -346,7 +346,7 @@ export const enContentPages: ContentPage[] = [
     sections: [
       { title: "One screen from playback to clip", bullets: ["Confirm the range with A-B repeat", "Fine-tune the start and end", "Keep watching during background export", "Register completed clips in a persistent library"] },
       { title: "Speed and compatibility", paragraphs: ["Fast clipping uses FFmpeg and depends on the source container, codecs, and keyframe layout. Because the output boundary can vary with the source, you can preview the result after export."] },
-      { title: "Clips with subtitles", paragraphs: ["Pro can export clips with AI subtitles or translations burned into the picture. Free is ¥0; Pro is ¥980/month or ¥9,800/year."] },
+      { title: "Clips with subtitles", paragraphs: ["Pro can export clips with AI subtitles or translations burned into the picture. Free is ¥0; Pro is ¥1,480/month or ¥14,800/year."] },
       { title: "Use media you have the right to edit", paragraphs: ["Use your own recordings, licensed media, or videos whose terms permit clipping. Kagura Player does not grant permission to reuse third-party content."] },
     ],
     faqs: [
@@ -366,7 +366,7 @@ export const enContentPages: ContentPage[] = [
       { title: "Move directly from the clip library", bullets: ["Add completed clips to the joiner", "Reorder by drag or move buttons", "Preview the selected video", "Remove only the items you do not need"] },
       { title: "Fast joining without quality loss for compatible media", paragraphs: ["Videos with compatible containers, codecs, resolutions, and related parameters are joined with FFmpeg's concat demuxer without re-encoding. This avoids a full recompression pass."] },
       { title: "Current limits", paragraphs: ["Automatic normalization across different formats or resolutions, transitions, titles, and frame-level editing are outside the current scope. Incompatible sources may need normalization in a dedicated editor first."] },
-      { title: "Pricing", paragraphs: ["Free at ¥0 includes the clip library and compatible-media joining. Pro is ¥980/month or ¥9,800/year and extends the workflow with AI translation and subtitle-burned clips."] },
+      { title: "Pricing", paragraphs: ["Free at ¥0 includes the clip library and compatible-media joining. Pro is ¥1,480/month or ¥14,800/year and extends the workflow with AI translation and subtitle-burned clips."] },
     ],
     faqs: [
       { question: "Can I join MP4 videos on Windows?", answer: "Kagura Player targets common formats handled by LibVLC and FFmpeg. Fast joining works when the container, codecs, resolution, and related media parameters are compatible." },
