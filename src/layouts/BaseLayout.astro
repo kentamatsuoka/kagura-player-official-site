@@ -1,28 +1,33 @@
 ---
 import "../styles/global.css";
-import { footerEn, footerJa, navEn, navJa, site, withBase } from "@/data/site";
+import { footerEn, footerJa, localizedRoute, navEn, navJa, site, withBase } from "@/data/site";
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
 
 interface Props {
   title: string;
   description: string;
   lang?: "ja" | "en";
   canonicalPath: string;
+  breadcrumbTitle?: string;
+  faqItems?: FaqItem[];
 }
 
-const { title, description, lang = "ja", canonicalPath } = Astro.props;
+const { title, description, lang = "ja", canonicalPath, breadcrumbTitle, faqItems = [] } = Astro.props;
 const nav = lang === "ja" ? navJa : navEn;
 const footerNav = lang === "ja" ? footerJa : footerEn;
-const sharedRoutes = new Set(["", "download/", "help/", "pricing/", "terms/", "privacy/", "licenses/", "changelog/", "system-requirements/", "features/", "features/quick-clip/", "features/favorites/", "features/ai-subtitles/", "features/clip-library/", "features/merge-editor/"]);
-const routeWithoutLanguage = canonicalPath.replace(/^\/(ja|en)\//, "");
-const opposite = sharedRoutes.has(routeWithoutLanguage)
-  ? `/${lang === "ja" ? "en" : "ja"}/${routeWithoutLanguage}`
-  : lang === "ja" ? "/en/" : "/ja/";
+const routePair = localizedRoute(canonicalPath);
+const opposite = routePair?.[lang === "ja" ? "en" : "ja"] ?? (lang === "ja" ? "/en/" : "/ja/");
 const oppositeLabel = lang === "ja" ? "English" : "日本語";
 const absoluteUrl = (path: string) => site.origin ? new URL(withBase(path), `${site.origin}/`).toString() : undefined;
 const canonical = absoluteUrl(canonicalPath);
-const alternateJa = absoluteUrl(`/ja/${sharedRoutes.has(routeWithoutLanguage) ? routeWithoutLanguage : ""}`);
-const alternateEn = absoluteUrl(`/en/${sharedRoutes.has(routeWithoutLanguage) ? routeWithoutLanguage : ""}`);
+const alternateJa = routePair ? absoluteUrl(routePair.ja) : undefined;
+const alternateEn = routePair ? absoluteUrl(routePair.en) : undefined;
 const isHome = canonicalPath === "/ja/" || canonicalPath === "/en/";
+const resolvedBreadcrumbTitle = breadcrumbTitle ?? title.replace(/\s+-\s+Kagura Player$/, "");
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -48,14 +53,71 @@ const structuredData = {
       featureList: lang === "ja"
         ? ["動画再生", "A-Bリピート", "A-B高速切り抜き", "お気に入りとフォルダ整理", "段階的AI字幕・自動翻訳", "字幕編集学習", "字幕付き切り抜き", "切り抜きライブラリ", "ドラッグ操作対応の動画結合"]
         : ["Video playback", "A-B repeat", "Quick A-B clipping", "Favorites and folders", "Progressive AI subtitles and translation", "Subtitle correction memory", "Clips with burned-in subtitles", "Clip library", "Drag-and-drop video joining"],
-      ...(site.checkoutUrl && site.proPrice && site.proCurrency ? { offers: {
-        "@type": "Offer",
-        price: site.proPrice,
-        priceCurrency: site.proCurrency,
-        availability: "https://schema.org/InStock",
-        url: site.checkoutUrl
-      }} : {})
-    }
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Kagura Player Free",
+          price: "0",
+          priceCurrency: site.proCurrency,
+          url: absoluteUrl(lang === "ja" ? "/ja/pricing/" : "/en/pricing/")
+        },
+        {
+          "@type": "Offer",
+          name: "Kagura Player Pro Monthly",
+          price: site.proPrice,
+          priceCurrency: site.proCurrency,
+          description: lang === "ja" ? "月600分のクラウド処理と、超過後のBYOKに対応" : "Includes 600 cloud minutes per month, with BYOK beyond the quota",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: site.proPrice,
+            priceCurrency: site.proCurrency,
+            billingDuration: "P1M"
+          },
+          url: absoluteUrl(lang === "ja" ? "/ja/pricing/" : "/en/pricing/")
+        },
+        {
+          "@type": "Offer",
+          name: "Kagura Player Pro Annual",
+          price: site.proAnnualPrice,
+          priceCurrency: site.proCurrency,
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: site.proAnnualPrice,
+            priceCurrency: site.proCurrency,
+            billingDuration: "P1Y"
+          },
+          url: absoluteUrl(lang === "ja" ? "/ja/pricing/" : "/en/pricing/")
+        }
+      ]
+    },
+    ...(!isHome && canonical ? [{
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: lang === "ja" ? "ホーム" : "Home",
+          item: absoluteUrl(lang === "ja" ? "/ja/" : "/en/")
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: resolvedBreadcrumbTitle,
+          item: canonical
+        }
+      ]
+    }] : []),
+    ...(faqItems.length > 0 ? [{
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer
+        }
+      }))
+    }] : [])
   ]
 };
 ---
@@ -71,7 +133,7 @@ const structuredData = {
     {canonical && <link rel="canonical" href={canonical} />}
     {alternateJa && <link rel="alternate" hreflang="ja" href={alternateJa} />}
     {alternateEn && <link rel="alternate" hreflang="en" href={alternateEn} />}
-    {site.origin && <link rel="alternate" hreflang="x-default" href={absoluteUrl("/ja/")} />}
+    {routePair && <link rel="alternate" hreflang="x-default" href={alternateJa} />}
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

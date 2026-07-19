@@ -1,14 +1,22 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { site, withBase } from "@/data/site";
+
+const faqs = [
+  { question: "Kagura Playerは無料で使えますか？", answer: "はい。Freeは¥0で、ローカル動画の再生・整理・A-Bリピート・高速切り抜き・ローカルAI字幕を利用できます。" },
+  { question: "Proはいくらですか？", answer: "Proは月額¥980、年額¥9,800です。7日間の無料試用にはクラウド処理30分が含まれます。" },
+  { question: "Proのクラウド処理枠を使い切ったらどうなりますか？", answer: "Proには毎月600分のクラウド処理が含まれます。枠を超えた後も、ご自身の対応APIキーを設定するBYOKで継続できます。" },
+  { question: "公開前に料金が変わることはありますか？", answer: "表示は現在の販売条件です。法令対応または決済仕様上の変更が必要な場合は、購入確定前に新しい条件を明示します。" },
+];
 ---
 
-<BaseLayout title="料金プラン - Kagura Player" description="Kagura Player FreeとProの機能比較。料金と試用期間は正式販売開始前に確定します。" canonicalPath="/ja/pricing/">
-  <header class="page-hero"><div class="container"><p class="eyebrow">料金プラン</p><h1>まず使える。<br />必要なら、もっと深く。</h1><p class="lead">再生・整理・高速切り抜きは無料候補。字幕を焼き込んだ切り抜きとクラウド支援機能をPro候補として、発売前の最終設計を進めています。</p></div></header>
-  <section class="content-band"><div class="container status-callout"><strong>価格・無料試用はまだ確定していません</strong>購入ボタンは本番Stripe、利用規約、返金条件、事業者情報がすべて揃うまで有効化しません。</div></section>
+<BaseLayout title="料金プラン - Kagura Player" description="Kagura PlayerはFree ¥0。Proは月額¥980または年額¥9,800で、7日間無料試用、クラウド30分、毎月600分と超過後のBYOKに対応します。" canonicalPath="/ja/pricing/" breadcrumbTitle="料金プラン" faqItems={faqs}>
+  <header class="page-hero"><div class="container"><p class="eyebrow">料金プラン</p><h1>Freeは¥0。<br />Proは月額¥980。</h1><p class="lead">年額は¥9,800。7日間の無料試用にはクラウド処理30分、Proには毎月600分が含まれ、超過後はBYOKで続けられます。</p></div></header>
+  <section class="content-band"><div class="container status-callout"><strong>販売開始前の表示</strong>決済はまだ有効ではありません。法令対応または決済仕様上の変更が必要な場合は、購入確定前に適用条件を明示します。</div></section>
   <section class="content-band alt"><div class="container plan-grid">
-    <article class="plan"><p class="section-kicker">FREE</p><h2>見る・整理する・切り抜く</h2><p class="price">無料提供候補</p><ul><li>ローカル動画再生</li><li>プレイリスト・お気に入り</li><li>A-Bリピート</li><li>高速切り抜き</li><li>ローカルAI字幕・キャッシュ</li><li>字幕編集と修正記憶</li><li>切り抜きライブラリ・高速結合</li></ul><a class="button secondary" href={withBase("/ja/download/")}>公開状況を見る</a></article>
-    <article class="plan pro"><p class="section-kicker">PRO</p><h2>字幕と翻訳を、作品づくりへ</h2><p class="price">月額・年額を検討中</p><ul><li>字幕を焼き込んだ切り抜き</li><li>クラウド文脈補正</li><li>表示言語への自動翻訳</li><li>将来の高度な字幕・編集機能</li><li>署名付きライセンスとオフライン猶予</li><li>最大3台の端末連携を想定</li></ul>{site.checkoutUrl ? <a class="button primary" href={site.checkoutUrl}>Proを始める</a> : <span class="button secondary" aria-disabled="true">販売準備中</span>}</article>
+    <article class="plan"><p class="section-kicker">FREE</p><h2>見る・整理する・切り抜く</h2><p class="price">¥0</p><ul><li>ローカル動画再生</li><li>プレイリスト・お気に入り</li><li>A-Bリピート</li><li>高速切り抜き</li><li>ローカルAI字幕・キャッシュ</li><li>字幕編集と修正記憶</li><li>切り抜きライブラリ・高速結合</li></ul><a class="button secondary" href={withBase("/ja/download/")}>公開状況を見る</a></article>
+    <article class="plan pro"><p class="section-kicker">PRO</p><h2>字幕・翻訳を制作へつなげる</h2><p class="price">¥980 / 月<br /><small>¥9,800 / 年</small></p><ul><li>7日間無料試用</li><li>試用中のクラウド処理30分</li><li>毎月600分のクラウド処理</li><li>600分超過後もBYOKで継続</li><li>字幕を焼き込んだ切り抜き</li><li>クラウド文脈補正・自動翻訳</li><li>署名付きライセンスとオフライン猶予</li></ul>{site.checkoutUrl ? <a class="button primary" href={site.checkoutUrl}>7日間無料で試す</a> : <span class="button secondary" aria-disabled="true">販売準備中</span>}</article>
   </div></section>
-  <section class="content-band"><div class="container content-grid"><h2>原価で機能を閉じすぎない</h2><div class="prose"><p>PC内だけで完結する機能は、できる限り無料で長く使える設計を目指します。外部API原価が発生する文脈補正・翻訳は、ProまたはBYOKの境界を明確にします。</p><p>最終プランは実利用テスト、API原価、サポート負荷を測定してから確定します。</p></div></div></section>
+  <section class="content-band"><div class="container content-grid"><h2>クラウド枠とBYOK</h2><div class="prose"><p>Freeのローカル再生・切り抜き・ローカルAI字幕はクラウド枠を消費しません。Proのクラウド文脈補正・翻訳は月600分まで含まれます。</p><p>月600分を超えた後は、対応するAIサービスのAPIキーを利用者自身で設定するBYOKで継続できます。BYOK先の利用料金は各AIサービスから利用者へ別途請求されます。</p></div></div></section>
+  <section class="section faq"><div class="container faq-layout"><div><div class="section-kicker">FAQ</div><h2>料金のよくある質問</h2></div><div class="faq-list">{faqs.map((item, index) => <details open={index === 0}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></div></section>
 </BaseLayout>

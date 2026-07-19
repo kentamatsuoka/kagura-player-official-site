@@ -2,6 +2,14 @@
 import HeroDemo from "@/components/HeroDemo.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { withBase } from "@/data/site";
+
+const faqs = [
+  { question: "What is Kagura Player?", answer: "Kagura Player is a Windows video player that combines local AI subtitles and translation, A-B clipping, a clip library, and video joining in one workflow." },
+  { question: "What can I use now?", answer: "Playback, favorites, folders, A-B repeat, quick A-B clipping, and background export are implemented." },
+  { question: "Are AI subtitles and translation available?", answer: "They are implemented. Recognition runs locally, while cloud correction and translation are used only when configured." },
+  { question: "How much does Kagura Player cost?", answer: "Free is ¥0. Pro is ¥980 per month or ¥9,800 per year, with a seven-day trial, 30 trial cloud minutes, 600 monthly cloud minutes, and BYOK beyond quota." },
+  { question: "Can Kagura Player join multiple clips?", answer: "Yes. Add clips from the library, drag them into order, preview them, and join compatible media into one output." },
+];
 ---
 
 <BaseLayout
@@ -9,6 +17,7 @@ import { withBase } from "@/data/site";
   description="Kagura Player combines fast local AI subtitles, translation, A-B clipping, subtitle correction, a clip library, and drag-and-drop video joining for Windows."
   canonicalPath="/en/"
   lang="en"
+  faqItems={faqs}
 >
   <section class="hero hero-next">
     <canvas class="signal-canvas" data-signal-field aria-hidden="true"></canvas>
@@ -82,9 +91,7 @@ import { withBase } from "@/data/site";
     <div class="container faq-layout">
       <div><div class="section-kicker">FAQ</div><h2>Questions, answered.</h2></div>
       <div class="faq-list">
-        <details open><summary>What can I use now?</summary><p>Playback, favorites, folders, A-B repeat, quick A-B clipping, and background export are implemented.</p></details>
-        <details><summary>Are AI subtitles and translation available?</summary><p>They are implemented. Recognition runs locally. Cloud correction and translation are used only when configured; the final Pro/BYOK release path is still being prepared.</p></details>
-        <details><summary>Can Kagura Player join multiple clips?</summary><p>Yes. Add items from the Clip tab, drag them into order, preview them, then join them into one compatible-media output.</p></details>
+        {faqs.map((item, index) => <details open={index === 0}><summary>{item.question}</summary><p>{item.answer}</p></details>)}
       </div>
     </div>
   </section>

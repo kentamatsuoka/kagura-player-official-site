@@ -17,12 +17,13 @@ interface Props {
   lead: string;
   notice?: { title: string; body: string };
   sections: Section[];
+  faqs?: Array<{ question: string; answer: string }>;
 }
 
-const { lang, canonicalPath, title, description, eyebrow, headline, lead, notice, sections } = Astro.props;
+const { lang, canonicalPath, title, description, eyebrow, headline, lead, notice, sections, faqs = [] } = Astro.props;
 ---
 
-<BaseLayout {lang} {canonicalPath} {title} {description}>
+<BaseLayout {lang} {canonicalPath} {title} {description} breadcrumbTitle={headline} faqItems={faqs}>
   <header class="page-hero">
     <div class="container">
       <p class="eyebrow">{eyebrow}</p>
@@ -46,4 +47,14 @@ const { lang, canonicalPath, title, description, eyebrow, headline, lead, notice
       </div>
     </section>
   ))}
+  {faqs.length > 0 && (
+    <section class="section faq">
+      <div class="container faq-layout">
+        <div><div class="section-kicker">FAQ</div><h2>{lang === "ja" ? "よくある質問" : "Frequently asked questions"}</h2></div>
+        <div class="faq-list">
+          {faqs.map((item, index) => <details open={index === 0}><summary>{item.question}</summary><p>{item.answer}</p></details>)}
+        </div>
+      </div>
+    </section>
+  )}
 </BaseLayout>
