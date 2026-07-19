@@ -17,7 +17,7 @@ export const GET: APIRoute = () => {
 - Pro: JPY 1,480 per month or JPY 14,800 per year.
 - Trial: seven days with 30 cloud minutes.
 - Pro cloud allowance: 600 minutes per month; users can continue with their own supported API key through BYOK after the quota.
-- Release status: the public installer and paid checkout are not active yet.
+- Release status: licensing, cloud AI routing, and Stripe sandbox checkout have passed integration checks. The public installer and production checkout are not active yet.
 - No search ranking or business outcome is guaranteed.
 
 ## Primary pages

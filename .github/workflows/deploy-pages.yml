@@ -37,6 +37,7 @@ jobs:
         env:
           PUBLIC_SITE_ORIGIN: https://kentamatsuoka.github.io
           PUBLIC_BASE_PATH: /kagura-player-official-site
+          PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
         run: npm run build
 
       - name: Upload site
