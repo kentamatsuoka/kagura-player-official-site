@@ -109,7 +109,7 @@ export const jaContentPages: ContentPage[] = [
     sections: [
       { title: "販売事業者", paragraphs: ["松岡賢汰（個人事業）"] },
       { title: "運営責任者", paragraphs: ["松岡賢汰"] },
-      { title: "所在地・連絡先", paragraphs: ["【公開前に要入力：販売事業者の住所、問い合わせ用メールアドレス】", "電話番号を掲載する場合は【公開前に要入力：電話番号】。請求に応じて遅滞なく開示する方式を採用できる場合は、その旨、請求先、受付方法を具体的に表示してください。適用可否は公開前に専門家へ確認してください。"] },
+      { title: "所在地・連絡先", paragraphs: ["問い合わせ先：butterflygpu.support@proton.me", "所在地および電話番号は、上記メールアドレスへ件名「法定表示の開示請求」として請求いただいた場合、購入の申込み前に確認できるよう遅滞なく電子メールで開示します。電話による利用サポートは提供しません。"] },
       { title: "販売価格・追加費用", paragraphs: ["Freeは¥0、Proは月額¥1,480または年額¥14,800です。7日間無料試用にはクラウド処理30分、Proには毎月600分を含み、超過後はBYOKを利用できます。BYOK先のAPI利用料と通信費は利用者負担です。", "【公開前に要確認・入力：表示価格の税込区分、課金通貨、適用税、その他必須費用】"] },
       { title: "支払方法・時期", paragraphs: ["Stripeによるクレジットカード等の決済を予定しています。【公開前に要入力：利用可能な支払方法、初回課金日、無料試用終了後の課金時期、自動更新日】"] },
       { title: "提供時期", paragraphs: ["決済完了およびライセンス認証後にPro機能を提供します。【公開前に要入力：障害・認証失敗時の提供時期と問い合わせ方法】"] },
@@ -261,7 +261,7 @@ export const enContentPages: ContentPage[] = [
       { title: "Optional cloud AI", paragraphs: ["When cloud correction or translation is configured and used, recognized text, the video filename, and limited context may be sent to the configured AI provider. The video file itself is not sent by this flow."] },
       { title: "Licensing and updates", paragraphs: ["Pro activation and refresh send an installation identifier and purchase-session information to the licensing service. Update checks send the installed version and channel to the configured update endpoint. Production endpoints are not active in the preview build."] },
       { title: "Logs", paragraphs: ["Application logs are written locally for troubleshooting. There is no automatic crash-upload pipeline in the current build."] },
-      { title: "Control and deletion", paragraphs: ["You can remove app data through the uninstall flow or delete the Kagura Player data folder. Final support and privacy contact details will be published before paid launch."] },
+      { title: "Control and deletion", paragraphs: ["You can remove app data through the uninstall flow or delete the Kagura Player data folder. Privacy and support requests can be sent to butterflygpu.support@proton.me."] },
     ],
   },
   {
@@ -311,7 +311,7 @@ export const enContentPages: ContentPage[] = [
     lead: "Pricing is stated below. Seller identity, contact details, tax treatment, renewal, cancellation, and refund terms must be completed before checkout is enabled.",
     notice: { title: "Pre-launch gate", body: "No paid checkout should be published until every required seller and consumer term is verified." },
     sections: [
-      { title: "Seller and contact", paragraphs: ["Seller and responsible operator: Kenta Matsuoka (individual business operator). [REQUIRED BEFORE LAUNCH: physical address, support contact, and legally compliant telephone disclosure.] Do not enable checkout while these fields are incomplete."] },
+      { title: "Seller and contact", paragraphs: ["Seller and responsible operator: Kenta Matsuoka (individual business operator). Contact: butterflygpu.support@proton.me. The operating address and telephone number are provided by email without delay upon a legally valid disclosure request made before purchase. Telephone product support is not provided."] },
       { title: "Price and additional costs", paragraphs: ["Free is ¥0. Pro is ¥1,480/month or ¥14,800/year. The seven-day trial includes 30 cloud minutes; Pro includes 600 cloud minutes each month, with BYOK beyond quota. Provider charges for BYOK and network charges are separate.", "[REQUIRED BEFORE LAUNCH: tax treatment, billing currency, applicable taxes, and any other mandatory charge.]" ] },
       { title: "Payment and delivery", paragraphs: ["Stripe-based card payment is planned. Pro access activates after verified payment and license activation. [REQUIRED BEFORE LAUNCH: supported payment methods, trial-end charge timing, renewal date, and failed-delivery support process.]" ] },
       { title: "Cancellation and refunds", paragraphs: ["[REQUIRED BEFORE LAUNCH: cancellation steps, cancellation deadline before renewal, and refund terms for digital services.] Mandatory consumer rights remain unaffected."] },

@@ -5,6 +5,9 @@ export const withBase = (path: string) => {
   return `${basePath}${normalized}` || "/";
 };
 
+const supportEmail = import.meta.env.PUBLIC_SUPPORT_EMAIL?.trim()
+  || "butterflygpu.support@proton.me";
+
 export const site = {
   name: "Kagura Player",
   origin: import.meta.env.PUBLIC_SITE_ORIGIN?.replace(/\/$/, "")
@@ -22,7 +25,9 @@ export const site = {
   trialDays: 7,
   trialCloudMinutes: 30,
   proCloudMinutes: 600,
-  supportUrl: import.meta.env.PUBLIC_SUPPORT_URL?.trim() ?? "",
+  supportEmail,
+  supportUrl: import.meta.env.PUBLIC_SUPPORT_URL?.trim()
+    || `mailto:${supportEmail}?subject=${encodeURIComponent("Kagura Player support")}`,
   releaseState: "release-candidate",
 };
 

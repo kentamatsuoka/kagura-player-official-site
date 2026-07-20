@@ -1,13 +1,14 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site } from "@/data/site";
 ---
 
 <BaseLayout title="プライバシーポリシー - Kagura Player" description="Kagura Playerが扱うローカル動画、字幕、AI送信情報、ライセンス、更新、ログのプライバシー方針。" canonicalPath="/ja/privacy/">
   <header class="page-hero"><div class="container"><p class="eyebrow">プライバシー / 発売前版</p><h1>動画は、原則として<br />あなたのPCの中に。</h1><p class="lead">ローカル再生・音声認識と、任意のネットワーク機能を分けて設計しています。</p></div></header>
-  <section class="content-band"><div class="container status-callout"><strong>正式販売前の方針です</strong>本番サービスのURL、事業者情報、保存期間、問い合わせ窓口を確定してから適用開始日を設定します。</div></section>
+  <section class="content-band"><div class="container status-callout"><strong>正式販売前の方針です</strong>本番サービスの保存期間と適用開始日を、販売開始前に確定します。</div></section>
   <section class="content-band alt"><div class="container content-grid"><h2>PC内に保存する情報</h2><div class="prose"><p>動画は利用者が指定した場所から再生します。お気に入り、プレイリスト、設定、字幕キャッシュ、字幕修正記憶、切り抜き履歴はPC内のKagura Playerデータ領域へ保存します。</p><p>Whisperによる音声認識と音声抽出はPC内で行い、この処理で動画ファイルをアップロードしません。</p></div></div></section>
   <section class="content-band"><div class="container content-grid"><h2>外部AIへ送る可能性がある情報</h2><div class="prose"><p>クラウド文脈補正または翻訳を設定し、実際に使用した場合、認識済み字幕テキスト、動画ファイル名、作品判定に必要な限定された前後文脈を設定先のAIサービスへ送ることがあります。</p><p>送信前に機能説明を表示し、未設定時は通信しません。外部サービスでは各提供者の規約とプライバシーポリシーが適用されます。</p></div></div></section>
   <section class="content-band alt"><div class="container content-grid"><h2>Pro認証とアップデート</h2><div class="prose"><p>Pro認証では、ランダムに生成した端末識別子、購入セッション情報、ライセンス状態を認証サーバーと交換します。決済情報そのものは予定する決済事業者Stripeが処理します。</p><p>アップデート確認では、アプリのバージョンと更新チャンネルを設定済み更新先へ送ります。0.6.0 Previewでは本番エンドポイントはまだ有効化していません。</p></div></div></section>
   <section class="content-band"><div class="container content-grid"><h2>ログ・解析・Cookie</h2><div class="prose"><p>アプリのエラーログはPC内へ保存します。現在、自動クラッシュ送信や行動追跡は実装していません。</p><p>このサイトは言語選択をブラウザ内へ保存します。現時点では広告Cookieや個人を追跡する解析タグを使用していません。導入する場合は事前に本方針を更新します。</p></div></div></section>
-  <section class="content-band alt"><div class="container content-grid"><h2>削除・問い合わせ</h2><div class="prose"><p>アンインストール時の選択、またはKagura Playerのデータフォルダ削除によりローカル情報を削除できます。字幕修正記憶の個別管理UIは今後の対象です。</p><p>正式公開前に、データに関する問い合わせ先、開示・訂正・削除手続、越境移転、未成年者利用の扱いを確定します。</p></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>削除・問い合わせ</h2><div class="prose"><p>アンインストール時の選択、またはKagura Playerのデータフォルダ削除によりローカル情報を削除できます。字幕修正記憶の個別管理UIは今後の対象です。</p><p>データの開示・訂正・削除などの問い合わせは、<a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>へ送信してください。越境移転、未成年者利用および本番サービス側の保存期間は、販売開始前に最終確定します。</p></div></div></section>
 </BaseLayout>
