@@ -12,7 +12,7 @@ const faqs = [
 
 <BaseLayout title="料金プラン - Kagura Player" description="Kagura PlayerはFree ¥0。Proは月額¥1,480または年額¥14,800で、7日間無料試用、クラウド30分、毎月600分と超過後のBYOKに対応します。" canonicalPath="/ja/pricing/" breadcrumbTitle="料金プラン" faqItems={faqs}>
   <header class="page-hero"><div class="container"><p class="eyebrow">料金プラン</p><h1>Freeは¥0。<br />Proは月額¥1,480。</h1><p class="lead">年額は¥14,800。7日間の無料試用にはクラウド処理30分、Proには毎月600分が含まれ、超過後はBYOKで続けられます。</p></div></header>
-  <section class="content-band"><div class="container status-callout"><strong>限定ベータ販売の最終準備中</strong>Pro認証とStripeテスト決済は検証済みです。本番決済は、販売者情報・自動更新・公開インストーラーの最終確認後に有効化します。</div></section>
+  <section class="content-band"><div class="container status-callout"><strong>限定ベータ販売の最終準備中</strong>Pro認証と本番Stripe決済の接続は完了しています。実際の購入受付は、販売者情報・自動更新・公開インストーラーの最終確認後に開始します。</div></section>
   <section class="content-band alt"><div class="container plan-grid">
     <article class="plan"><p class="section-kicker">FREE</p><h2>見る・整理する・切り抜く</h2><p class="price">¥0</p><ul><li>ローカル動画再生</li><li>プレイリスト・お気に入り</li><li>A-Bリピート</li><li>高速切り抜き</li><li>ローカルAI字幕・キャッシュ</li><li>字幕編集と修正記憶</li><li>切り抜きライブラリ・高速結合</li></ul><a class="button secondary" href={withBase("/ja/download/")}>公開状況を見る</a></article>
     <article class="plan pro"><p class="section-kicker">PRO</p><h2>字幕・翻訳を制作へつなげる</h2><p class="price">¥1,480 / 月<br /><small>¥14,800 / 年</small></p><ul><li>7日間無料試用</li><li>試用中のクラウド処理30分</li><li>毎月600分のクラウド処理</li><li>600分超過後もBYOKで継続</li><li>字幕を焼き込んだ切り抜き</li><li>クラウド文脈補正・自動翻訳</li><li>署名付きライセンスとオフライン猶予</li></ul>{site.checkoutUrl ? <a class="button primary" href={site.checkoutUrl}>7日間無料で試す</a> : <span class="button secondary" aria-disabled="true">限定ベータ受付前</span>}</article>
