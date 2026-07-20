@@ -1,0 +1,36 @@
+# Kagura Player
+
+> Kagura Player is a Windows video player for local playback, two-pass AI subtitles, translation, A-B clipping, a persistent clip library, and compatible-media video joining.
+
+## Product facts
+
+- Platform: 64-bit Windows 10 and Windows 11.
+- Local by default: video playback, audio extraction, and Whisper recognition run on the PC.
+- Optional cloud assistance: configured context correction and translation may send recognized text, the filename, and limited context to the selected provider; this flow does not upload the video file itself.
+- Free: JPY 0.
+- Pro: JPY 1,480 per month or JPY 14,800 per year.
+- Trial: seven days with 30 cloud minutes.
+- Pro cloud allowance: 600 minutes per month; users can continue with their own supported API key through BYOK after the quota.
+- Release status: licensing, cloud AI routing, and production Stripe billing are connected and pass integration checks. The public installer and public checkout are not active yet.
+- No search ranking or business outcome is guaranteed.
+
+## Primary pages
+
+- Japanese home: https://kentamatsuoka.github.io/kagura-player-official-site/ja/
+- English home: https://kentamatsuoka.github.io/kagura-player-official-site/en/
+- Pricing (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/pricing/
+- Pricing (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/pricing/
+- AI subtitle video player (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/ai-subtitle-video-player/
+- AI subtitle video player (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/ai-subtitle-video-player/
+- Windows video clipper (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/windows-video-clipper/
+- Windows video clipper (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/windows-video-clipper/
+- Windows video joiner (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/windows-video-joiner/
+- Windows video joiner (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/windows-video-joiner/
+- Privacy (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/privacy/
+- Privacy (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/privacy/
+- Sales disclosure (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/commercial-transactions/
+- Sales disclosure (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/sales-disclosure/
+
+## Accuracy notes
+
+AI transcription and translation can contain errors. Users should verify important output against the original audio. Fast clipping and joining depend on source containers, codecs, resolutions, and keyframe layout. Users are responsible for having the rights required to edit or reuse their media.
