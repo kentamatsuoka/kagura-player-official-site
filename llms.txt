@@ -1,6 +1,6 @@
-# Kagura Player
+# YOMUVIA
 
-> Kagura Player is a Windows video player for local playback, two-pass AI subtitles, translation, A-B clipping, a persistent clip library, and compatible-media video joining.
+> YOMUVIA is a Windows video player for local playback, two-pass AI subtitles, translation, A-B clipping, a persistent clip library, and compatible-media video joining.
 
 ## Product facts
 

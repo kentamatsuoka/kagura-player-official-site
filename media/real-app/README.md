@@ -1,6 +1,6 @@
 # Real App Media
 
-Place real Kagura Player screenshots and screen recordings here.
+Place real YOMUVIA screenshots and screen recordings here.
 
 Required first:
 
