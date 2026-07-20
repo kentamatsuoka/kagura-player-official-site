@@ -1,4 +1,4 @@
-# Kagura Player Official Site
+# YOMUVIA Official Site
 
 公式サイト用リポジトリ。日本語/英語のLP、機能、価格、配布、ヘルプ、更新履歴、法務ページを静的生成する。
 

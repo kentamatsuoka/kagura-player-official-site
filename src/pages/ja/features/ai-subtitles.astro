@@ -2,7 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="AI字幕・自動翻訳 - Kagura Player" description="現在位置を先に字幕化し、高精度全体字幕へ差し替えるKagura PlayerのローカルAI字幕、自動翻訳、字幕編集学習。" canonicalPath="/ja/features/ai-subtitles/">
+<BaseLayout title="AI字幕・自動翻訳 - YOMUVIA" description="現在位置を先に字幕化し、高精度全体字幕へ差し替えるYOMUVIAのローカルAI字幕、自動翻訳、字幕編集学習。" canonicalPath="/ja/features/ai-subtitles/">
   <header class="page-hero"><div class="container"><p class="eyebrow">AI字幕 / 実装済み</p><h1>待ち時間を短く。<br />字幕は、あとからもっと正確に。</h1><p class="lead">現在位置付近の短いドラフトを先に表示し、見ている間に高精度な全体字幕へ差し替えます。</p></div></header>
   <section class="content-band"><div class="container release-facts"><div><small>最初の表示</small><strong>現在位置付近を優先</strong></div><div><small>完成字幕</small><strong>高精度モデルで全体生成</strong></div><div><small>再利用</small><strong>動画・言語ごとにキャッシュ</strong></div></div></section>
   <section class="content-band alt"><div class="container content-grid"><h2>速度と精度を、二者択一にしない</h2><div class="prose"><p>字幕ボタンを押すと、現在位置の少し前から短い範囲を高速モデルで処理します。そのドラフトを先に表示したあと、高精度モデルで動画全体を処理し、再生位置を保ったまま差し替えます。</p><p>早送りや5秒スキップで未生成区間へ移動した場合も、その位置を基準にドラフトを再生成します。</p></div></div></section>

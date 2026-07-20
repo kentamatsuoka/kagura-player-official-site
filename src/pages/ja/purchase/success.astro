@@ -3,8 +3,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { withBase } from "@/data/site";
 ---
 
-<BaseLayout title="購入完了 - Kagura Player" description="Kagura Player Proの購入完了とライセンス有効化。" canonicalPath="/ja/purchase/success/" noindex>
-  <header class="page-hero"><div class="container activation-panel"><p class="eyebrow">KAGURA PLAYER PRO</p><h1>7日間のPro体験が<br />始まりました。</h1><p class="lead">下の認証番号をコピーし、Kagura PlayerのPro画面へ貼り付けてください。</p><code class="activation-code" data-activation-code>購入情報を確認しています...</code><div class="activation-actions"><button class="button primary" type="button" data-copy-activation disabled>認証番号をコピー</button><a class="button secondary" href={withBase("/ja/help/")}>有効化の手順を見る</a></div><p class="status-callout" data-activation-status>このページは認証が終わるまで閉じないでください。</p></div></header>
+<BaseLayout title="購入完了 - YOMUVIA" description="YOMUVIA Proの購入完了とライセンス有効化。" canonicalPath="/ja/purchase/success/" noindex>
+  <header class="page-hero"><div class="container activation-panel"><p class="eyebrow">YOMUVIA PRO</p><h1>7日間のPro体験が<br />始まりました。</h1><p class="lead">下の認証番号をコピーし、YOMUVIAのPro画面へ貼り付けてください。</p><code class="activation-code" data-activation-code>購入情報を確認しています...</code><div class="activation-actions"><button class="button primary" type="button" data-copy-activation disabled>認証番号をコピー</button><a class="button secondary" href={withBase("/ja/help/")}>有効化の手順を見る</a></div><p class="status-callout" data-activation-status>このページは認証が終わるまで閉じないでください。</p></div></header>
   <script>
     const params = new URLSearchParams(window.location.search);
     const sessionId = params.get("session_id")?.trim() ?? "";

@@ -9,7 +9,7 @@ const supportEmail = import.meta.env.PUBLIC_SUPPORT_EMAIL?.trim()
   || "butterflygpu.support@proton.me";
 
 export const site = {
-  name: "Kagura Player",
+  name: "YOMUVIA",
   origin: import.meta.env.PUBLIC_SITE_ORIGIN?.replace(/\/$/, "")
     ?? (import.meta.env.PROD ? "https://kentamatsuoka.github.io" : ""),
   version: "0.6.0 Preview",
@@ -27,7 +27,7 @@ export const site = {
   proCloudMinutes: 600,
   supportEmail,
   supportUrl: import.meta.env.PUBLIC_SUPPORT_URL?.trim()
-    || `mailto:${supportEmail}?subject=${encodeURIComponent("Kagura Player support")}`,
+    || `mailto:${supportEmail}?subject=${encodeURIComponent("YOMUVIA support")}`,
   releaseState: "release-candidate",
 };
 

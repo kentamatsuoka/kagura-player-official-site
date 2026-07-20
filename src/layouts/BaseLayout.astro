@@ -29,7 +29,7 @@ const canonical = absoluteUrl(canonicalPath);
 const alternateJa = routePair ? absoluteUrl(routePair.ja) : undefined;
 const alternateEn = routePair ? absoluteUrl(routePair.en) : undefined;
 const isHome = canonicalPath === "/ja/" || canonicalPath === "/en/";
-const resolvedBreadcrumbTitle = breadcrumbTitle ?? title.replace(/\s+-\s+Kagura Player$/, "");
+const resolvedBreadcrumbTitle = breadcrumbTitle ?? title.replace(/\s+-\s+YOMUVIA$/, "");
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -58,14 +58,14 @@ const structuredData = {
       offers: [
         {
           "@type": "Offer",
-          name: "Kagura Player Free",
+          name: "YOMUVIA Free",
           price: "0",
           priceCurrency: site.proCurrency,
           url: absoluteUrl(lang === "ja" ? "/ja/pricing/" : "/en/pricing/")
         },
         {
           "@type": "Offer",
-          name: "Kagura Player Pro Monthly",
+          name: "YOMUVIA Pro Monthly",
           price: site.proPrice,
           priceCurrency: site.proCurrency,
           description: lang === "ja" ? "月600分のクラウド処理と、超過後のBYOKに対応" : "Includes 600 cloud minutes per month, with BYOK beyond the quota",
@@ -79,7 +79,7 @@ const structuredData = {
         },
         {
           "@type": "Offer",
-          name: "Kagura Player Pro Annual",
+          name: "YOMUVIA Pro Annual",
           price: site.proAnnualPrice,
           priceCurrency: site.proCurrency,
           priceSpecification: {
@@ -147,7 +147,7 @@ const structuredData = {
     {site.origin && <meta property="og:image" content={absoluteUrl("/og.png")} />}
     {site.origin && <meta property="og:image:width" content="1729" />}
     {site.origin && <meta property="og:image:height" content="910" />}
-    {site.origin && <meta property="og:image:alt" content={lang === "ja" ? "Kagura Player - AI字幕でわかる。A-B指定ですぐ切れる。" : "Kagura Player - Understand with AI subtitles. Clip with A-B."} />}
+    {site.origin && <meta property="og:image:alt" content={lang === "ja" ? "YOMUVIA - AI字幕でわかる。A-B指定ですぐ切れる。" : "YOMUVIA - Understand with AI subtitles. Clip with A-B."} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

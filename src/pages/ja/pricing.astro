@@ -3,14 +3,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { site, withBase } from "@/data/site";
 
 const faqs = [
-  { question: "Kagura Playerは無料で使えますか？", answer: "はい。Freeは¥0で、ローカル動画の再生・整理・A-Bリピート・高速切り抜き・ローカルAI字幕を利用できます。" },
+  { question: "YOMUVIAは無料で使えますか？", answer: "はい。Freeは¥0で、ローカル動画の再生・整理・A-Bリピート・高速切り抜き・ローカルAI字幕を利用できます。" },
   { question: "Proはいくらですか？", answer: "Proは月額¥1,480、年額¥14,800です。7日間の無料試用にはクラウド処理30分が含まれます。" },
   { question: "Proのクラウド処理枠を使い切ったらどうなりますか？", answer: "Proには毎月600分のクラウド処理が含まれます。枠を超えた後も、ご自身の対応APIキーを設定するBYOKで継続できます。" },
   { question: "公開前に料金が変わることはありますか？", answer: "表示は現在の販売条件です。法令対応または決済仕様上の変更が必要な場合は、購入確定前に新しい条件を明示します。" },
 ];
 ---
 
-<BaseLayout title="料金プラン - Kagura Player" description="Kagura PlayerはFree ¥0。Proは月額¥1,480または年額¥14,800で、7日間無料試用、クラウド30分、毎月600分と超過後のBYOKに対応します。" canonicalPath="/ja/pricing/" breadcrumbTitle="料金プラン" faqItems={faqs}>
+<BaseLayout title="料金プラン - YOMUVIA" description="YOMUVIAはFree ¥0。Proは月額¥1,480または年額¥14,800で、7日間無料試用、クラウド30分、毎月600分と超過後のBYOKに対応します。" canonicalPath="/ja/pricing/" breadcrumbTitle="料金プラン" faqItems={faqs}>
   <header class="page-hero"><div class="container"><p class="eyebrow">料金プラン</p><h1>Freeは¥0。<br />Proは月額¥1,480。</h1><p class="lead">年額は¥14,800。7日間の無料試用にはクラウド処理30分、Proには毎月600分が含まれ、超過後はBYOKで続けられます。</p></div></header>
   <section class="content-band"><div class="container status-callout"><strong>限定ベータ販売の最終準備中</strong>Pro認証と本番Stripe決済の接続は完了しています。実際の購入受付は、販売者情報・自動更新・公開インストーラーの最終確認後に開始します。</div></section>
   <section class="content-band alt"><div class="container plan-grid">

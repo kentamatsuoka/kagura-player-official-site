@@ -4,9 +4,9 @@ import { site, withBase } from "@/data/site";
 const absoluteUrl = (path: string) => new URL(withBase(path), `${site.origin || "http://localhost:4321"}/`).toString();
 
 export const GET: APIRoute = () => {
-  const body = `# Kagura Player
+  const body = `# YOMUVIA
 
-> Kagura Player is a Windows video player for local playback, two-pass AI subtitles, translation, A-B clipping, a persistent clip library, and compatible-media video joining.
+> YOMUVIA is a Windows video player for local playback, two-pass AI subtitles, translation, A-B clipping, a persistent clip library, and compatible-media video joining.
 
 ## Product facts
 
