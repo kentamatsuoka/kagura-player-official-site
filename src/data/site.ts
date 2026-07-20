@@ -12,6 +12,10 @@ export const site = {
   version: "0.6.0 Preview",
   downloadUrl: import.meta.env.PUBLIC_DOWNLOAD_URL?.trim() ?? "",
   checkoutUrl: import.meta.env.PUBLIC_CHECKOUT_URL?.trim() ?? "",
+  monthlyCheckoutUrl: import.meta.env.PUBLIC_MONTHLY_CHECKOUT_URL?.trim()
+    || import.meta.env.PUBLIC_CHECKOUT_URL?.trim()
+    || "",
+  annualCheckoutUrl: import.meta.env.PUBLIC_ANNUAL_CHECKOUT_URL?.trim() ?? "",
   proPrice: import.meta.env.PUBLIC_PRO_PRICE?.trim() || "1480",
   proAnnualPrice: "14800",
   proCurrency: import.meta.env.PUBLIC_PRO_CURRENCY?.trim() || "JPY",
@@ -27,6 +31,7 @@ export const localizedRoutePairs = [
   ["/ja/download/", "/en/download/"],
   ["/ja/help/", "/en/help/"],
   ["/ja/pricing/", "/en/pricing/"],
+  ["/ja/purchase/success/", "/en/purchase/success/"],
   ["/ja/terms/", "/en/terms/"],
   ["/ja/privacy/", "/en/privacy/"],
   ["/ja/licenses/", "/en/licenses/"],

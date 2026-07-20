@@ -14,9 +14,10 @@ interface Props {
   canonicalPath: string;
   breadcrumbTitle?: string;
   faqItems?: FaqItem[];
+  noindex?: boolean;
 }
 
-const { title, description, lang = "ja", canonicalPath, breadcrumbTitle, faqItems = [] } = Astro.props;
+const { title, description, lang = "ja", canonicalPath, breadcrumbTitle, faqItems = [], noindex = false } = Astro.props;
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 const nav = lang === "ja" ? navJa : navEn;
 const footerNav = lang === "ja" ? footerJa : footerEn;
@@ -131,7 +132,7 @@ const structuredData = {
     <title>{title}</title>
     <meta name="description" content={description} />
     {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
-    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="robots" content={noindex ? "noindex,nofollow,noarchive" : "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"} />
     {canonical && <link rel="canonical" href={canonical} />}
     {alternateJa && <link rel="alternate" hreflang="ja" href={alternateJa} />}
     {alternateEn && <link rel="alternate" hreflang="en" href={alternateEn} />}
