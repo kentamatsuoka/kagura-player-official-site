@@ -104,11 +104,11 @@ export const jaContentPages: ContentPage[] = [
     description: "Kagura Player Proの価格、試用、支払い、提供時期と、販売開始前に入力が必要な事業者情報を示す特定商取引法に基づく表記です。",
     eyebrow: "販売情報 / 発売前",
     headline: "特定商取引法に基づく表記",
-    lead: "現在は販売開始前です。料金条件は表示済みですが、以下の【公開前に要入力】欄と法定条件が確定するまで決済リンクを有効化しません。",
-    notice: { title: "公開前の入力ゲート", body: "【公開前に要入力】と記載した販売事業者名、運営責任者、住所、連絡先、および解約・返金条件を、実在する情報で完成させてください。" },
+    lead: "現在は販売開始前です。販売者名と料金条件は表示済みですが、連絡窓口と残りの法定条件が確定するまで決済リンクを有効化しません。",
+    notice: { title: "公開前の入力ゲート", body: "所在地・連絡先、税の表示、課金時期、提供時期、および解約・返金条件を、実際の運用と一致する内容で完成させます。" },
     sections: [
-      { title: "販売事業者", paragraphs: ["【公開前に要入力：戸籍・登記等の表示と一致する販売事業者の正式名称】"] },
-      { title: "運営責任者", paragraphs: ["【公開前に要入力：販売業務の責任者氏名】"] },
+      { title: "販売事業者", paragraphs: ["松岡賢汰（個人事業）"] },
+      { title: "運営責任者", paragraphs: ["松岡賢汰"] },
       { title: "所在地・連絡先", paragraphs: ["【公開前に要入力：販売事業者の住所、問い合わせ用メールアドレス】", "電話番号を掲載する場合は【公開前に要入力：電話番号】。請求に応じて遅滞なく開示する方式を採用できる場合は、その旨、請求先、受付方法を具体的に表示してください。適用可否は公開前に専門家へ確認してください。"] },
       { title: "販売価格・追加費用", paragraphs: ["Freeは¥0、Proは月額¥1,480または年額¥14,800です。7日間無料試用にはクラウド処理30分、Proには毎月600分を含み、超過後はBYOKを利用できます。BYOK先のAPI利用料と通信費は利用者負担です。", "【公開前に要確認・入力：表示価格の税込区分、課金通貨、適用税、その他必須費用】"] },
       { title: "支払方法・時期", paragraphs: ["Stripeによるクレジットカード等の決済を予定しています。【公開前に要入力：利用可能な支払方法、初回課金日、無料試用終了後の課金時期、自動更新日】"] },
@@ -228,6 +228,7 @@ export const enContentPages: ContentPage[] = [
       { title: "Open and organize", bullets: ["Drop a video or folder into the window", "Use playlists and favorites to keep related videos together", "Use A-B repeat to confirm a scene"] },
       { title: "Generate subtitles", bullets: ["Press the subtitle button to start local recognition", "A short draft appears first; the full result continues in the background", "Pause and double-click the visible subtitle to correct it"] },
       { title: "Clip and join", bullets: ["Mark A and B", "Open the clip panel and choose the output", "Find the result in the Clip tab", "Add clips to the merge editor and set their order"] },
+      { title: "Support policy", paragraphs: ["Check the help pages and FAQ before contacting support. Individual assistance prioritizes purchases, Pro activation, cancellation, privacy, security, and legally required disclosure requests. General how-to questions and feature requests may be reviewed without an individual reply or implementation commitment. Telephone support is not provided."] },
     ],
   },
   {
@@ -310,7 +311,7 @@ export const enContentPages: ContentPage[] = [
     lead: "Pricing is stated below. Seller identity, contact details, tax treatment, renewal, cancellation, and refund terms must be completed before checkout is enabled.",
     notice: { title: "Pre-launch gate", body: "No paid checkout should be published until every required seller and consumer term is verified." },
     sections: [
-      { title: "Seller and contact", paragraphs: ["[REQUIRED BEFORE LAUNCH: legal seller name, responsible person, physical address, support email, and legally compliant telephone disclosure.] Do not enable checkout while these fields are incomplete."] },
+      { title: "Seller and contact", paragraphs: ["Seller and responsible operator: Kenta Matsuoka (individual business operator). [REQUIRED BEFORE LAUNCH: physical address, support contact, and legally compliant telephone disclosure.] Do not enable checkout while these fields are incomplete."] },
       { title: "Price and additional costs", paragraphs: ["Free is ¥0. Pro is ¥1,480/month or ¥14,800/year. The seven-day trial includes 30 cloud minutes; Pro includes 600 cloud minutes each month, with BYOK beyond quota. Provider charges for BYOK and network charges are separate.", "[REQUIRED BEFORE LAUNCH: tax treatment, billing currency, applicable taxes, and any other mandatory charge.]" ] },
       { title: "Payment and delivery", paragraphs: ["Stripe-based card payment is planned. Pro access activates after verified payment and license activation. [REQUIRED BEFORE LAUNCH: supported payment methods, trial-end charge timing, renewal date, and failed-delivery support process.]" ] },
       { title: "Cancellation and refunds", paragraphs: ["[REQUIRED BEFORE LAUNCH: cancellation steps, cancellation deadline before renewal, and refund terms for digital services.] Mandatory consumer rights remain unaffected."] },
