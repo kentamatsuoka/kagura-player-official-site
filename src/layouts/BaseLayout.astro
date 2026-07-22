@@ -29,6 +29,7 @@ const canonical = absoluteUrl(canonicalPath);
 const alternateJa = routePair ? absoluteUrl(routePair.ja) : undefined;
 const alternateEn = routePair ? absoluteUrl(routePair.en) : undefined;
 const isHome = canonicalPath === "/ja/" || canonicalPath === "/en/";
+const publicSalesOpen = Boolean(site.monthlyCheckoutUrl || site.annualCheckoutUrl);
 const resolvedBreadcrumbTitle = breadcrumbTitle ?? title.replace(/\s+-\s+YOMUVIA$/, "");
 const structuredData = {
   "@context": "https://schema.org",
@@ -61,6 +62,7 @@ const structuredData = {
           name: "YOMUVIA Free",
           price: "0",
           priceCurrency: site.proCurrency,
+          availability: "https://schema.org/PreOrder",
           url: absoluteUrl(lang === "ja" ? "/ja/pricing/" : "/en/pricing/")
         },
         {
@@ -68,6 +70,7 @@ const structuredData = {
           name: "YOMUVIA Pro Monthly",
           price: site.proPrice,
           priceCurrency: site.proCurrency,
+          availability: publicSalesOpen ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
           description: lang === "ja" ? "月600分のクラウド処理と、超過後のBYOKに対応" : "Includes 600 cloud minutes per month, with BYOK beyond the quota",
           priceSpecification: {
             "@type": "UnitPriceSpecification",
@@ -82,6 +85,7 @@ const structuredData = {
           name: "YOMUVIA Pro Annual",
           price: site.proAnnualPrice,
           priceCurrency: site.proCurrency,
+          availability: publicSalesOpen ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
           priceSpecification: {
             "@type": "UnitPriceSpecification",
             price: site.proAnnualPrice,
