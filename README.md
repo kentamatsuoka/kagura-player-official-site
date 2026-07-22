@@ -45,7 +45,13 @@ npm run build
 https://kentamatsuoka.github.io/kagura-player-official-site/
 ```
 
-Pushes to `main` are built and published automatically by GitHub Actions. Cloudflare Pages can later import the same public repository without changing the application code.
+GitHub Pages currently serves the `gh-pages` branch. Publish source and generated pages together with:
+
+```bash
+npm run publish
+```
+
+This direct path remains usable while GitHub Actions is unavailable. Cloudflare Pages can later import the same public repository without changing the application code.
 
 `robots.txt` allows `OAI-SearchBot` and `ChatGPT-User` to retrieve the public site while keeping training-oriented `GPTBot` disallowed.
 

@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "build": "astro check && astro build",
+    "publish": "bash scripts/publish-pages.sh",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
     "format": "prettier --write .",
