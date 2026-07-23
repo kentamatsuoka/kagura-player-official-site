@@ -256,7 +256,7 @@ export const enContentPages: ContentPage[] = [
     sections: [
       { title: "Local data", paragraphs: ["Videos are played from your storage. Favorites, playlists, settings, subtitle caches, and correction memories are stored on your PC. Local Whisper recognition does not upload the video."] },
       { title: "Optional cloud AI", paragraphs: ["When cloud correction or translation is configured and used, recognized text, the video filename, and limited context may be sent to the configured AI provider. The video file itself is not sent by this flow."] },
-      { title: "Licensing and updates", paragraphs: ["Pro activation and refresh send an installation identifier and purchase-session information to the licensing service. Microsoft Store builds receive updates through Microsoft Store. Other signed builds may send the installed version and update channel to the configured update endpoint."] },
+      { title: "Licensing and updates", paragraphs: ["Pro activation and refresh send an installation identifier and purchase-session information to the licensing service. Signed builds may send the installed version and update channel to the configured update endpoint to check for new releases."] },
       { title: "Logs", paragraphs: ["Application logs are written locally for troubleshooting. There is no automatic crash-upload pipeline in the current build."] },
       { title: "Control and deletion", paragraphs: ["You can remove local information through the uninstall flow or by deleting the app data folder. For compatibility with existing installations, the internal folder name may retain the former product name. Privacy and support requests can be sent to butterflygpu.support@proton.me."] },
     ],
