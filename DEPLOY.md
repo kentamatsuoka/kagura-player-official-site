@@ -33,7 +33,8 @@ dist/
 ## Remaining launch gates
 
 - Set the verified public installer URL as `PUBLIC_DOWNLOAD_URL`.
-- Set the production Stripe Checkout URL as `PUBLIC_CHECKOUT_URL` only after seller disclosures are complete.
+- The GitHub Pages workflow contains the verified monthly and annual Stripe Payment Links. Keep deployment manual until the public installer is ready.
+- Set `PUBLIC_DOWNLOAD_URL` only after the Microsoft Store listing or another signed public installer is reachable.
 - Set the support endpoint as `PUBLIC_SUPPORT_URL`.
 - Run Lighthouse on `/ja/`, `/ja/download/`, and feature pages.
 - Confirm the signed update manifest and installer work from a clean Windows account.
