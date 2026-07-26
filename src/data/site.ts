@@ -12,7 +12,7 @@ export const site = {
   name: "YOMUVIA",
   origin: import.meta.env.PUBLIC_SITE_ORIGIN?.replace(/\/$/, "")
     ?? (import.meta.env.PROD ? "https://kentamatsuoka.github.io" : ""),
-  version: "0.6.0 Preview",
+  version: "0.6.1 Release Candidate",
   downloadUrl: import.meta.env.PUBLIC_DOWNLOAD_URL?.trim() ?? "",
   checkoutUrl: import.meta.env.PUBLIC_CHECKOUT_URL?.trim() ?? "",
   monthlyCheckoutUrl: import.meta.env.PUBLIC_MONTHLY_CHECKOUT_URL?.trim()
