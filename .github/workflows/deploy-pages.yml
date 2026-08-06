@@ -37,6 +37,7 @@ jobs:
           PUBLIC_BASE_PATH: /
           PUBLIC_DOWNLOAD_URL: https://github.com/kentamatsuoka/YOMUVIA-releases/releases/download/v0.6.1/YOMUVIASetup-0.6.1.exe
           PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
+          PUBLIC_BING_SITE_VERIFICATION: 161DF3CE0CBD753E9A1BE521F49429AB
           PUBLIC_MONTHLY_CHECKOUT_URL: https://buy.stripe.com/14A3co0dwgZse7T4WIes000
           PUBLIC_ANNUAL_CHECKOUT_URL: https://buy.stripe.com/3cI14ge4m38C8NzgFqes001
         run: npm run build

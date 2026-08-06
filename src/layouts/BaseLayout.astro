@@ -19,6 +19,7 @@ interface Props {
 
 const { title, description, lang = "ja", canonicalPath, breadcrumbTitle, faqItems = [], noindex = false } = Astro.props;
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+const bingSiteVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION?.trim();
 const nav = lang === "ja" ? navJa : navEn;
 const footerNav = lang === "ja" ? footerJa : footerEn;
 const routePair = localizedRoute(canonicalPath);
@@ -136,6 +137,7 @@ const structuredData = {
     <title>{title}</title>
     <meta name="description" content={description} />
     {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
+    {bingSiteVerification && <meta name="msvalidate.01" content={bingSiteVerification} />}
     <meta name="robots" content={noindex ? "noindex,nofollow,noarchive" : "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"} />
     {canonical && <link rel="canonical" href={canonical} />}
     {alternateJa && <link rel="alternate" hreflang="ja" href={alternateJa} />}
