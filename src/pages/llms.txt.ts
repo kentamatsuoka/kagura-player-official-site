@@ -17,13 +17,15 @@ export const GET: APIRoute = () => {
 - Pro: JPY 1,480 per month or JPY 14,800 per year.
 - Trial: seven days with 30 cloud minutes.
 - Pro cloud allowance: 600 minutes per month; users can continue with their own supported API key through BYOK after the quota.
-- Release status: licensing, cloud AI routing, and production Stripe billing are connected and pass integration checks. A code-signed standalone installer and a signed auto-update manifest are the remaining public-release gates; public checkout is intentionally closed until then.
+- Release status: YOMUVIA 0.6.1 Public Beta is available for Windows. The public installer, signed auto-update manifest, licensing API, cloud AI routing, and Stripe checkout links pass production checks. The standalone installer is not yet Windows Authenticode-signed, so Microsoft Defender SmartScreen may display a warning.
 - No search ranking or business outcome is guaranteed.
 
 ## Primary pages
 
 - Japanese home: ${absoluteUrl("/ja/")}
 - English home: ${absoluteUrl("/en/")}
+- Download (JA): ${absoluteUrl("/ja/download/")}
+- Download (EN): ${absoluteUrl("/en/download/")}
 - Pricing (JA): ${absoluteUrl("/ja/pricing/")}
 - Pricing (EN): ${absoluteUrl("/en/pricing/")}
 - AI subtitle video player (JA): ${absoluteUrl("/ja/ai-subtitle-video-player/")}
