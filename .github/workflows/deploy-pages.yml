@@ -7,9 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: yomuvia-pages
@@ -28,13 +26,10 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build and publish gh-pages
         env:
           PUBLIC_SITE_ORIGIN: https://yomuvia.com
           PUBLIC_BASE_PATH: /
@@ -43,20 +38,4 @@ jobs:
           PUBLIC_BING_SITE_VERIFICATION: 161DF3CE0CBD753E9A1BE521F49429AB
           PUBLIC_MONTHLY_CHECKOUT_URL: https://buy.stripe.com/14A3co0dwgZse7T4WIes000
           PUBLIC_ANNUAL_CHECKOUT_URL: https://buy.stripe.com/3cI14ge4m38C8NzgFqes001
-        run: npm run build
-
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        run: npm run publish
