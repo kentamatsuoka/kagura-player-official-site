@@ -5,19 +5,22 @@ export const withBase = (path: string) => {
   return `${basePath}${normalized}` || "/";
 };
 
-const supportEmail = import.meta.env.PUBLIC_SUPPORT_EMAIL?.trim()
-  || "butterflygpu.support@proton.me";
+const supportEmail =
+  import.meta.env.PUBLIC_SUPPORT_EMAIL?.trim() ||
+  "butterflygpu.support@proton.me";
 
 export const site = {
   name: "YOMUVIA",
-  origin: import.meta.env.PUBLIC_SITE_ORIGIN?.replace(/\/$/, "")
-    ?? (import.meta.env.PROD ? "https://yomuvia.com" : ""),
+  origin:
+    import.meta.env.PUBLIC_SITE_ORIGIN?.replace(/\/$/, "") ??
+    (import.meta.env.PROD ? "https://yomuvia.com" : ""),
   version: "0.6.1 Public Beta",
   downloadUrl: import.meta.env.PUBLIC_DOWNLOAD_URL?.trim() ?? "",
   checkoutUrl: import.meta.env.PUBLIC_CHECKOUT_URL?.trim() ?? "",
-  monthlyCheckoutUrl: import.meta.env.PUBLIC_MONTHLY_CHECKOUT_URL?.trim()
-    || import.meta.env.PUBLIC_CHECKOUT_URL?.trim()
-    || "",
+  monthlyCheckoutUrl:
+    import.meta.env.PUBLIC_MONTHLY_CHECKOUT_URL?.trim() ||
+    import.meta.env.PUBLIC_CHECKOUT_URL?.trim() ||
+    "",
   annualCheckoutUrl: import.meta.env.PUBLIC_ANNUAL_CHECKOUT_URL?.trim() ?? "",
   proPrice: import.meta.env.PUBLIC_PRO_PRICE?.trim() || "1480",
   proAnnualPrice: "14800",
@@ -26,8 +29,9 @@ export const site = {
   trialCloudMinutes: 30,
   proCloudMinutes: 600,
   supportEmail,
-  supportUrl: import.meta.env.PUBLIC_SUPPORT_URL?.trim()
-    || `mailto:${supportEmail}?subject=${encodeURIComponent("YOMUVIA support")}`,
+  supportUrl:
+    import.meta.env.PUBLIC_SUPPORT_URL?.trim() ||
+    `mailto:${supportEmail}?subject=${encodeURIComponent("YOMUVIA support")}`,
   releaseState: "public-beta",
 };
 
@@ -38,6 +42,7 @@ export const localizedRoutePairs = [
   ["/ja/pricing/", "/en/pricing/"],
   ["/ja/purchase/success/", "/en/purchase/success/"],
   ["/ja/subscription/", "/en/subscription/"],
+  ["/ja/about/", "/en/about/"],
   ["/ja/terms/", "/en/terms/"],
   ["/ja/privacy/", "/en/privacy/"],
   ["/ja/licenses/", "/en/licenses/"],
@@ -56,7 +61,9 @@ export const localizedRoutePairs = [
 ] as const;
 
 export const localizedRoute = (path: string) => {
-  const pair = localizedRoutePairs.find(([ja, en]) => ja === path || en === path);
+  const pair = localizedRoutePairs.find(
+    ([ja, en]) => ja === path || en === path,
+  );
   return pair ? { ja: pair[0], en: pair[1] } : undefined;
 };
 
@@ -65,7 +72,7 @@ export const navJa = [
   { href: "/ja/features/ai-subtitles/", label: "AI字幕" },
   { href: "/ja/features/merge-editor/", label: "切り抜き・結合" },
   { href: "/ja/pricing/", label: "料金" },
-  { href: "/ja/help/", label: "ヘルプ" },
+  { href: "/ja/help/", label: "使い方" },
 ];
 
 export const navEn = [
@@ -78,7 +85,7 @@ export const navEn = [
 
 export const footerJa = [
   { href: "/ja/download/", label: "ダウンロード" },
-  { href: "/ja/subscription/", label: "Pro有効化・解約" },
+  { href: "/ja/about/", label: "YOMUVIAについて" },
   { href: "/ja/ai-subtitle-video-player/", label: "AI字幕動画プレイヤー" },
   { href: "/ja/windows-video-clipper/", label: "Windows動画切り抜き" },
   { href: "/ja/windows-video-joiner/", label: "Windows動画結合" },
@@ -92,7 +99,7 @@ export const footerJa = [
 
 export const footerEn = [
   { href: "/en/download/", label: "Download" },
-  { href: "/en/subscription/", label: "Activate or cancel Pro" },
+  { href: "/en/about/", label: "About YOMUVIA" },
   { href: "/en/ai-subtitle-video-player/", label: "AI subtitle player" },
   { href: "/en/windows-video-clipper/", label: "Windows video clipper" },
   { href: "/en/windows-video-joiner/", label: "Windows video joiner" },

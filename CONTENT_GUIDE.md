@@ -7,23 +7,22 @@ Clear, fast, practical. Avoid overclaiming.
 ## Core Phrase
 
 ```text
-見る。残す。すぐ切り抜く。
+ずっと探してた。が、ここにある。
 ```
 
 ## Completed vs Planned
 
-Completed/initial:
+Released:
 
 - Favorites.
 - Folders.
 - A-B repeat.
 - Quick clipping from A-B range.
 - Background save.
-
-Planned:
-
 - Local AI subtitles.
 - Subtitle-burned clips.
 - Subtitle styling and timing controls.
+- Clip library and compatible-media joining.
+- Pro activation and subscription management.
 
-Never present planned Pro features as already available.
+Never present an experiment or planned feature as already available.

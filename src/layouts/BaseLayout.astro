@@ -32,22 +32,37 @@ const alternateEn = routePair ? absoluteUrl(routePair.en) : undefined;
 const isHome = canonicalPath === "/ja/" || canonicalPath === "/en/";
 const publicSalesOpen = Boolean(site.monthlyCheckoutUrl || site.annualCheckoutUrl);
 const resolvedBreadcrumbTitle = breadcrumbTitle ?? title.replace(/\s+-\s+YOMUVIA$/, "");
+const activeNavHref = nav
+  .filter((item) => canonicalPath === item.href || canonicalPath.startsWith(item.href))
+  .sort((a, b) => b.href.length - a.href.length)[0]?.href;
+const websiteId = absoluteUrl("/#website");
+const softwareId = absoluteUrl("/#software");
+const brandId = absoluteUrl("/#brand");
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
-    ...(isHome ? [{
+    {
       "@type": "WebSite",
-      "@id": absoluteUrl("/#website"),
+      "@id": websiteId,
       url: absoluteUrl("/"),
       name: site.name,
-      alternateName: "Kagura",
+      alternateName: "YOMUVIA Player",
       inLanguage: ["ja", "en"]
-    }] : []),
+    },
+    {
+      "@type": "Brand",
+      "@id": brandId,
+      name: site.name,
+      url: absoluteUrl("/"),
+      logo: absoluteUrl("/media/generated/kagura-player-icon-512.png")
+    },
     {
       "@type": "SoftwareApplication",
-      "@id": absoluteUrl("/#software"),
+      "@id": softwareId,
       name: site.name,
-      url: canonical,
+      url: absoluteUrl(lang === "ja" ? "/ja/" : "/en/"),
+      image: absoluteUrl("/og.png"),
+      brand: { "@id": brandId },
       applicationCategory: "MultimediaApplication",
       applicationSubCategory: "Video player and video clipping software",
       operatingSystem: "Windows",
@@ -99,6 +114,17 @@ const structuredData = {
           url: absoluteUrl(lang === "ja" ? "/ja/pricing/" : "/en/pricing/")
         }
       ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": canonical ? `${canonical}#webpage` : undefined,
+      url: canonical,
+      name: title,
+      description,
+      inLanguage: lang,
+      isPartOf: { "@id": websiteId },
+      about: { "@id": softwareId },
+      primaryImageOfPage: { "@type": "ImageObject", url: absoluteUrl("/og.png") }
     },
     ...(!isHome && canonical ? [{
       "@type": "BreadcrumbList",
@@ -164,12 +190,11 @@ const structuredData = {
     <link rel="icon" type="image/png" href={withBase("/media/generated/kagura-player-context-menu-32.png")} />
     <meta name="theme-color" content="#07080d" />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <script is:inline>document.documentElement.dataset.motion = "on";</script>
+    <script is:inline>document.documentElement.dataset.motion = matchMedia("(prefers-reduced-motion: reduce)").matches ? "reduced" : "on";</script>
   </head>
   <body>
     <a class="skip-link" href="#main">{lang === "ja" ? "本文へ移動" : "Skip to content"}</a>
     <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
-    <div class="pointer-aura" data-pointer-aura aria-hidden="true"></div>
     <div class="site-shell">
       <header class="site-header">
         <div class="container header-inner">
@@ -178,12 +203,12 @@ const structuredData = {
             <span>{site.name}</span>
           </a>
           <nav class="nav" aria-label={lang === "ja" ? "主要ナビゲーション" : "Main navigation"}>
-            {nav.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
+            {nav.map((item) => <a href={withBase(item.href)} aria-current={activeNavHref === item.href ? "page" : undefined}>{item.label}</a>)}
           </nav>
           <div class="header-actions">
             <a class="lang-link" href={withBase(opposite)} data-language-choice={lang === "ja" ? "en" : "ja"}>{oppositeLabel}</a>
             <a class="button primary" href={withBase(lang === "ja" ? "/ja/download/" : "/en/download/")}>
-              {lang === "ja" ? "ダウンロード" : "Download"}
+              {lang === "ja" ? "無料ダウンロード" : "Free download"}
             </a>
           </div>
         </div>
@@ -193,14 +218,24 @@ const structuredData = {
       </main>
       <footer class="footer">
         <div class="container footer-grid">
-          <div class="footer-brand">
-            <img src={withBase("/media/generated/kagura-player-context-menu-32.png")} width="32" height="32" alt="" />
-            <div><strong>{site.name}</strong><span>{site.version} / Windows</span></div>
+          <div class="footer-intro">
+            <div class="footer-brand">
+              <img src={withBase("/media/generated/kagura-player-context-menu-32.png")} width="32" height="32" alt="" />
+              <div><strong>{site.name}</strong><span>{site.version} / Windows</span></div>
+            </div>
+            <p>{lang === "ja" ? "AI字幕で理解し、欲しい場面を切り抜き、一本につなげるWindows動画プレイヤー。" : "A Windows video player for AI subtitles, fast clipping, and simple video joining."}</p>
+            <div class="footer-actions">
+              <a href={site.supportUrl}>{lang === "ja" ? "お問い合わせ" : "Contact"}</a>
+              <a href={withBase(lang === "ja" ? "/ja/subscription/" : "/en/subscription/")}>{lang === "ja" ? "Proの管理・解約" : "Manage or cancel Pro"}</a>
+            </div>
           </div>
           <nav class="footer-nav" aria-label={lang === "ja" ? "フッターナビゲーション" : "Footer navigation"}>
             {footerNav.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
           </nav>
-          <p class="footer-note">{lang === "ja" ? "手元の動画を、理解して、切り抜いて、つなげる。" : "Understand, clip, and join the videos on your PC."}</p>
+          <div class="footer-proof" aria-label={lang === "ja" ? "製品情報" : "Product facts"}>
+            <span>Windows 10 / 11</span><span>Free ¥0</span><span>{lang === "ja" ? "Proは7日間無料" : "7-day Pro trial"}</span>
+          </div>
+          <p class="footer-note">© {new Date().getFullYear()} ButterflyGPU. YOMUVIA.</p>
         </div>
       </footer>
     </div>
@@ -222,8 +257,7 @@ const structuredData = {
         // Japanese remains the fallback when browser language storage is unavailable.
       }
 
-      const motionEnabled = true;
-      const aura = document.querySelector("[data-pointer-aura]");
+      const motionEnabled = !matchMedia("(prefers-reduced-motion: reduce)").matches;
       const updateProgress = () => {
         const travel = document.documentElement.scrollHeight - window.innerHeight;
         const ratio = travel > 0 ? window.scrollY / travel : 0;
@@ -244,14 +278,6 @@ const structuredData = {
           });
         }, { threshold: 0.12 });
         revealTargets.forEach((element) => observer.observe(element));
-
-        if (aura instanceof HTMLElement && matchMedia("(pointer: fine)").matches) {
-          window.addEventListener("pointermove", (event) => {
-            aura.style.setProperty("--pointer-x", `${event.clientX}px`);
-            aura.style.setProperty("--pointer-y", `${event.clientY}px`);
-            aura.classList.add("is-active");
-          }, { passive: true });
-        }
 
         const canvas = document.querySelector("[data-signal-field]");
         if (canvas instanceof HTMLCanvasElement) {

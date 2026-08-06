@@ -1,7 +1,11 @@
 import type { APIRoute } from "astro";
 import { site, withBase } from "@/data/site";
 
-const absoluteUrl = (path: string) => new URL(withBase(path), `${site.origin || "http://localhost:4321"}/`).toString();
+const absoluteUrl = (path: string) =>
+  new URL(
+    withBase(path),
+    `${site.origin || "http://localhost:4321"}/`,
+  ).toString();
 
 export const GET: APIRoute = () => {
   const body = `# YOMUVIA
@@ -20,6 +24,14 @@ export const GET: APIRoute = () => {
 - Release status: YOMUVIA 0.6.1 Public Beta is available for Windows. The public installer, signed auto-update manifest, licensing API, cloud AI routing, and Stripe checkout links pass production checks. The standalone installer is not yet Windows Authenticode-signed, so Microsoft Defender SmartScreen may display a warning.
 - No search ranking or business outcome is guaranteed.
 
+## Official summary in Japanese
+
+- YOMUVIAは、AI字幕、翻訳、A-B動画切り抜き、切り抜き管理、動画結合を一つにつなぐWindows動画プレイヤーです。
+- 動画再生、音声抽出、Whisper音声認識はPC内で処理します。
+- クラウド補正・翻訳を使う場合も、動画ファイル本体は送信しません。
+- Freeは¥0、Proは月額¥1,480または年額¥14,800です。
+- Proには7日間の無料試用があり、試用終了前に解約すれば料金は発生しません。
+
 ## Primary pages
 
 - Japanese home: ${absoluteUrl("/ja/")}
@@ -28,6 +40,12 @@ export const GET: APIRoute = () => {
 - Download (EN): ${absoluteUrl("/en/download/")}
 - Pricing (JA): ${absoluteUrl("/ja/pricing/")}
 - Pricing (EN): ${absoluteUrl("/en/pricing/")}
+- About YOMUVIA (JA): ${absoluteUrl("/ja/about/")}
+- About YOMUVIA (EN): ${absoluteUrl("/en/about/")}
+- Help (JA): ${absoluteUrl("/ja/help/")}
+- Help (EN): ${absoluteUrl("/en/help/")}
+- Pro activation and cancellation (JA): ${absoluteUrl("/ja/subscription/")}
+- Pro activation and cancellation (EN): ${absoluteUrl("/en/subscription/")}
 - AI subtitle video player (JA): ${absoluteUrl("/ja/ai-subtitle-video-player/")}
 - AI subtitle video player (EN): ${absoluteUrl("/en/ai-subtitle-video-player/")}
 - Windows video clipper (JA): ${absoluteUrl("/ja/windows-video-clipper/")}

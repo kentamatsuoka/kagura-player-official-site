@@ -1,0 +1,11 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site, withBase } from "@/data/site";
+---
+
+<BaseLayout title="YOMUVIAについて - AI字幕・切り抜き・動画結合" description="YOMUVIAは、AI字幕で動画を理解し、見ながら切り抜き、複数の場面を一本につなげられるWindows動画プレイヤーです。開発方針と製品情報を紹介します。" canonicalPath="/ja/about/" breadcrumbTitle="YOMUVIAについて">
+  <header class="page-hero"><div class="container"><p class="eyebrow">YOMUVIAについて</p><h1>見る時間を、<br />作る時間につなげる。</h1><p class="lead">YOMUVIAは、動画を見るためのプレイヤーと、字幕・切り抜き・結合の作業をひとつにつなぐWindowsアプリです。</p></div></header>
+  <section class="content-band"><div class="container content-grid"><h2>なぜ作るのか</h2><div class="prose"><p>動画を見ている途中で残したい場面を見つけても、編集ソフトを開き、同じ位置を探し直す必要がありました。外国語の動画では、内容を理解するための字幕作成も別の作業になります。</p><p>YOMUVIAは、再生中のその場で字幕を出し、A点とB点を決めて切り抜き、完成した場面を並べて一本にするところまでを、同じ流れで扱えるように設計しています。</p></div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>大切にしていること</h2><div class="prose"><h3>まず、PCの中で動かす</h3><p>動画再生、音声抽出、Whisperによる音声認識はローカル処理が基本です。クラウド補正や翻訳を使う場合も、動画ファイル本体は送信しません。</p><h3>できることを、正直に伝える</h3><p>公開済みの機能と今後の計画を分け、制約や精度上の注意も隠しません。更新内容と現在の配布状況は、更新履歴とダウンロードページで確認できます。</p><h3>操作を増やさない</h3><p>見る、字幕を直す、切り抜く、つなぐ。動画を扱う一連の操作が自然につながることを優先します。</p></div></div></section>
+  <section class="content-band"><div class="container content-grid"><h2>製品情報</h2><div class="prose"><ul><li>製品名：YOMUVIA</li><li>対応OS：Windows 10 / 11 x64</li><li>現在のバージョン：{site.version}</li><li>Free：¥0</li><li>Pro：月額¥1,480または年額¥14,800</li></ul><div class="hero-actions"><a class="button primary" href={withBase("/ja/download/")}>Windows版を無料ダウンロード</a><a class="button secondary" href={withBase("/ja/changelog/")}>更新履歴を見る</a></div><p><a class="text-link" href={site.supportUrl}>お問い合わせはこちら</a></p></div></div></section>
+</BaseLayout>
