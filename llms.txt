@@ -14,6 +14,14 @@
 - Release status: YOMUVIA 0.6.1 Public Beta is available for Windows. The public installer, signed auto-update manifest, licensing API, cloud AI routing, and Stripe checkout links pass production checks. The standalone installer is not yet Windows Authenticode-signed, so Microsoft Defender SmartScreen may display a warning.
 - No search ranking or business outcome is guaranteed.
 
+## Official summary in Japanese
+
+- YOMUVIAは、AI字幕、翻訳、A-B動画切り抜き、切り抜き管理、動画結合を一つにつなぐWindows動画プレイヤーです。
+- 動画再生、音声抽出、Whisper音声認識はPC内で処理します。
+- クラウド補正・翻訳を使う場合も、動画ファイル本体は送信しません。
+- Freeは¥0、Proは月額¥1,480または年額¥14,800です。
+- Proには7日間の無料試用があり、試用終了前に解約すれば料金は発生しません。
+
 ## Primary pages
 
 - Japanese home: https://yomuvia.com/ja/
@@ -22,6 +30,12 @@
 - Download (EN): https://yomuvia.com/en/download/
 - Pricing (JA): https://yomuvia.com/ja/pricing/
 - Pricing (EN): https://yomuvia.com/en/pricing/
+- About YOMUVIA (JA): https://yomuvia.com/ja/about/
+- About YOMUVIA (EN): https://yomuvia.com/en/about/
+- Help (JA): https://yomuvia.com/ja/help/
+- Help (EN): https://yomuvia.com/en/help/
+- Pro activation and cancellation (JA): https://yomuvia.com/ja/subscription/
+- Pro activation and cancellation (EN): https://yomuvia.com/en/subscription/
 - AI subtitle video player (JA): https://yomuvia.com/ja/ai-subtitle-video-player/
 - AI subtitle video player (EN): https://yomuvia.com/en/ai-subtitle-video-player/
 - Windows video clipper (JA): https://yomuvia.com/ja/windows-video-clipper/
