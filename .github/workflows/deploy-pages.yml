@@ -1,4 +1,4 @@
-name: Deploy Kagura Player site
+name: Deploy YOMUVIA site
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: yomuvia-pages
   cancel-in-progress: true
 
 jobs:
