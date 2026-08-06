@@ -17,7 +17,7 @@ export const jaContentPages: ContentPage[] = [
     description: "AI字幕、字幕編集、高速切り抜き、切り抜きライブラリ、動画結合などYOMUVIAの機能一覧です。",
     eyebrow: "機能一覧",
     headline: "見る、わかる、残す。一本につなげる。",
-    lead: "YOMUVIAは、動画プレイヤーと切り抜き作業を一つの流れにまとめます。現在の0.6.1 Release Candidateで実装済みの機能を掲載しています。",
+    lead: "YOMUVIAは、動画プレイヤーと切り抜き作業を一つの流れにまとめます。現在の0.6.1 Public Betaで利用できる機能を掲載しています。",
     sections: [
       { title: "見る", bullets: ["LibVLCによるローカル動画再生", "プレイリスト・お気に入り・フォルダ管理", "A-Bリピート、5秒スキップ、シャッフル、再生速度変更", "Windows右クリックメニュー統合"] },
       { title: "わかる", bullets: ["現在位置付近を先に表示する高速ドラフト字幕", "高精度モデルによる全体字幕のバックグラウンド生成", "音声言語の自動検出と表示言語への翻訳", "字幕のダブルクリック編集と修正記憶", "字幕キャッシュによる次回の即時表示"] },
@@ -87,10 +87,10 @@ export const jaContentPages: ContentPage[] = [
   {
     slug: "system-requirements",
     title: "動作環境 - YOMUVIA",
-    description: "YOMUVIA 0.6.1 Release Candidateの対応OS、必要容量、AI字幕のGPU要件と対応動画形式。",
+    description: "YOMUVIA 0.6.1 Public Betaの対応OS、必要容量、AI字幕のGPU要件と対応動画形式。",
     eyebrow: "動作環境",
     headline: "Windowsで、動画をもっと近くに。",
-    lead: "公開前の検証基準です。最終的な必要容量と対応GPUは一般公開ビルドのサイズ測定後に確定します。",
+    lead: "0.6.1 Public Betaの動作確認基準です。動画形式やAIモデルにより、必要容量と処理速度は変わります。",
     sections: [
       { title: "基本環境", bullets: ["Windows 10またはWindows 11 64-bit", "x64プロセッサ", "動画とAIモデルを保存できる空き容量", "クラウド翻訳・ライセンス更新・アップデート確認にはインターネット接続"] },
       { title: "AI字幕", paragraphs: ["音声認識はPC内で実行します。CUDA対応GPUでは高速化できます。GPU非対応環境ではCPU処理となり、長い動画ほど時間がかかります。AIモデルは初回利用時にローカルへ保存されます。"] },
@@ -181,7 +181,7 @@ export const enContentPages: ContentPage[] = [
     description: "Explore AI subtitles, correction memory, fast clipping, the clip library, and video joining in YOMUVIA.",
     eyebrow: "Feature overview",
     headline: "Watch it. Understand it. Keep it. Join it.",
-    lead: "YOMUVIA 0.6.1 Release Candidate brings local playback and practical clipping into one Windows workflow.",
+    lead: "YOMUVIA 0.6.1 Public Beta brings local playback and practical clipping into one Windows workflow.",
     sections: [
       { title: "Watch", bullets: ["Local playback powered by LibVLC", "Playlists, favorites, and folders", "A-B repeat, skip, shuffle, and playback speed", "Windows Explorer context-menu integration"] },
       { title: "Understand", bullets: ["Fast draft subtitles around the current position", "High-accuracy background transcription", "Language detection and translation", "Double-click subtitle editing and correction memory", "Cached subtitles for immediate reuse"] },
@@ -277,10 +277,10 @@ export const enContentPages: ContentPage[] = [
   {
     slug: "system-requirements",
     title: "System Requirements - YOMUVIA",
-    description: "Windows, storage, network, and GPU requirements for YOMUVIA 0.6.1 Release Candidate.",
+    description: "Windows, storage, network, and GPU requirements for YOMUVIA 0.6.1 Public Beta.",
     eyebrow: "System requirements",
     headline: "Built for Windows video workflows.",
-    lead: "These are pre-release validation targets. Final storage and GPU guidance will be measured against the public build.",
+    lead: "These are the validation targets for 0.6.1 Public Beta. Storage and performance vary with video formats and AI models.",
     sections: [
       { title: "Base system", bullets: ["64-bit Windows 10 or Windows 11", "x64 processor", "Storage for the app, videos, and AI models", "Internet for cloud translation, licensing, and updates"] },
       { title: "AI subtitles", paragraphs: ["Recognition runs locally. A compatible CUDA GPU improves speed; unsupported systems use CPU processing. Models are cached on the PC after first use."] },
@@ -293,10 +293,10 @@ export const enContentPages: ContentPage[] = [
     description: "Release history and current preview status for YOMUVIA.",
     eyebrow: "Changelog",
     headline: "What changed, and what is verified.",
-    lead: "The current release candidate is 0.6.1. Public distribution is not yet open.",
+    lead: "YOMUVIA 0.6.1 Public Beta is now available for Windows.",
     sections: [
-      { title: "0.6.1 Release Candidate", bullets: ["Progressive AI subtitles and automatic translation", "Subtitle editing and correction memory", "Pro-gated subtitle burn-in clips", "Persistent clip library and merge editor", "Signed Pro license lease skeleton", "Signed update manifest and installer download skeleton", "Subtitle stability and repetition filtering"] },
-      { title: "Release status", paragraphs: ["The application suite has 186 passing tests and the licensing server has 22, for 208 passing Release tests in total. Public FFmpeg distribution, production services, and the installer release matrix remain launch gates."] },
+      { title: "0.6.1 Public Beta", bullets: ["Progressive AI subtitles and automatic translation", "Subtitle editing and correction memory", "Pro-gated subtitle burn-in clips", "Persistent clip library and merge editor", "Signed Pro license lease", "Signed update manifest and public installer download", "Subtitle stability and repetition filtering"] },
+      { title: "Release status", paragraphs: ["The application suite has 186 passing tests and the licensing server has 22, for 208 passing Release tests in total. FFmpeg distribution materials, production services, signed update metadata, and the install-launch-uninstall smoke test have been verified. The installer is not yet Windows code-signed, so SmartScreen may appear during the public beta."] },
     ],
   },
   {

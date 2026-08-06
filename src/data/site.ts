@@ -12,7 +12,7 @@ export const site = {
   name: "YOMUVIA",
   origin: import.meta.env.PUBLIC_SITE_ORIGIN?.replace(/\/$/, "")
     ?? (import.meta.env.PROD ? "https://yomuvia.com" : ""),
-  version: "0.6.1 Release Candidate",
+  version: "0.6.1 Public Beta",
   downloadUrl: import.meta.env.PUBLIC_DOWNLOAD_URL?.trim() ?? "",
   checkoutUrl: import.meta.env.PUBLIC_CHECKOUT_URL?.trim() ?? "",
   monthlyCheckoutUrl: import.meta.env.PUBLIC_MONTHLY_CHECKOUT_URL?.trim()
@@ -28,7 +28,7 @@ export const site = {
   supportEmail,
   supportUrl: import.meta.env.PUBLIC_SUPPORT_URL?.trim()
     || `mailto:${supportEmail}?subject=${encodeURIComponent("YOMUVIA support")}`,
-  releaseState: "release-candidate",
+  releaseState: "public-beta",
 };
 
 export const localizedRoutePairs = [
