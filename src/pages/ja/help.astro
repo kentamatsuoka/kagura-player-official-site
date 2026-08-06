@@ -1,11 +1,16 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { site } from "@/data/site";
+import { site, withBase } from "@/data/site";
 ---
 
 <BaseLayout title="ヘルプ - YOMUVIA" description="動画再生、AI字幕、字幕編集、A-B切り抜き、切り抜きライブラリ、動画結合の使い方。" canonicalPath="/ja/help/">
   <header class="page-hero"><div class="container"><p class="eyebrow">ヘルプ</p><h1>開くところから、<br />一本にするまで。</h1><p class="lead">YOMUVIAの基本操作を、実際の作業順にまとめました。</p></div></header>
-  <section class="content-band"><div class="container content-grid"><h2>動画を開く</h2><div class="prose"><ol><li>ファイルまたはフォルダをウィンドウへドラッグします。</li><li>複数動画はプレイリストへ追加されます。</li><li>よく見る動画は星ボタンでお気に入りへ保存できます。</li></ol></div></div></section>
+  <section class="content-band" id="pro-activation"><div class="container"><div class="guide-head"><div><p class="section-kicker">PRO ACTIVATION</p><h2>購入後、3ステップでProにする</h2></div><p>購入完了ページは閉じずに、表示された認証番号をコピーしてください。認証番号は購入者本人だけで使用します。</p></div><div class="guide-steps">
+    <article><span>01</span><h3>設定メニューを開く</h3><p>YOMUVIA上部の「設定」から「設定を開く...」を選びます。</p><img src={withBase("/media/real-app/open-settings.png")} alt="YOMUVIAの設定メニューを開いた画面" loading="lazy" /></article>
+    <article><span>02</span><h3>PROタブへ貼り付ける</h3><p>「PRO」タブの購入完了コード欄へ認証番号を貼り、「PROを有効にする」を押します。</p><img src={withBase("/media/real-app/pro-activation.png")} alt="YOMUVIAのPRO認証番号入力欄" loading="lazy" /></article>
+    <article id="cancel"><span>03</span><h3>契約管理・解約も同じ画面</h3><p>認証後は「契約を管理・解約」が表示されます。Stripeの画面で解約を確定すると、次回以降は請求されません。</p><img src={withBase("/media/real-app/pro-active-manage.png")} alt="YOMUVIAでPro有効化後に表示される契約を管理・解約ボタン" loading="lazy" /><a class="text-link" href={withBase("/ja/subscription/")}>解約だけを確認したい方はこちら</a></article>
+  </div></div></section>
+  <section class="content-band alt"><div class="container content-grid"><h2>動画を開く</h2><div class="prose"><ol><li>ファイルまたはフォルダをウィンドウへドラッグします。</li><li>複数動画はプレイリストへ追加されます。</li><li>よく見る動画は星ボタンでお気に入りへ保存できます。</li></ol></div></div></section>
   <section class="content-band alt"><div class="container content-grid"><h2>AI字幕を出す</h2><div class="prose"><ol><li>字幕ボタンを押します。未生成動画はこの操作で初めて音声認識を開始します。</li><li>現在位置付近のドラフト字幕が先に表示されます。</li><li>高精度な全体字幕はバックグラウンドで生成され、自動的に差し替わります。</li><li>一時停止中に表示字幕をダブルクリックすると編集できます。</li></ol><p>音声認識はローカルです。クラウド補正・翻訳はAPI設定時だけ使用します。</p></div></div></section>
   <section class="content-band"><div class="container content-grid"><h2>切り抜く</h2><div class="prose"><ol><li>Aボタンで開始、Bボタンで終了を決めます。</li><li>ハサミボタンから保存先とファイル名を確認します。</li><li>字幕がありPro権限が有効な場合は「字幕を付ける」を選べます。</li><li>保存中も再生を続けられます。完成動画は切り抜きタブへ追加されます。</li></ol></div></div></section>
   <section class="content-band alt"><div class="container content-grid"><h2>結合する</h2><div class="prose"><ol><li>切り抜きタブで動画を右クリックし「結合画面に追加」を選びます。</li><li>ドラッグまたは上下ボタンで順番を変更します。</li><li>左のプレビューで内容を確認します。</li><li>「この順番で結合する」を押します。</li></ol><p>同一系統の形式・コーデック向けの高速結合です。異なる動画の自動変換は現在の対象外です。</p></div></div></section>

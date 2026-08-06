@@ -37,6 +37,7 @@ export const localizedRoutePairs = [
   ["/ja/help/", "/en/help/"],
   ["/ja/pricing/", "/en/pricing/"],
   ["/ja/purchase/success/", "/en/purchase/success/"],
+  ["/ja/subscription/", "/en/subscription/"],
   ["/ja/terms/", "/en/terms/"],
   ["/ja/privacy/", "/en/privacy/"],
   ["/ja/licenses/", "/en/licenses/"],
@@ -77,6 +78,7 @@ export const navEn = [
 
 export const footerJa = [
   { href: "/ja/download/", label: "ダウンロード" },
+  { href: "/ja/subscription/", label: "Pro有効化・解約" },
   { href: "/ja/ai-subtitle-video-player/", label: "AI字幕動画プレイヤー" },
   { href: "/ja/windows-video-clipper/", label: "Windows動画切り抜き" },
   { href: "/ja/windows-video-joiner/", label: "Windows動画結合" },
@@ -90,6 +92,7 @@ export const footerJa = [
 
 export const footerEn = [
   { href: "/en/download/", label: "Download" },
+  { href: "/en/subscription/", label: "Activate or cancel Pro" },
   { href: "/en/ai-subtitle-video-player/", label: "AI subtitle player" },
   { href: "/en/windows-video-clipper/", label: "Windows video clipper" },
   { href: "/en/windows-video-joiner/", label: "Windows video joiner" },

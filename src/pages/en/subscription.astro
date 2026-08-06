@@ -1,0 +1,10 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site, withBase } from "@/data/site";
+---
+
+<BaseLayout title="Activate or cancel Pro - YOMUVIA" description="Activate YOMUVIA Pro, manage your subscription, or cancel the free trial from the app." canonicalPath="/en/subscription/" lang="en" breadcrumbTitle="Activate or cancel Pro">
+  <header class="page-hero"><div class="container"><p class="eyebrow">PRO & BILLING</p><h1>Activate or cancel<br />from YOMUVIA settings.</h1><p class="lead">Paste the code shown after checkout. Cancel before the seven-day trial ends to avoid a charge.</p></div></header>
+  <section class="content-band"><div class="container content-grid"><h2>Activate Pro</h2><div class="prose"><ol><li>Copy the activation code from the purchase-complete page.</li><li>Open Settings, then select the PRO tab.</li><li>Paste the code and select "PROを有効にする".</li></ol><img class="guide-image" src={withBase("/media/real-app/pro-activation.png")} alt="YOMUVIA Pro activation screen" /></div></div></section>
+  <section class="content-band alt" id="cancel"><div class="container content-grid"><h2>Manage or cancel</h2><div class="prose"><ol><li>Open Settings and select PRO.</li><li>Select "契約を管理・解約".</li><li>Confirm cancellation in Stripe's billing portal.</li></ol><img class="guide-image" src={withBase("/media/real-app/pro-active-manage.png")} alt="Subscription management button in YOMUVIA" /><div class="status-callout"><strong>Seven-day free trial</strong>Cancel before the trial ends and no subscription fee is charged.</div><p>If the button is unavailable, activate Pro on this PC first. For account recovery, contact <a href={site.supportUrl}>support</a> from your purchase email address.</p></div></div></section>
+</BaseLayout>
