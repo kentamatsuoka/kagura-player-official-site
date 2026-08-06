@@ -10,4 +10,4 @@ Allow: /
 User-agent: GPTBot
 Disallow: /
 
-Sitemap: https://kentamatsuoka.github.io/kagura-player-official-site/sitemap-index.xml
+Sitemap: https://yomuvia.com/sitemap-index.xml

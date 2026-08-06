@@ -11,25 +11,27 @@
 - Pro: JPY 1,480 per month or JPY 14,800 per year.
 - Trial: seven days with 30 cloud minutes.
 - Pro cloud allowance: 600 minutes per month; users can continue with their own supported API key through BYOK after the quota.
-- Release status: licensing, cloud AI routing, and production Stripe billing are connected and pass integration checks. A code-signed standalone installer and a signed auto-update manifest are the remaining public-release gates; public checkout is intentionally closed until then.
+- Release status: YOMUVIA 0.6.1 Public Beta is available for Windows. The public installer, signed auto-update manifest, licensing API, cloud AI routing, and Stripe checkout links pass production checks. The standalone installer is not yet Windows Authenticode-signed, so Microsoft Defender SmartScreen may display a warning.
 - No search ranking or business outcome is guaranteed.
 
 ## Primary pages
 
-- Japanese home: https://kentamatsuoka.github.io/kagura-player-official-site/ja/
-- English home: https://kentamatsuoka.github.io/kagura-player-official-site/en/
-- Pricing (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/pricing/
-- Pricing (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/pricing/
-- AI subtitle video player (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/ai-subtitle-video-player/
-- AI subtitle video player (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/ai-subtitle-video-player/
-- Windows video clipper (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/windows-video-clipper/
-- Windows video clipper (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/windows-video-clipper/
-- Windows video joiner (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/windows-video-joiner/
-- Windows video joiner (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/windows-video-joiner/
-- Privacy (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/privacy/
-- Privacy (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/privacy/
-- Sales disclosure (JA): https://kentamatsuoka.github.io/kagura-player-official-site/ja/commercial-transactions/
-- Sales disclosure (EN): https://kentamatsuoka.github.io/kagura-player-official-site/en/sales-disclosure/
+- Japanese home: https://yomuvia.com/ja/
+- English home: https://yomuvia.com/en/
+- Download (JA): https://yomuvia.com/ja/download/
+- Download (EN): https://yomuvia.com/en/download/
+- Pricing (JA): https://yomuvia.com/ja/pricing/
+- Pricing (EN): https://yomuvia.com/en/pricing/
+- AI subtitle video player (JA): https://yomuvia.com/ja/ai-subtitle-video-player/
+- AI subtitle video player (EN): https://yomuvia.com/en/ai-subtitle-video-player/
+- Windows video clipper (JA): https://yomuvia.com/ja/windows-video-clipper/
+- Windows video clipper (EN): https://yomuvia.com/en/windows-video-clipper/
+- Windows video joiner (JA): https://yomuvia.com/ja/windows-video-joiner/
+- Windows video joiner (EN): https://yomuvia.com/en/windows-video-joiner/
+- Privacy (JA): https://yomuvia.com/ja/privacy/
+- Privacy (EN): https://yomuvia.com/en/privacy/
+- Sales disclosure (JA): https://yomuvia.com/ja/commercial-transactions/
+- Sales disclosure (EN): https://yomuvia.com/en/sales-disclosure/
 
 ## Accuracy notes
 
