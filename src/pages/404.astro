@@ -1,0 +1,31 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBase } from "@/data/site";
+---
+
+<BaseLayout
+  title="ページが見つかりません - YOMUVIA"
+  description="指定されたYOMUVIAのページは見つかりませんでした。"
+  canonicalPath="/404/"
+  noindex={true}
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">404 / NOT FOUND</p>
+      <h1>ページが<br />見つかりません。</h1>
+      <p class="lead">URLに余分な空白が入っていないか確認するか、公式サイトのトップへ戻ってください。</p>
+      <div class="hero-actions">
+        <a class="button primary" href={withBase("/ja/")}>YOMUVIAトップへ</a>
+        <a class="button secondary" href={withBase("/ja/download/")}>Windows版をダウンロード</a>
+      </div>
+    </div>
+  </header>
+  <script is:inline>
+    try {
+      const normalizedPath = decodeURIComponent(location.pathname).trim();
+      if (normalizedPath === "" || normalizedPath === "/") location.replace("/ja/");
+    } catch {
+      // Leave the useful 404 page visible when the URL cannot be decoded.
+    }
+  </script>
+</BaseLayout>

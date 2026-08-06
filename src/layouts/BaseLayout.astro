@@ -54,6 +54,9 @@ const structuredData = {
       inLanguage: lang,
       description,
       softwareVersion: site.version,
+      downloadUrl: site.downloadUrl || absoluteUrl(lang === "ja" ? "/ja/download/" : "/en/download/"),
+      softwareRequirements: "Windows 10 or Windows 11, 64-bit x64",
+      releaseNotes: absoluteUrl(lang === "ja" ? "/ja/changelog/" : "/en/changelog/"),
       featureList: lang === "ja"
         ? ["動画再生", "A-Bリピート", "A-B高速切り抜き", "お気に入りとフォルダ整理", "段階的AI字幕・自動翻訳", "字幕編集学習", "字幕付き切り抜き", "切り抜きライブラリ", "ドラッグ操作対応の動画結合"]
         : ["Video playback", "A-B repeat", "Quick A-B clipping", "Favorites and folders", "Progressive AI subtitles and translation", "Subtitle correction memory", "Clips with burned-in subtitles", "Clip library", "Drag-and-drop video joining"],
@@ -63,7 +66,7 @@ const structuredData = {
           name: "YOMUVIA Free",
           price: "0",
           priceCurrency: site.proCurrency,
-          availability: "https://schema.org/PreOrder",
+          availability: "https://schema.org/InStock",
           url: absoluteUrl(lang === "ja" ? "/ja/pricing/" : "/en/pricing/")
         },
         {

@@ -77,7 +77,7 @@ export const jaContentPages: ContentPage[] = [
     eyebrow: "Open source & licenses",
     headline: "つくる力へ、正しく敬意を払う。",
     lead: "YOMUVIAは複数のオープンソースソフトウェアを利用しています。配布物には適用されるライセンス文書と告知を同梱します。",
-    notice: { title: "公開配布ゲート", body: "内部テスター版のFFmpeg同梱は検証済みですが、一般公開版は対応ソース、ライセンス全文、入手先、最終確認が揃うまで配布しません。" },
+    notice: { title: "公開配布の確認", body: "0.6.1 Public Betaでは、FFmpegの対応ソース、ライセンス全文、入手先を配布物に同梱し、公開前の確認を完了しています。" },
     sections: [
       { title: "主な構成要素", bullets: ["LibVLCSharp / VideoLAN LibVLC", "FFmpeg / FFprobe", "Whisper.net / whisper.cpp", "CommunityToolkit.Mvvm", "Microsoft.Data.Sqlite", "Serilog"] },
       { title: "YOMUVIAのライセンス", paragraphs: ["アプリ本体の使用条件は利用規約および配布物のLICENSE.txtに従います。第三者コンポーネントには各権利者のライセンスが個別に適用されます。"] },
@@ -100,7 +100,7 @@ export const jaContentPages: ContentPage[] = [
   {
     slug: "commercial-transactions",
     title: "特定商取引法に基づく表記 - YOMUVIA",
-    description: "YOMUVIA Proの価格、試用、支払い、提供時期と、販売開始前に入力が必要な事業者情報を示す特定商取引法に基づく表記です。",
+    description: "YOMUVIA Proの価格、無料試用、支払い、提供時期、解約、返金、販売事業者情報を示す特定商取引法に基づく表記です。",
     eyebrow: "販売情報",
     headline: "特定商取引法に基づく表記",
     lead: "YOMUVIA Proの販売者、料金、無料試用、自動更新、提供時期、解約および返金条件を表示します。購入受付中は決済画面にも重要条件を再掲します。",
@@ -268,10 +268,10 @@ export const enContentPages: ContentPage[] = [
     eyebrow: "Open source & licenses",
     headline: "Respecting the tools that make YOMUVIA possible.",
     lead: "YOMUVIA uses open-source components. Applicable notices and license texts will ship with the public installer.",
-    notice: { title: "Public FFmpeg gate", body: "The internal tester bundle is verified, but public distribution remains blocked until the corresponding source, license text, source URL, and final review are complete." },
+    notice: { title: "Public distribution verified", body: "The 0.6.1 Public Beta bundle includes the corresponding FFmpeg source information, license text, and source URL, and has passed the pre-release distribution review." },
     sections: [
       { title: "Key components", bullets: ["LibVLCSharp and VideoLAN LibVLC", "FFmpeg and FFprobe", "Whisper.net and whisper.cpp", "CommunityToolkit.Mvvm", "Microsoft.Data.Sqlite", "Serilog"] },
-      { title: "Distribution", paragraphs: ["The public installer will include the applicable license files, third-party notices, and source retrieval information. Files shipped with the installer are the authoritative release notices."] },
+      { title: "Distribution", paragraphs: ["The public installer includes the applicable license files, third-party notices, and source retrieval information. Files shipped with the installer are the authoritative release notices."] },
     ],
   },
   {
