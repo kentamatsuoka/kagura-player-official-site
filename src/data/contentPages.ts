@@ -18,7 +18,7 @@ export const jaContentPages: ContentPage[] = [
       "AI字幕、字幕編集、高速切り抜き、切り抜きライブラリ、動画結合などYOMUVIAの機能一覧です。",
     eyebrow: "機能一覧",
     headline: "見る、わかる、残す。一本につなげる。",
-    lead: "YOMUVIAは、動画プレイヤーと切り抜き作業を一つの流れにまとめます。現在の0.6.1 Public Betaで利用できる機能を掲載しています。",
+    lead: "YOMUVIAは、長時間動画の再生、AI字幕、字幕修正、切り抜き、結合を一つの流れにまとめます。現在の0.6.2 Public Betaで利用できる機能を掲載しています。",
     sections: [
       {
         title: "見る",
@@ -201,7 +201,7 @@ export const jaContentPages: ContentPage[] = [
     lead: "YOMUVIAは複数のオープンソースソフトウェアを利用しています。配布物には適用されるライセンス文書と告知を同梱します。",
     notice: {
       title: "公開配布の確認",
-      body: "0.6.1 Public Betaでは、FFmpegの対応ソース、ライセンス全文、入手先を配布物に同梱し、公開前の確認を完了しています。",
+      body: "0.6.2 Public Betaでは、FFmpegの対応ソース、ライセンス全文、入手先を配布物に同梱し、公開前の確認を完了しています。",
     },
     sections: [
       {
@@ -233,10 +233,10 @@ export const jaContentPages: ContentPage[] = [
     slug: "system-requirements",
     title: "動作環境 - YOMUVIA",
     description:
-      "YOMUVIA 0.6.1 Public Betaの対応OS、必要容量、AI字幕のGPU要件と対応動画形式。",
+      "YOMUVIA 0.6.2 Public Betaの対応OS、必要容量、AI字幕のGPU要件と対応動画形式。",
     eyebrow: "動作環境",
     headline: "Windowsで、動画をもっと近くに。",
-    lead: "0.6.1 Public Betaの動作確認基準です。動画形式やAIモデルにより、必要容量と処理速度は変わります。",
+    lead: "0.6.2 Public Betaの動作確認基準です。動画形式やAIモデルにより、必要容量と処理速度は変わります。",
     sections: [
       {
         title: "基本環境",
@@ -486,7 +486,7 @@ export const enContentPages: ContentPage[] = [
       "Explore AI subtitles, correction memory, fast clipping, the clip library, and video joining in YOMUVIA.",
     eyebrow: "Feature overview",
     headline: "Watch it. Understand it. Keep it. Join it.",
-    lead: "YOMUVIA 0.6.1 Public Beta brings local playback and practical clipping into one Windows workflow.",
+    lead: "YOMUVIA 0.6.2 Public Beta connects long-video playback, AI subtitles, correction, clipping, and joining in one Windows workflow.",
     sections: [
       {
         title: "Watch",
@@ -739,7 +739,7 @@ export const enContentPages: ContentPage[] = [
     lead: "YOMUVIA uses open-source components. Applicable notices and license texts will ship with the public installer.",
     notice: {
       title: "Public distribution verified",
-      body: "The 0.6.1 Public Beta bundle includes the corresponding FFmpeg source information, license text, and source URL, and has passed the pre-release distribution review.",
+      body: "The 0.6.2 Public Beta bundle includes the corresponding FFmpeg source information, license text, and source URL, and has passed the pre-release distribution review.",
     },
     sections: [
       {
@@ -765,10 +765,10 @@ export const enContentPages: ContentPage[] = [
     slug: "system-requirements",
     title: "System Requirements - YOMUVIA",
     description:
-      "Windows, storage, network, and GPU requirements for YOMUVIA 0.6.1 Public Beta.",
+      "Windows, storage, network, and GPU requirements for YOMUVIA 0.6.2 Public Beta.",
     eyebrow: "System requirements",
     headline: "Built for Windows video workflows.",
-    lead: "These are the validation targets for 0.6.1 Public Beta. Storage and performance vary with video formats and AI models.",
+    lead: "These are the validation targets for 0.6.2 Public Beta. Storage and performance vary with video formats and AI models.",
     sections: [
       {
         title: "Base system",
@@ -799,8 +799,19 @@ export const enContentPages: ContentPage[] = [
     description: "Release history and current preview status for YOMUVIA.",
     eyebrow: "Changelog",
     headline: "What changed, and what is verified.",
-    lead: "YOMUVIA 0.6.1 Public Beta is now available for Windows.",
+    lead: "YOMUVIA 0.6.2 Public Beta is now available for Windows.",
     sections: [
+      {
+        title: "0.6.2 Public Beta",
+        bullets: [
+          "Faster clip-panel keyboard seeking and live scrub preview",
+          "More stable subtitles after seeking and fewer re-anchor interruptions",
+          "Subtitle size clamping for consistent display across video resolutions",
+          "Filtering for repeated transcription boilerplate and hallucinations",
+          "Cloudflare-hosted licensing and cloud AI control plane",
+          "Production billing notifications and clearer trial badges",
+        ],
+      },
       {
         title: "0.6.1 Public Beta",
         bullets: [
@@ -816,7 +827,7 @@ export const enContentPages: ContentPage[] = [
       {
         title: "Release status",
         paragraphs: [
-          "The application suite has 186 passing tests and the licensing server has 22, for 208 passing Release tests in total. FFmpeg distribution materials, production services, signed update metadata, and the install-launch-uninstall smoke test have been verified. The installer is not yet Windows code-signed, so SmartScreen may appear during the public beta.",
+          "The application suite has 190 passing tests and the licensing server has 22, for 212 passing Release tests in total. FFmpeg distribution materials, production services, signed update metadata, and the install-launch-uninstall smoke test have been verified. The installer is not yet Windows code-signed, so SmartScreen may appear during the public beta.",
         ],
       },
     ],
@@ -827,7 +838,7 @@ export const enContentPages: ContentPage[] = [
     description:
       "YOMUVIA Pro pricing, trial, billing, delivery, seller, cancellation, and refund terms.",
     eyebrow: "Sales disclosure",
-    headline: "Paid sales are not open yet.",
+    headline: "Clear pricing, trial, and cancellation terms.",
     lead: "The following disclosure explains the seller, pricing, trial, automatic renewal, delivery, cancellation, and refund terms for YOMUVIA Pro.",
     sections: [
       {

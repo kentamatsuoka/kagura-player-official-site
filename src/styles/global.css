@@ -2084,10 +2084,12 @@ body {
     padding: 0.5rem;
   }
   .hero-promise {
-    font-size: clamp(2.5rem, 12vw, 3.25rem);
+    font-size: 2.25rem;
+    line-height: 1.12;
   }
   .hero-promise span {
-    white-space: nowrap;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .hero-promise span:nth-child(3) {
     font-size: 0.78em;
@@ -2111,7 +2113,12 @@ body {
     display: grid;
   }
   .hero-actions .button {
+    box-sizing: border-box;
+    min-width: 0;
     width: 100%;
+    padding-inline: 0.75rem;
+    text-align: center;
+    white-space: normal;
   }
   .status-rail {
     display: grid;
