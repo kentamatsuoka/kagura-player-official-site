@@ -43,6 +43,7 @@ export const localizedRoutePairs = [
   ["/ja/purchase/success/", "/en/purchase/success/"],
   ["/ja/subscription/", "/en/subscription/"],
   ["/ja/about/", "/en/about/"],
+  ["/ja/beta/", "/en/beta/"],
   ["/ja/terms/", "/en/terms/"],
   ["/ja/privacy/", "/en/privacy/"],
   ["/ja/licenses/", "/en/licenses/"],
@@ -85,6 +86,7 @@ export const navEn = [
 
 export const footerJa = [
   { href: "/ja/download/", label: "ダウンロード" },
+  { href: "/ja/beta/", label: "外部ベータに参加" },
   { href: "/ja/about/", label: "YOMUVIAについて" },
   { href: "/ja/ai-subtitle-video-player/", label: "AI字幕動画プレイヤー" },
   { href: "/ja/windows-video-clipper/", label: "Windows動画切り抜き" },
@@ -99,6 +101,7 @@ export const footerJa = [
 
 export const footerEn = [
   { href: "/en/download/", label: "Download" },
+  { href: "/en/beta/", label: "Join the beta" },
   { href: "/en/about/", label: "About YOMUVIA" },
   { href: "/en/ai-subtitle-video-player/", label: "AI subtitle player" },
   { href: "/en/windows-video-clipper/", label: "Windows video clipper" },

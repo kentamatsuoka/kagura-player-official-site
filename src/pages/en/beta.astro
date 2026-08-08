@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site, withBase } from "@/data/site";
+
+const subject = encodeURIComponent("YOMUVIA public beta feedback");
+const body = encodeURIComponent(`Windows version:
+Features tested:
+What felt confusing:
+What worked well:
+Errors or bugs:
+Tested Pro activation and cancellation: yes / no
+
+Please do not attach video files, activation codes, or API keys.`);
+const feedbackUrl = `mailto:${site.supportEmail}?subject=${subject}&body=${body}`;
+const faqItems = [
+  { question: "Is the beta free?", answer: "Yes. YOMUVIA is free to download and Pro includes a seven-day trial. Review the checkout details before starting a subscription." },
+  { question: "Which videos can I test?", answer: "Use videos you have the right to use or public test media. You never need to send the video file to us." },
+  { question: "Are my videos uploaded?", answer: "Playback, clipping, and local transcription normally run on your PC. Cloud correction or translation sends only the data required by the external API." },
+];
+---
+
+<BaseLayout title="Join the public beta - YOMUVIA" description="Test YOMUVIA installation, AI subtitles, clipping, Pro activation and cancellation, then share direct feedback." lang="en" canonicalPath="/en/beta/" faqItems={faqItems}>
+  <header class="page-hero"><div class="container"><p class="eyebrow">PUBLIC BETA</p><h1>We are looking for<br />our first 10 testers.</h1><p class="lead">Can you use it without an explanation? Are subtitles fast enough? Does clipping feel obvious? Your first five minutes can reveal what the builder cannot see.</p><div class="hero-actions"><a class="button primary" href={withBase("/en/download/")}>Try it free</a><a class="button secondary" href={feedbackUrl}>Send feedback</a></div></div></header>
+
+  <section class="content-band"><div class="container content-grid"><h2>Suggested test</h2><div class="prose"><ol><li>Download and install YOMUVIA on Windows</li><li>Drop in a video and play it</li><li>Turn on AI subtitles and judge the wait and accuracy</li><li>Set A and B, then export a clip</li><li>If possible, check Pro activation and the cancellation screen</li></ol><p>You do not need to test everything. A short, honest first impression is useful.</p></div></div></section>
+
+  <section class="content-band alt"><div class="container content-grid"><h2>Five things to notice</h2><div class="prose"><ul><li>Any warning or confusion during installation</li><li>Whether opening the first video felt obvious</li><li>How long subtitles felt like they took</li><li>Whether clipping and joining controls made sense</li><li>Whether the Pro value and price felt clear</li></ul></div></div></section>
+
+  <section class="content-band"><div class="container content-grid"><h2>Test safely</h2><div class="prose"><p>You never need to send us your video. Do not include activation codes, API keys, or personal information in screenshots. The actions you took and the message you saw are usually enough to investigate a bug.</p><p><a class="button primary" href={feedbackUrl}>Send feedback with template</a> <a class="text-link" href={withBase("/en/help/")}>Read the guide first</a></p></div></div></section>
+</BaseLayout>

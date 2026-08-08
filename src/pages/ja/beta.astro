@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site, withBase } from "@/data/site";
+
+const subject = encodeURIComponent("YOMUVIA 外部ベータ感想");
+const body = encodeURIComponent(`使用したWindows：
+主に試した機能：
+迷ったところ：
+良かったところ：
+エラーや不具合：
+Pro開始・解約まで確認した：はい / いいえ
+
+※ 動画ファイルそのもの、認証番号、APIキーは添付しないでください。`);
+const feedbackUrl = `mailto:${site.supportEmail}?subject=${subject}&body=${body}`;
+const faqItems = [
+  { question: "ベータ参加は無料ですか？", answer: "はい。YOMUVIA本体は無料でダウンロードでき、Proは7日間試せます。課金前に表示内容を確認してください。" },
+  { question: "どんな動画で試せますか？", answer: "自分が利用権を持つ動画、または公開テスト素材でお試しください。動画ファイルを運営へ送る必要はありません。" },
+  { question: "個人の動画はアップロードされますか？", answer: "通常の再生、切り抜き、ローカル音声認識はPC内で処理します。クラウド補正や翻訳を使う場合だけ必要な字幕テキスト等が外部APIへ送信されます。" },
+];
+---
+
+<BaseLayout title="外部ベータに参加 - YOMUVIA" description="YOMUVIAを初めて使う方へ。インストール、AI字幕、切り抜き、Pro開始・解約を試し、率直な使用感を届ける外部ベータ案内。" canonicalPath="/ja/beta/" faqItems={faqItems}>
+  <header class="page-hero"><div class="container"><p class="eyebrow">PUBLIC BETA</p><h1>初めての10人を、<br />探しています。</h1><p class="lead">説明なしで使えるか。字幕は待てる速さか。切り抜きは本当に迷わないか。製作者では見つけられない違和感を、率直に教えてください。</p><div class="hero-actions"><a class="button primary" href={withBase("/ja/download/")}>無料で試す</a><a class="button secondary" href={feedbackUrl}>感想を送る</a></div></div></header>
+
+  <section class="content-band"><div class="container content-grid"><h2>試してほしい流れ</h2><div class="prose"><ol><li>YOMUVIAをダウンロードし、Windowsへインストールする</li><li>手元の動画をドラッグし、再生する</li><li>字幕ボタンを押し、表示速度と聞き取り精度を確認する</li><li>AとBで範囲を決め、切り抜きを保存する</li><li>可能ならPro体験の開始と、契約管理・解約画面まで確認する</li></ol><p>全部試す必要はありません。5分触った第一印象にも価値があります。</p></div></div></section>
+
+  <section class="content-band alt"><div class="container content-grid"><h2>見てほしい5項目</h2><div class="prose"><ul><li>インストールで警告や迷いがなかったか</li><li>最初の動画を開くまで直感的だったか</li><li>字幕が出るまでの待ち時間をどう感じたか</li><li>切り抜きと結合の言葉・ボタンが理解できたか</li><li>Proの価格と無料版の違いが納得できたか</li></ul></div></div></section>
+
+  <section class="content-band"><div class="container content-grid"><h2>安心して試すために</h2><div class="prose"><p>動画そのものを送る必要はありません。問い合わせ時は、認証番号、APIキー、個人情報が映るスクリーンショットを添付しないでください。不具合は「何を押したか」「何が表示されたか」だけでも調査できます。</p><p><a class="button primary" href={feedbackUrl}>テンプレートで感想を送る</a> <a class="text-link" href={withBase("/ja/help/")}>先に使い方を見る</a></p></div></div></section>
+</BaseLayout>
