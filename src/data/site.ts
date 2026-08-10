@@ -17,7 +17,7 @@ export const site = {
   version: "0.6.3 Public Beta",
   downloadUrl:
     import.meta.env.PUBLIC_DOWNLOAD_URL?.trim() ||
-    "https://api.yomuvia.com/download/windows/latest",
+    "https://download.yomuvia.com/download/windows/latest",
   checkoutUrl: import.meta.env.PUBLIC_CHECKOUT_URL?.trim() ?? "",
   monthlyCheckoutUrl:
     import.meta.env.PUBLIC_MONTHLY_CHECKOUT_URL?.trim() ||
