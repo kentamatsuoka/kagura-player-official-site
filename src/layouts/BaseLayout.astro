@@ -70,6 +70,10 @@ const structuredData = {
       applicationSubCategory: "Video player and video clipping software",
       operatingSystem: "Windows",
       inLanguage: lang,
+      isAccessibleForFree: true,
+      keywords: lang === "ja"
+        ? "動画 切り抜き, 切り抜き動画 作成, AI字幕, 動画字幕, 動画結合, Windows 動画編集"
+        : "video clipper, create video clips, AI subtitles, caption video, video joiner, Windows video editor",
       description,
       softwareVersion: site.version,
       downloadUrl: site.downloadUrl || absoluteUrl(lang === "ja" ? "/ja/download/" : "/en/download/"),
@@ -206,7 +210,7 @@ const structuredData = {
             <span>{site.name}</span>
           </a>
           <nav class="nav" aria-label={lang === "ja" ? "主要ナビゲーション" : "Main navigation"}>
-            {nav.map((item) => <a href={withBase(item.href)} aria-current={activeNavHref === item.href ? "page" : undefined}>{item.label}</a>)}
+            {nav.map((item) => <a class:list={[item.href.includes("/pricing/") && "nav-pricing-link"]} href={withBase(item.href)} aria-current={activeNavHref === item.href ? "page" : undefined}>{item.label}</a>)}
           </nav>
           <div class="header-actions">
             <a class="lang-link" href={withBase(opposite)} data-language-choice={lang === "ja" ? "en" : "ja"}>{oppositeLabel}</a>

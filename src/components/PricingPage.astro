@@ -1,0 +1,182 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site, withBase } from "@/data/site";
+
+interface Props {
+  lang?: "ja" | "en";
+}
+
+const { lang = "ja" } = Astro.props;
+const ja = lang === "ja";
+const monthlyTotal = Number(site.proPrice) * 12;
+const annualSaving = monthlyTotal - Number(site.proAnnualPrice);
+const annualMonthly = Math.round(Number(site.proAnnualPrice) / 12);
+const pricingPath = ja ? "/ja/pricing/" : "/en/pricing/";
+const downloadPath = ja ? "/ja/download/" : "/en/download/";
+const subscriptionPath = ja ? "/ja/subscription/" : "/en/subscription/";
+
+const faqs = ja ? [
+  { question: "YOMUVIAは無料で使えますか？", answer: "はい。Freeはずっと¥0です。動画再生、整理、A-Bリピート、高速切り抜き、ローカルAI字幕、字幕編集、切り抜き管理、対応動画の結合を利用できます。" },
+  { question: "7日間の無料体験で料金は発生しますか？", answer: "開始日の請求は¥0です。7日間の無料体験が終わる前に解約すれば、月額または年額料金は発生しません。無料体験終了後は、選んだプランで自動更新されます。" },
+  { question: "月額と年額の違いは何ですか？", answer: `使えるPro機能は同じです。月額は¥${Number(site.proPrice).toLocaleString("ja-JP")}、年額は¥${Number(site.proAnnualPrice).toLocaleString("ja-JP")}で、月額を12か月続けるより¥${annualSaving.toLocaleString("ja-JP")}お得です。` },
+  { question: "クラウド処理600分を使い切ったらどうなりますか？", answer: "追加料金が自動で発生することはありません。対応するご自身のAPIキーを設定するBYOKへ切り替えることで、引き続きクラウド補正・翻訳を利用できます。" },
+  { question: "解約はどこからできますか？", answer: "YOMUVIAの設定にあるPro画面から契約管理ページを開き、いつでも解約できます。解約後も現在の請求期間が終わるまではProを利用できます。" },
+  { question: "動画はクラウドへ送信されますか？", answer: "動画再生、音声抽出、Whisper音声認識はPC内で処理します。クラウド補正・翻訳を利用するときも、動画ファイル本体は送信しません。" },
+] : [
+  { question: "Can I use YOMUVIA for free?", answer: "Yes. Free stays at ¥0 and includes playback, organization, A-B repeat, quick clipping, local AI subtitles, subtitle editing, the clip library, and compatible-media joining." },
+  { question: "Will I be charged during the seven-day trial?", answer: "Your total on the start date is ¥0. Cancel before the trial ends and no monthly or annual subscription fee is charged. After the trial, the plan you selected renews automatically." },
+  { question: "What is the difference between monthly and annual Pro?", answer: `The Pro features are the same. Monthly is ¥${Number(site.proPrice).toLocaleString("en-US")}; annual is ¥${Number(site.proAnnualPrice).toLocaleString("en-US")} and saves ¥${annualSaving.toLocaleString("en-US")} compared with twelve monthly payments.` },
+  { question: "What happens after 600 cloud minutes?", answer: "There is no automatic overage charge. You can continue cloud correction and translation by connecting your own supported API key through BYOK." },
+  { question: "Where can I cancel?", answer: "Open subscription management from the Pro screen in YOMUVIA settings. You can cancel at any time and keep Pro until the current billing period ends." },
+  { question: "Is my video uploaded to the cloud?", answer: "Playback, audio extraction, and Whisper recognition run on your PC. Cloud correction and translation do not upload the video file itself." },
+];
+
+const comparison = ja ? [
+  ["動画再生・お気に入り・プレイリスト", true, true],
+  ["A-Bリピート・高速切り抜き", true, true],
+  ["ローカルAI字幕・字幕編集・修正記憶", true, true],
+  ["切り抜きライブラリ・対応動画の結合", true, true],
+  ["クラウド文脈補正・自動翻訳", "-", "月600分"],
+  ["字幕を焼き込んだ切り抜き", "-", true],
+  ["自分のAPIキーで継続（BYOK）", "-", true],
+] : [
+  ["Playback, favorites, and playlists", true, true],
+  ["A-B repeat and quick clipping", true, true],
+  ["Local AI subtitles, editing, and correction memory", true, true],
+  ["Clip library and compatible-media joining", true, true],
+  ["Cloud context correction and translation", "-", "600 min/month"],
+  ["Clips with burned-in subtitles", "-", true],
+  ["Continue with your own API key (BYOK)", "-", true],
+];
+
+const renderValue = (value: string | boolean) => value === true ? "✓" : value;
+---
+
+<BaseLayout
+  title={ja ? "YOMUVIAの料金｜無料版とPro版の機能・価格を比較" : "YOMUVIA Pricing | Compare Free and Pro"}
+  description={ja ? "YOMUVIAは無料で動画切り抜き・ローカルAI字幕・動画結合が使えます。Proは7日間無料、月額1,480円または年額14,800円。機能、クラウド処理枠、解約条件をわかりやすく比較できます。" : "Compare YOMUVIA Free and Pro for video clipping, local AI subtitles, translation, and joining. Pro starts with a seven-day free trial and costs ¥1,480 monthly or ¥14,800 annually."}
+  canonicalPath={pricingPath}
+  lang={lang}
+  breadcrumbTitle={ja ? "料金プラン" : "Pricing"}
+  faqItems={faqs}
+>
+  <header class="pricing-hero">
+    <canvas class="signal-canvas" data-signal-field aria-hidden="true"></canvas>
+    <div class="container pricing-hero-inner">
+      <p class="eyebrow">{ja ? "YOMUVIA FREE / PRO" : "YOMUVIA FREE / PRO"}</p>
+      <h1>{ja ? "無料で始める。\n必要になったら、Proへ。" : "Start free.\nGo Pro when you need more."}</h1>
+      <p class="lead">{ja ? "動画の再生・AI字幕・切り抜き・結合は無料。字幕付き動画の作成とクラウド翻訳まで使うならPro。" : "Playback, local AI subtitles, clipping, and joining are free. Go Pro for captioned exports and cloud translation."}</p>
+      <div class="pricing-hero-actions">
+        <a class="button primary" href="#plans">{ja ? "プランを選ぶ" : "Choose a plan"}</a>
+        <a class="button secondary" href={withBase(downloadPath)}>{ja ? "まず無料で使う" : "Start with Free"}</a>
+      </div>
+      <div class="trial-facts" aria-label={ja ? "無料体験の条件" : "Trial terms"}>
+        <span><strong>{site.trialDays}{ja ? "日間" : " days"}</strong>{ja ? "無料体験" : "free trial"}</span>
+        <span><strong>¥0</strong>{ja ? "本日の請求" : "due today"}</span>
+        <span><strong>{ja ? "いつでも" : "Any time"}</strong>{ja ? "オンラインで解約" : "online cancellation"}</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="pricing-main" id="plans">
+    <section class="pricing-plans content-band">
+      <div class="container">
+        <div class="pricing-intro">
+          <div><p class="section-kicker">{ja ? "プランを選ぶ" : "CHOOSE A PLAN"}</p><h2>{ja ? "まず試すならFree。\n制作まで進めるならPro。" : "Free to explore.\nPro to create."}</h2></div>
+          <p>{ja ? "どのプランでも、手元の動画をPC内で再生・整理・切り抜きできます。Proは字幕と翻訳を完成動画へ持ち出すためのプランです。" : "Every plan lets you play, organize, and clip local videos on your PC. Pro turns subtitles and translation into finished video output."}</p>
+        </div>
+
+        <div class="pricing-card-grid">
+          <article class="pricing-card free-plan">
+            <div class="plan-heading"><p class="plan-name">FREE</p><span>{ja ? "ずっと無料" : "Always free"}</span></div>
+            <p class="plan-purpose">{ja ? "見る。整理する。すぐ切り抜く。" : "Watch. Organize. Clip."}</p>
+            <div class="price-lockup"><strong>¥0</strong><small>{ja ? "クレジットカード不要" : "No card required"}</small></div>
+            <ul class="plan-feature-list">
+              <li>{ja ? "高速なA-B動画切り抜き" : "Quick A-B video clipping"}</li>
+              <li>{ja ? "ローカルAI字幕と字幕編集" : "Local AI subtitles and editing"}</li>
+              <li>{ja ? "切り抜き管理と動画結合" : "Clip library and video joining"}</li>
+            </ul>
+            <a class="button secondary plan-button" href={withBase(downloadPath)}>{ja ? "無料でダウンロード" : "Download Free"}</a>
+          </article>
+
+          <article class="pricing-card pro-plan">
+            <div class="recommended-ribbon">{ja ? "いちばん選びやすい" : "BEST VALUE"}</div>
+            <div class="plan-heading"><p class="plan-name">PRO 年額</p><span>{ja ? `月あたり約¥${annualMonthly.toLocaleString("ja-JP")}` : `About ¥${annualMonthly.toLocaleString("en-US")}/month`}</span></div>
+            <p class="plan-purpose">{ja ? "字幕と翻訳を、完成動画にする。" : "Turn subtitles into finished video."}</p>
+            <div class="price-lockup"><strong>¥{Number(site.proAnnualPrice).toLocaleString(ja ? "ja-JP" : "en-US")}</strong><small>{ja ? `年額・¥${annualSaving.toLocaleString("ja-JP")}お得` : `per year · save ¥${annualSaving.toLocaleString("en-US")}`}</small></div>
+            <ul class="plan-feature-list">
+              <li>{ja ? "字幕を焼き込んだ切り抜き作成" : "Export clips with burned-in subtitles"}</li>
+              <li>{ja ? "クラウド文脈補正・自動翻訳" : "Cloud context correction and translation"}</li>
+              <li>{ja ? "毎月600分・超過課金なし" : "600 minutes monthly, no overage billing"}</li>
+            </ul>
+            {site.annualCheckoutUrl ? <a class="button primary plan-button" href={site.annualCheckoutUrl}>{ja ? "7日間無料で年額Proを試す" : "Try annual Pro free for 7 days"}</a> : <a class="button primary plan-button" href={site.supportUrl}>{ja ? "販売開始のお知らせを受け取る" : "Get a sales notice"}</a>}
+            <p class="checkout-note">{ja ? "今日は¥0。無料体験後に年額¥14,800で自動更新。終了前に解約できます。" : "¥0 today. Renews at ¥14,800/year after the trial unless canceled beforehand."}</p>
+          </article>
+
+          <article class="pricing-card monthly-plan">
+            <div class="plan-heading"><p class="plan-name">PRO 月額</p><span>{ja ? "短く試したい人へ" : "More flexibility"}</span></div>
+            <p class="plan-purpose">{ja ? "同じPro機能を、月ごとに。" : "The same Pro features, monthly."}</p>
+            <div class="price-lockup"><strong>¥{Number(site.proPrice).toLocaleString(ja ? "ja-JP" : "en-US")}</strong><small>{ja ? "月額" : "per month"}</small></div>
+            <ul class="plan-feature-list">
+              <li>{ja ? "年額Proと同じ全Pro機能" : "Every feature in annual Pro"}</li>
+              <li>{ja ? "毎月600分のクラウド処理" : "600 cloud minutes monthly"}</li>
+              <li>{ja ? "オンラインでいつでも解約" : "Cancel online any time"}</li>
+            </ul>
+            {site.monthlyCheckoutUrl ? <a class="button secondary plan-button" href={site.monthlyCheckoutUrl}>{ja ? "7日間無料で月額Proを試す" : "Try monthly Pro free for 7 days"}</a> : <a class="button secondary plan-button" href={site.supportUrl}>{ja ? "販売開始のお知らせを受け取る" : "Get a sales notice"}</a>}
+            <p class="checkout-note">{ja ? "今日は¥0。無料体験後に月額¥1,480で自動更新。終了前に解約できます。" : "¥0 today. Renews at ¥1,480/month after the trial unless canceled beforehand."}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-band pricing-comparison">
+      <div class="container">
+        <div class="pricing-section-head"><p class="section-kicker">{ja ? "機能比較" : "COMPARE"}</p><h2>{ja ? "無料でできること。\nProで広がること。" : "What stays free.\nWhat Pro adds."}</h2><p>{ja ? "隠れた従量課金はありません。Proのクラウド枠を使い切っても、自動で追加請求されることはありません。" : "There are no hidden usage charges. Reaching the Pro cloud quota never triggers an automatic overage bill."}</p></div>
+        <div class="comparison-table" role="table" aria-label={ja ? "FreeとProの機能比較" : "Free and Pro feature comparison"}>
+          <div class="comparison-row comparison-head" role="row"><span role="columnheader">{ja ? "機能" : "Feature"}</span><strong role="columnheader">Free</strong><strong role="columnheader">Pro</strong></div>
+          {comparison.map(([label, free, pro]) => <div class="comparison-row" role="row"><span role="cell">{label}</span><strong class:list={[free === true && "included"]} role="cell">{renderValue(free)}</strong><strong class:list={[pro === true && "included"]} role="cell">{renderValue(pro)}</strong></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="content-band trial-journey">
+      <div class="container trial-layout">
+        <div class="trial-copy"><p class="section-kicker">{ja ? "7日間の無料体験" : "7-DAY FREE TRIAL"}</p><h2>{ja ? "使ってから、決められる。" : "Use it before you decide."}</h2><p>{ja ? "Proの価値は、実際の動画で試すのがいちばん早い。開始、確認、継続または解約まで、すべて明確です。" : "The fastest way to judge Pro is with your own videos. Starting, evaluating, continuing, and canceling are all clear."}</p><a class="text-link" href={withBase(subscriptionPath)}>{ja ? "有効化・契約管理・解約の手順を見る" : "See activation, management, and cancellation steps"}</a></div>
+        <ol class="trial-steps">
+          <li><span>01</span><div><strong>{ja ? "今日" : "Today"}</strong><p>{ja ? "請求¥0でProを開始。クラウド処理30分を試せます。" : "Start Pro for ¥0 and try 30 cloud minutes."}</p></div></li>
+          <li><span>02</span><div><strong>{ja ? "7日間" : "For 7 days"}</strong><p>{ja ? "字幕付き切り抜き、文脈補正、翻訳を実際の動画で確認。" : "Test captioned exports, context correction, and translation."}</p></div></li>
+          <li><span>03</span><div><strong>{ja ? "続ける・解約する" : "Keep or cancel"}</strong><p>{ja ? "継続なら選んだ周期で更新。不要なら終了前にオンラインで解約。" : "Continue on your selected cycle, or cancel online before the trial ends."}</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="content-band pricing-product-proof">
+      <div class="container product-proof-layout">
+        <div class="product-proof-copy">
+          <p class="section-kicker">{ja ? "購入後の流れ" : "AFTER CHECKOUT"}</p>
+          <h2>{ja ? "コードを貼るだけで、\nProが始まる。" : "Paste one code.\nPro is ready."}</h2>
+          <p>{ja ? "決済完了画面に表示される購入完了コードを、YOMUVIAの「設定 → Pro」へ貼り付けます。ライセンスが確認されると、その場でPro機能が有効になります。" : "Paste the checkout completion code into Settings → Pro in YOMUVIA. Once the license is verified, Pro features become available immediately."}</p>
+          <a class="text-link" href={withBase(subscriptionPath)}>{ja ? "画像付きの詳しい手順を見る" : "See the illustrated instructions"}</a>
+        </div>
+        <figure class="product-proof-figure">
+          <img src={withBase("/media/real-app/pro-activation.png")} width="1360" height="720" loading="lazy" alt={ja ? "YOMUVIAの設定にあるPro有効化画面" : "The Pro activation screen in YOMUVIA settings"} />
+          <figcaption>{ja ? "YOMUVIA 0.6.3 Public Beta / 設定 → Pro" : "YOMUVIA 0.6.3 Public Beta / Settings → Pro"}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="content-band privacy-proof">
+      <div class="container proof-grid">
+        <article><span>LOCAL</span><h3>{ja ? "動画処理はPC中心" : "Video stays local"}</h3><p>{ja ? "再生、音声抽出、Whisper認識はPC内で処理。動画本体をクラウドへ送信しません。" : "Playback, audio extraction, and Whisper recognition run on your PC. The video file itself is not uploaded."}</p></article>
+        <article><span>CONTROL</span><h3>{ja ? "超過課金なし" : "No overage billing"}</h3><p>{ja ? "月600分を超えても自動追加請求なし。必要ならBYOKで続けられます。" : "Going beyond 600 minutes creates no automatic charge. Continue with BYOK when needed."}</p></article>
+        <article><span>FREEDOM</span><h3>{ja ? "オンラインで解約" : "Cancel online"}</h3><p>{ja ? "問い合わせを待たず、契約管理ページから自分で解約できます。" : "Cancel directly from subscription management without waiting for support."}</p></article>
+      </div>
+    </section>
+
+    <section class="section faq pricing-faq"><div class="container faq-layout"><div><p class="section-kicker">FAQ</p><h2>{ja ? "料金の疑問を、\n購入前に解決。" : "Know before you buy."}</h2></div><div class="faq-list">{faqs.map((item, index) => <details open={index === 0}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></div></section>
+
+    <section class="pricing-final"><div class="container pricing-final-inner"><img src={withBase("/media/generated/kagura-player-icon-512.png")} width="112" height="112" alt="" /><div><p class="section-kicker">YOMUVIA PRO</p><h2>{ja ? "字幕付きの切り抜きを、\n一本目から。" : "Create your first captioned clip."}</h2><p>{ja ? "7日間は無料。今日の請求は¥0です。" : "Free for seven days. Your total today is ¥0."}</p></div>{site.annualCheckoutUrl ? <a class="button primary" href={site.annualCheckoutUrl}>{ja ? "年額Proを無料で試す" : "Try annual Pro free"}</a> : <a class="button primary" href={site.supportUrl}>{ja ? "販売開始のお知らせ" : "Get a sales notice"}</a>}</div></section>
+  </div>
+
+  <div class="pricing-mobile-cta"><div><strong>{ja ? "Proを7日間無料で" : "Try Pro free for 7 days"}</strong><small>{ja ? "今日の請求 ¥0" : "¥0 due today"}</small></div>{site.annualCheckoutUrl ? <a class="button primary" href={site.annualCheckoutUrl}>{ja ? "試してみる" : "Start trial"}</a> : <a class="button primary" href={site.supportUrl}>{ja ? "お知らせ" : "Notify me"}</a>}</div>
+</BaseLayout>

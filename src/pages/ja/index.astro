@@ -14,8 +14,8 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="YOMUVIA - 長時間配信から字幕付き切り抜きを作るWindowsアプリ"
-  description="長時間の配信や動画を再生しながら場面を選び、AI字幕を修正して切り抜き、複数クリップを一本に結合。YOMUVIAは字幕付き切り抜き制作をひとつにつなぐWindowsアプリです。"
+  title="YOMUVIA｜動画切り抜き・AI字幕・動画結合ができるWindowsアプリ"
+  description="YOMUVIAは、動画を見ながらA-B指定で切り抜き、AI字幕を付け、複数クリップを一本に結合できるWindows動画作成アプリです。無料版あり。"
   canonicalPath="/ja/"
   faqItems={faqs}
 >
@@ -26,16 +26,16 @@ const faqs = [
     </div>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">長時間配信の字幕付き切り抜き / Windows</p>
-        <h1>YOMUVIA</h1>
+        <p class="eyebrow">YOMUVIA / Windows動画作成アプリ</p>
+        <h1>動画を見ながら、<br />切り抜き動画を作る。</h1>
         <p class="hero-emotional">ずっと探してた。が、ここにある。</p>
-        <p class="hero-promise"><span>長時間の配信から、字幕付き切り抜きを。</span><span>再生から結合まで、ひとつのアプリで。</span></p>
+        <p class="hero-promise"><span>AI字幕を付けて、すぐ切り抜く。</span><span>複数の場面は、そのまま一本に。</span></p>
         <p class="lead">
-          再生しながら場面を選び、AI字幕を修正し、字幕付きで切り抜く。複数の場面は並べ替えて、そのまま一本の動画にできます。
+          動画再生、AI字幕、A-B切り抜き、動画結合までひとつに。重い編集ソフトを開かず、残したい場面をすばやく動画にできます。
         </p>
         <div class="hero-actions">
           <a class="button primary" href={withBase("/ja/download/")}>無料で最初の切り抜きを作る</a>
-          <a class="button secondary" href="#experience">作業の流れを見る</a>
+          <a class="button secondary" href={withBase("/ja/pricing/")}>料金・Proを見る</a>
         </div>
         <div class="status-rail" aria-label="機能の開発状況">
           <span><b class="status-dot available"></b>高速切り抜き 利用可能</span>
@@ -46,6 +46,15 @@ const faqs = [
       <HeroDemo />
     </div>
     <a class="scroll-cue" href="#experience" aria-label="次のセクションへ">SCROLL <span></span></a>
+  </section>
+
+  <section class="home-pricing-bridge">
+    <div class="container home-pricing-inner">
+      <div><p class="section-kicker">FREE / PRO</p><h2>切り抜きは無料。<br />字幕付き動画の作成はPro。</h2></div>
+      <div class="home-price-fact"><strong>¥0</strong><span>Freeはずっと無料</span></div>
+      <div class="home-price-fact pro"><strong>7日間</strong><span>Proを無料で体験</span></div>
+      <a class="button primary" href={withBase("/ja/pricing/")}>機能と料金を比較する</a>
+    </div>
   </section>
 
   <section class="section journey" id="experience">

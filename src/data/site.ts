@@ -74,7 +74,7 @@ export const navJa = [
   { href: "/ja/features/", label: "機能" },
   { href: "/ja/features/ai-subtitles/", label: "AI字幕" },
   { href: "/ja/features/merge-editor/", label: "切り抜き・結合" },
-  { href: "/ja/pricing/", label: "料金" },
+  { href: "/ja/pricing/", label: "料金・Pro" },
   { href: "/ja/help/", label: "使い方" },
 ];
 
@@ -82,7 +82,7 @@ export const navEn = [
   { href: "/en/features/", label: "Features" },
   { href: "/en/features/ai-subtitles/", label: "AI Subtitles" },
   { href: "/en/features/merge-editor/", label: "Clip & Join" },
-  { href: "/en/pricing/", label: "Pricing" },
+  { href: "/en/pricing/", label: "Pricing & Pro" },
   { href: "/en/help/", label: "Help" },
 ];
 

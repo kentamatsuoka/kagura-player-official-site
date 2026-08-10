@@ -13,8 +13,8 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="YOMUVIA - Turn long videos into corrected, captioned clips"
-  description="Play long videos, find the moment, correct AI subtitles, export captioned clips, and join them without switching apps. YOMUVIA is a Windows workflow for stream and long-form clipping."
+  title="YOMUVIA | Video Clipper, AI Subtitles, and Video Joiner for Windows"
+  description="YOMUVIA is a Windows video creation app for A-B clipping while you watch, adding AI subtitles, and joining multiple clips into one video. A free plan is available."
   canonicalPath="/en/"
   lang="en"
   faqItems={faqs}
@@ -24,13 +24,13 @@ const faqs = [
     <div class="motion-field" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Captioned clips from long videos / Windows</p>
-        <h1>YOMUVIA</h1>
-        <p class="hero-promise"><span>Turn long videos into corrected, captioned clips.</span><span>Without leaving the player.</span></p>
-        <p class="lead">Find moments while watching, correct AI subtitles, export captioned clips, and arrange them into one video in the same Windows app.</p>
+        <p class="eyebrow">YOMUVIA / VIDEO CREATION FOR WINDOWS</p>
+        <h1>Watch the video.<br />Make the clip.</h1>
+        <p class="hero-promise"><span>Add AI subtitles and clip instantly.</span><span>Join every moment into one video.</span></p>
+        <p class="lead">Video playback, AI subtitles, A-B clipping, and joining in one Windows app. Turn moments into video without opening a heavy editor.</p>
         <div class="hero-actions">
           <a class="button primary" href={withBase("/en/download/")}>Create your first clip free</a>
-          <a class="button secondary" href="#experience">See the workflow</a>
+          <a class="button secondary" href={withBase("/en/pricing/")}>See Pricing & Pro</a>
         </div>
         <div class="status-rail" aria-label="Feature status">
           <span><b class="status-dot available"></b>Quick clipping available</span>
@@ -39,6 +39,15 @@ const faqs = [
         </div>
       </div>
       <HeroDemo lang="en" />
+    </div>
+  </section>
+
+  <section class="home-pricing-bridge">
+    <div class="container home-pricing-inner">
+      <div><p class="section-kicker">FREE / PRO</p><h2>Clip for free.<br />Create captioned video with Pro.</h2></div>
+      <div class="home-price-fact"><strong>¥0</strong><span>Free stays free</span></div>
+      <div class="home-price-fact pro"><strong>7 days</strong><span>Try Pro free</span></div>
+      <a class="button primary" href={withBase("/en/pricing/")}>Compare features and pricing</a>
     </div>
   </section>
 
