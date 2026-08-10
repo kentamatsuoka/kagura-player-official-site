@@ -1159,12 +1159,24 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html:not([data-motion="on"]) *,
-  html:not([data-motion="on"]) *::before,
-  html:not([data-motion="on"]) *::after {
+  html[data-motion="reduced"] {
     scroll-behavior: auto !important;
-    transition: none !important;
-    animation: none !important;
+  }
+
+  html[data-motion="reduced"] .reveal-ready {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html[data-motion="reduced"] .signal-canvas {
+    opacity: 0.42;
+  }
+
+  html[data-motion="reduced"] .motion-field::before,
+  html[data-motion="reduced"] .motion-field::after,
+  html[data-motion="reduced"] .motion-field span {
+    animation-duration: 24s !important;
   }
 }
 
@@ -2338,22 +2350,6 @@ body {
   }
   .legal-table td {
     padding-top: 0.2rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html:not([data-motion="on"]) *,
-  html:not([data-motion="on"]) *::before,
-  html:not([data-motion="on"]) *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .reveal-ready {
-    opacity: 1;
-    transform: none;
   }
 }
 

@@ -30,6 +30,9 @@ const canonical = absoluteUrl(canonicalPath);
 const alternateJa = routePair ? absoluteUrl(routePair.ja) : undefined;
 const alternateEn = routePair ? absoluteUrl(routePair.en) : undefined;
 const isHome = canonicalPath === "/ja/" || canonicalPath === "/en/";
+const isDownloadPage = canonicalPath === "/ja/download/" || canonicalPath === "/en/download/";
+const localizedDownloadPath = withBase(lang === "ja" ? "/ja/download/" : "/en/download/");
+const headerDownloadHref = isDownloadPage && site.downloadUrl ? site.downloadUrl : localizedDownloadPath;
 const publicSalesOpen = Boolean(site.monthlyCheckoutUrl || site.annualCheckoutUrl);
 const resolvedBreadcrumbTitle = breadcrumbTitle ?? title.replace(/\s+-\s+YOMUVIA$/, "");
 const activeNavHref = nav
@@ -207,7 +210,7 @@ const structuredData = {
           </nav>
           <div class="header-actions">
             <a class="lang-link" href={withBase(opposite)} data-language-choice={lang === "ja" ? "en" : "ja"}>{oppositeLabel}</a>
-            <a class="button primary" href={withBase(lang === "ja" ? "/ja/download/" : "/en/download/")}>
+            <a class="button primary" href={headerDownloadHref}>
               {lang === "ja" ? "無料ダウンロード" : "Free download"}
             </a>
           </div>
@@ -257,7 +260,9 @@ const structuredData = {
         // Japanese remains the fallback when browser language storage is unavailable.
       }
 
-      const motionEnabled = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const motionMode = document.documentElement.dataset.motion ?? "on";
+      const reducedMotion = motionMode === "reduced";
+      const motionEnabled = motionMode !== "off";
       const updateProgress = () => {
         const travel = document.documentElement.scrollHeight - window.innerHeight;
         const ratio = travel > 0 ? window.scrollY / travel : 0;
@@ -283,15 +288,18 @@ const structuredData = {
         if (canvas instanceof HTMLCanvasElement) {
           const context = canvas.getContext("2d");
           const compact = window.innerWidth < 600;
-          const points = Array.from({ length: compact ? 24 : 52 }, (_, index) => ({
+          const pointCount = reducedMotion ? (compact ? 12 : 22) : (compact ? 24 : 52);
+          const speedScale = reducedMotion ? 0.35 : 1;
+          const points = Array.from({ length: pointCount }, (_, index) => ({
             x: Math.random(), y: Math.random(),
-            vx: (Math.random() - 0.5) * 0.0002,
-            vy: (Math.random() - 0.5) * 0.00015,
+            vx: (Math.random() - 0.5) * 0.0002 * speedScale,
+            vy: (Math.random() - 0.5) * 0.00015 * speedScale,
             phase: index * 0.71
           }));
-          const streaks = Array.from({ length: compact ? 2 : 5 }, (_, index) => ({
-            offset: index / (compact ? 2 : 5),
-            speed: 0.000055 + index * 0.000008,
+          const streakCount = reducedMotion ? 2 : (compact ? 2 : 5);
+          const streaks = Array.from({ length: streakCount }, (_, index) => ({
+            offset: index / streakCount,
+            speed: (0.000055 + index * 0.000008) * speedScale,
             y: 0.12 + Math.random() * 0.7
           }));
           const resizeCanvas = () => {
@@ -301,8 +309,14 @@ const structuredData = {
             canvas.height = Math.floor(canvas.clientHeight * ratio);
             context.setTransform(ratio, 0, 0, ratio, 0, 0);
           };
+          let lastFrame = 0;
           const drawField = (time) => {
             if (!context) return;
+            if (reducedMotion && time - lastFrame < 66) {
+              requestAnimationFrame(drawField);
+              return;
+            }
+            lastFrame = time;
             const width = canvas.clientWidth;
             const height = canvas.clientHeight;
             context.clearRect(0, 0, width, height);
