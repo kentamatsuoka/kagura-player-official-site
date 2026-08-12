@@ -17,14 +17,14 @@ const subscriptionPath = ja ? "/ja/subscription/" : "/en/subscription/";
 
 const faqs = ja ? [
   { question: "YOMUVIAは無料で使えますか？", answer: "はい。Freeはずっと¥0です。動画再生、整理、A-Bリピート、高速切り抜き、ローカルAI字幕、字幕編集、切り抜き管理、対応動画の結合を利用できます。" },
-  { question: "7日間の無料体験で料金は発生しますか？", answer: "開始日の請求は¥0です。7日間の無料体験が終わる前に解約すれば、月額または年額料金は発生しません。無料体験終了後は、選んだプランで自動更新されます。" },
+  { question: "7日間の無料体験で料金は発生しますか？", answer: "開始日の請求は¥0ですが、開始にはカード登録が必要です。7日間の無料体験が終わる前に解約すれば、月額または年額料金は発生しません。無料体験終了後は、選んだプランで自動更新されます。" },
   { question: "月額と年額の違いは何ですか？", answer: `使えるPro機能は同じです。月額は¥${Number(site.proPrice).toLocaleString("ja-JP")}、年額は¥${Number(site.proAnnualPrice).toLocaleString("ja-JP")}で、月額を12か月続けるより¥${annualSaving.toLocaleString("ja-JP")}お得です。` },
   { question: "クラウド処理600分を使い切ったらどうなりますか？", answer: "追加料金が自動で発生することはありません。対応するご自身のAPIキーを設定するBYOKへ切り替えることで、引き続きクラウド補正・翻訳を利用できます。" },
   { question: "解約はどこからできますか？", answer: "YOMUVIAの設定にあるPro画面から契約管理ページを開き、いつでも解約できます。解約後も現在の請求期間が終わるまではProを利用できます。" },
   { question: "動画はクラウドへ送信されますか？", answer: "動画再生、音声抽出、Whisper音声認識はPC内で処理します。クラウド補正・翻訳を利用するときも、動画ファイル本体は送信しません。" },
 ] : [
   { question: "Can I use YOMUVIA for free?", answer: "Yes. Free stays at ¥0 and includes playback, organization, A-B repeat, quick clipping, local AI subtitles, subtitle editing, the clip library, and compatible-media joining." },
-  { question: "Will I be charged during the seven-day trial?", answer: "Your total on the start date is ¥0. Cancel before the trial ends and no monthly or annual subscription fee is charged. After the trial, the plan you selected renews automatically." },
+  { question: "Will I be charged during the seven-day trial?", answer: "A payment card is required to start the trial, but your total on the start date is ¥0. Cancel before the trial ends and no monthly or annual subscription fee is charged. After the trial, the plan you selected renews automatically." },
   { question: "What is the difference between monthly and annual Pro?", answer: `The Pro features are the same. Monthly is ¥${Number(site.proPrice).toLocaleString("en-US")}; annual is ¥${Number(site.proAnnualPrice).toLocaleString("en-US")} and saves ¥${annualSaving.toLocaleString("en-US")} compared with twelve monthly payments.` },
   { question: "What happens after 600 cloud minutes?", answer: "There is no automatic overage charge. You can continue cloud correction and translation by connecting your own supported API key through BYOK." },
   { question: "Where can I cancel?", answer: "Open subscription management from the Pro screen in YOMUVIA settings. You can cancel at any time and keep Pro until the current billing period ends." },
@@ -70,6 +70,7 @@ const renderValue = (value: string | boolean) => value === true ? "✓" : value;
         <a class="button primary" href="#plans">{ja ? "プランを選ぶ" : "Choose a plan"}</a>
         <a class="button secondary" href={withBase(downloadPath)}>{ja ? "まず無料で使う" : "Start with Free"}</a>
       </div>
+      <p class="trial-disclosure">{ja ? "無料体験の開始にはカード登録が必要です。7日後に選択したプランで自動更新されます。" : "A payment card is required. Your selected plan renews automatically after seven days unless canceled."}</p>
       <div class="trial-facts" aria-label={ja ? "無料体験の条件" : "Trial terms"}>
         <span><strong>{site.trialDays}{ja ? "日間" : " days"}</strong>{ja ? "無料体験" : "free trial"}</span>
         <span><strong>¥0</strong>{ja ? "本日の請求" : "due today"}</span>
@@ -126,6 +127,7 @@ const renderValue = (value: string | boolean) => value === true ? "✓" : value;
             <p class="checkout-note">{ja ? "今日は¥0。無料体験後に月額¥1,480で自動更新。終了前に解約できます。" : "¥0 today. Renews at ¥1,480/month after the trial unless canceled beforehand."}</p>
           </article>
         </div>
+        <p class="pricing-legal">{ja ? "Pro無料体験の開始にはカード登録が必要です。課金後の料金は原則返金されません。法令上必要な場合、重複請求、または当方の責めに帰すべき重大な障害により合理的な期間内にサービスを提供できない場合は、返金または利用期間の調整を行うことがあります。" : "A payment card is required for the Pro trial. Charges are generally non-refundable. Where required by law, for duplicate charges, or when a material service failure attributable to us prevents delivery within a reasonable period, we may issue a refund or adjust the service period."} <a href={withBase(ja ? "/ja/terms/" : "/en/terms/")}>{ja ? "利用規約" : "Terms"}</a> · <a href={withBase(ja ? "/ja/privacy/" : "/en/privacy/")}>{ja ? "プライバシー" : "Privacy"}</a> · <a href={withBase(ja ? "/ja/commercial-transactions/" : "/en/sales-disclosure/")}>{ja ? "特商法表記" : "Sales disclosure"}</a></p>
       </div>
     </section>
 
@@ -169,7 +171,7 @@ const renderValue = (value: string | boolean) => value === true ? "✓" : value;
       <div class="container proof-grid">
         <article><span>LOCAL</span><h3>{ja ? "動画処理はPC中心" : "Video stays local"}</h3><p>{ja ? "再生、音声抽出、Whisper認識はPC内で処理。動画本体をクラウドへ送信しません。" : "Playback, audio extraction, and Whisper recognition run on your PC. The video file itself is not uploaded."}</p></article>
         <article><span>CONTROL</span><h3>{ja ? "超過課金なし" : "No overage billing"}</h3><p>{ja ? "月600分を超えても自動追加請求なし。必要ならBYOKで続けられます。" : "Going beyond 600 minutes creates no automatic charge. Continue with BYOK when needed."}</p></article>
-        <article><span>FREEDOM</span><h3>{ja ? "オンラインで解約" : "Cancel online"}</h3><p>{ja ? "問い合わせを待たず、契約管理ページから自分で解約できます。" : "Cancel directly from subscription management without waiting for support."}</p></article>
+        <article><span>FREEDOM</span><h3>{ja ? "アプリからオンライン解約" : "Cancel online from the app"}</h3><p>{ja ? "Pro認証済みのYOMUVIAから契約管理ページを開き、いつでも解約できます。" : "Open subscription management from an activated YOMUVIA installation and cancel at any time."}</p></article>
       </div>
     </section>
 

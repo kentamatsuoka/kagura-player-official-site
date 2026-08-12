@@ -2114,6 +2114,14 @@ body {
   margin-top: 2rem;
 }
 
+.trial-disclosure {
+  max-width: 690px;
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
 .trial-facts {
   display: grid;
   grid-template-columns: repeat(3, minmax(150px, 1fr));
@@ -2299,6 +2307,21 @@ body {
   font-size: 0.7rem;
   line-height: 1.55;
   text-align: center;
+}
+
+.pricing-legal {
+  max-width: 900px;
+  margin: 1.35rem auto 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.pricing-legal a {
+  color: var(--soft);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .pricing-comparison {
@@ -2697,6 +2720,12 @@ body {
 }
 
 @media (max-width: 560px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   .container {
     width: min(var(--max), calc(100% - 24px));
   }
@@ -2738,11 +2767,25 @@ body {
   }
 
   .pricing-hero-inner {
+    box-sizing: border-box;
+    width: calc(100% - 24px);
+    min-width: 0;
     padding-block: 58px 48px;
   }
 
   .pricing-hero h1 {
-    font-size: 2.55rem;
+    max-width: 100%;
+    font-size: 2.3rem;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .pricing-hero .lead {
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.94rem;
+    overflow-wrap: anywhere;
+    white-space: normal;
   }
 
   .pricing-hero-actions {
@@ -2821,7 +2864,7 @@ body {
     bottom: 8px;
     left: 8px;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 0.7rem;
     align-items: center;
     border: 1px solid rgba(118, 244, 255, 0.35);
@@ -2830,11 +2873,17 @@ body {
     background: rgba(8, 12, 19, 0.94);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(14px);
+    overflow: hidden;
   }
 
   .pricing-mobile-cta strong,
   .pricing-mobile-cta small {
     display: block;
+    overflow-wrap: anywhere;
+  }
+
+  .pricing-mobile-cta > div {
+    min-width: 0;
   }
 
   .pricing-mobile-cta strong {
@@ -2849,6 +2898,7 @@ body {
   }
 
   .pricing-mobile-cta .button {
+    max-width: 8.5rem;
     padding: 0.7rem 0.85rem;
     font-size: 0.75rem;
     white-space: nowrap;
