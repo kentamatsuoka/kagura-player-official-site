@@ -18,7 +18,7 @@ export const jaContentPages: ContentPage[] = [
       "AI字幕、字幕編集、高速切り抜き、切り抜きライブラリ、動画結合などYOMUVIAの機能一覧です。",
     eyebrow: "機能一覧",
     headline: "見る、わかる、残す。一本につなげる。",
-    lead: "YOMUVIAは、長時間動画の再生、AI字幕、字幕修正、切り抜き、結合を一つの流れにまとめます。現在の0.6.3 Public Betaで利用できる機能を掲載しています。",
+    lead: "YOMUVIAは、長時間動画の再生、AI字幕、字幕修正、切り抜き、結合を一つの流れにまとめます。現在の0.6.4 Public Betaで利用できる機能を掲載しています。",
     sections: [
       {
         title: "見る",
@@ -201,7 +201,7 @@ export const jaContentPages: ContentPage[] = [
     lead: "YOMUVIAは複数のオープンソースソフトウェアを利用しています。配布物には適用されるライセンス文書と告知を同梱します。",
     notice: {
       title: "公開配布の確認",
-      body: "0.6.3 Public Betaでは、FFmpegの対応ソース、ライセンス全文、入手先を配布物に同梱し、公開前の確認を完了しています。",
+      body: "0.6.4 Public Betaでは、FFmpegの対応ソース、ライセンス全文、入手先を配布物に同梱し、公開前の確認を完了しています。",
     },
     sections: [
       {
@@ -233,10 +233,10 @@ export const jaContentPages: ContentPage[] = [
     slug: "system-requirements",
     title: "動作環境 - YOMUVIA",
     description:
-      "YOMUVIA 0.6.3 Public Betaの対応OS、必要容量、AI字幕のGPU要件と対応動画形式。",
+      "YOMUVIA 0.6.4 Public Betaの対応OS、必要容量、AI字幕のGPU要件と対応動画形式。",
     eyebrow: "動作環境",
     headline: "Windowsで、動画をもっと近くに。",
-    lead: "0.6.3 Public Betaの動作確認基準です。動画形式やAIモデルにより、必要容量と処理速度は変わります。",
+    lead: "0.6.4 Public Betaの動作確認基準です。動画形式やAIモデルにより、必要容量と処理速度は変わります。",
     sections: [
       {
         title: "基本環境",
@@ -486,7 +486,7 @@ export const enContentPages: ContentPage[] = [
       "Explore AI subtitles, correction memory, fast clipping, the clip library, and video joining in YOMUVIA.",
     eyebrow: "Feature overview",
     headline: "Watch it. Understand it. Keep it. Join it.",
-    lead: "YOMUVIA 0.6.3 Public Beta connects long-video playback, AI subtitles, correction, clipping, and joining in one Windows workflow.",
+    lead: "YOMUVIA 0.6.4 Public Beta connects long-video playback, AI subtitles, correction, clipping, and joining in one Windows workflow.",
     sections: [
       {
         title: "Watch",
@@ -739,7 +739,7 @@ export const enContentPages: ContentPage[] = [
     lead: "YOMUVIA uses open-source components. Applicable notices and license texts will ship with the public installer.",
     notice: {
       title: "Public distribution verified",
-      body: "The 0.6.3 Public Beta bundle includes the corresponding FFmpeg source information, license text, and source URL, and has passed the pre-release distribution review.",
+      body: "The 0.6.4 Public Beta bundle includes the corresponding FFmpeg source information, license text, and source URL, and has passed the pre-release distribution review.",
     },
     sections: [
       {
@@ -765,10 +765,10 @@ export const enContentPages: ContentPage[] = [
     slug: "system-requirements",
     title: "System Requirements - YOMUVIA",
     description:
-      "Windows, storage, network, and GPU requirements for YOMUVIA 0.6.3 Public Beta.",
+      "Windows, storage, network, and GPU requirements for YOMUVIA 0.6.4 Public Beta.",
     eyebrow: "System requirements",
     headline: "Built for Windows video workflows.",
-    lead: "These are the validation targets for 0.6.3 Public Beta. Storage and performance vary with video formats and AI models.",
+    lead: "These are the validation targets for 0.6.4 Public Beta. Storage and performance vary with video formats and AI models.",
     sections: [
       {
         title: "Base system",
@@ -799,8 +799,19 @@ export const enContentPages: ContentPage[] = [
     description: "Release history and current preview status for YOMUVIA.",
     eyebrow: "Changelog",
     headline: "What changed, and what is verified.",
-    lead: "YOMUVIA 0.6.3 Public Beta is now available for Windows.",
+    lead: "YOMUVIA 0.6.4 Public Beta is now available for Windows.",
     sections: [
+      {
+        title: "0.6.4 Public Beta",
+        bullets: [
+          "Display-resolution subtitle rendering keeps text crisp on low-resolution video",
+          "Short local prefetch reduces the wait after enabling subtitles",
+          "Current-scene prioritization restores subtitles quickly after seeking",
+          "Subtitle appearance settings now apply consistently to live draft text",
+          "Subtitle caches are invalidated when a video is replaced at the same path",
+          "Initial model downloads are serialized to prevent overlapping downloads",
+        ],
+      },
       {
         title: "0.6.3 Public Beta",
         bullets: [
@@ -830,7 +841,7 @@ export const enContentPages: ContentPage[] = [
       {
         title: "Release status",
         paragraphs: [
-          "The application suite has 208 passing tests and the licensing server has 22, for 230 passing Release tests in total. FFmpeg distribution materials, production services, signed update metadata, and the desktop-option install-launch-uninstall smoke test have been verified. The installer is not yet Windows code-signed, so SmartScreen may appear during the public beta.",
+          "YOMUVIA 0.6.4 passed 222 application tests, 22 licensing-server tests, and 12 distribution-API tests. FFmpeg distribution materials and the install-launch-uninstall smoke test have also been verified. The installer is not yet Windows code-signed, so SmartScreen may appear during the public beta.",
         ],
       },
     ],

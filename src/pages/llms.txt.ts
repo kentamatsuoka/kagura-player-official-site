@@ -25,7 +25,7 @@ YOMUVIA helps Windows users create video clips while watching: choose an A-B ran
 - Pro cloud allowance: 600 minutes per month; users can continue with their own supported API key through BYOK after the quota.
 - Billing: the amount due when starting a trial is JPY 0. The selected subscription renews automatically after the trial unless canceled beforehand. Users can open online subscription management from YOMUVIA settings. Reaching the cloud allowance does not trigger an automatic overage charge.
 - Plan distinction: Free includes playback, A-B clipping, local AI subtitles and editing, clip management, and compatible-media joining. Pro adds cloud context correction, automatic translation, and exports with subtitles burned into the video.
-- Release status: YOMUVIA 0.6.3 Public Beta is available for Windows. The public installer passed 230 automated tests plus a desktop-option install-launch-uninstall smoke test. The signed update manifest, licensing API, cloud AI routing, and Stripe checkout links pass production checks. The standalone installer is not yet Windows Authenticode-signed, so Microsoft Defender SmartScreen may display a warning.
+- Release status: YOMUVIA 0.6.4 Public Beta is available for Windows. The public installer passed 256 automated tests plus an install-launch-uninstall smoke test. The signed update manifest, licensing API, cloud AI routing, and Stripe checkout links pass production checks. The standalone installer is not yet Windows Authenticode-signed, so Microsoft Defender SmartScreen may display a warning.
 - No search ranking or business outcome is guaranteed.
 
 ## Official summary in Japanese

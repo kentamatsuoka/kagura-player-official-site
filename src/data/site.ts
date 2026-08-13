@@ -14,7 +14,7 @@ export const site = {
   origin:
     import.meta.env.PUBLIC_SITE_ORIGIN?.replace(/\/$/, "") ??
     (import.meta.env.PROD ? "https://yomuvia.com" : ""),
-  version: "0.6.3 Public Beta",
+  version: "0.6.4 Public Beta",
   downloadUrl:
     import.meta.env.PUBLIC_DOWNLOAD_URL?.trim() ||
     "https://download.yomuvia.com/download/windows/latest",
