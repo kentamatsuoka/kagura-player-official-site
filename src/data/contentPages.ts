@@ -799,8 +799,12 @@ export const enContentPages: ContentPage[] = [
     description: "Release history and current preview status for YOMUVIA.",
     eyebrow: "Changelog",
     headline: "What changed, and what is verified.",
-    lead: "YOMUVIA 0.6.4 Public Beta is now available for Windows.",
+    lead: "YOMUVIA 0.6.5 Public Beta is now available for Windows.",
     sections: [
+      {
+        title: "0.6.5 Public Beta",
+        bullets: ["Transport icons retain their size in narrow windows. Overflow controls scroll horizontally.", "244 automated tests and the install-launch-uninstall smoke test passed. Download the installer to update; automatic update notification is pending."],
+      },
       {
         title: "0.6.4 Public Beta",
         bullets: [
