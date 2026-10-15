@@ -799,8 +799,22 @@ export const enContentPages: ContentPage[] = [
     description: "Release history and current preview status for YOMUVIA.",
     eyebrow: "Changelog",
     headline: "What changed, and what is verified.",
-    lead: "YOMUVIA 0.6.5 Public Beta is now available for Windows.",
+    lead: "YOMUVIA 0.6.6 Public Beta is now available for Windows.",
     sections: [
+      {
+        title: "0.6.6 Public Beta",
+        bullets: [
+          "Three-row control bar: play, skip, and previous/next always stay visible at any window width",
+          "AI subtitles and clipping are labeled buttons that never scroll off-screen; favorites and speed stay reachable",
+          "Empty playlist, favorites, and clip lists explain what to do next",
+          "Pro stays verified while the app is left open, so cloud AI subtitles no longer stop after a long session",
+          "Activation errors now explain the cause: mistyped code, unconfirmed payment, or device limit",
+          "The 3-PC limit counts only recently used PCs; slots of PCs unused for 30 days are released automatically",
+          "Slow AI responses are reported instead of stopping silently",
+          "A temporarily unavailable database no longer makes favorites and playlists look empty",
+          "293 automated tests and the install-launch-uninstall smoke test passed. Download the installer to update; automatic update notification is pending.",
+        ],
+      },
       {
         title: "0.6.5 Public Beta",
         bullets: ["Transport icons retain their size in narrow windows. Overflow controls scroll horizontally.", "244 automated tests and the install-launch-uninstall smoke test passed. Download the installer to update; automatic update notification is pending."],
