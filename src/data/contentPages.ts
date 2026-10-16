@@ -799,8 +799,21 @@ export const enContentPages: ContentPage[] = [
     description: "Release history and current preview status for YOMUVIA.",
     eyebrow: "Changelog",
     headline: "What changed, and what is verified.",
-    lead: "YOMUVIA 0.6.7 Public Beta is now available for Windows.",
+    lead: "YOMUVIA 0.6.8 Public Beta is now available for Windows.",
     sections: [
+      {
+        title: "0.6.8 Public Beta",
+        bullets: [
+          "AI subtitles now appear and disappear with the voice instead of during silence",
+          "Long lines are split at punctuation and natural word boundaries into readable subtitles",
+          "Speech around the 45-second mark is no longer garbled; the detected language carries through the whole video",
+          "Pro cloud correction no longer shifts lines and keeps the chunks that succeeded",
+          "Clips save to Videos\\YOMUVIA\\切り抜き and merged videos to Videos\\YOMUVIA\\結合 automatically",
+          "Moved or deleted videos no longer open a blocking warning dialog",
+          "Fixed an occasional crash on exit that could lose the last playback position",
+          "335 automated tests, a subtitle-quality benchmark, and an install-launch check passed. 0.6.7 users are notified in the app.",
+        ],
+      },
       {
         title: "0.6.7 Public Beta",
         bullets: [
