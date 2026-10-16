@@ -799,8 +799,16 @@ export const enContentPages: ContentPage[] = [
     description: "Release history and current preview status for YOMUVIA.",
     eyebrow: "Changelog",
     headline: "What changed, and what is verified.",
-    lead: "YOMUVIA 0.6.6 Public Beta is now available for Windows.",
+    lead: "YOMUVIA 0.6.7 Public Beta is now available for Windows.",
     sections: [
+      {
+        title: "0.6.7 Public Beta",
+        bullets: [
+          "In-app update notifications are restored: from 0.6.7 on, the app tells you when a newer version is available, and you choose whether to install it",
+          "Update manifests can be signed by a primary or a backup key, so notifications keep working even if one key becomes unavailable",
+          "295 automated tests and an install-launch check passed. From 0.6.6 or earlier, run this installer to update.",
+        ],
+      },
       {
         title: "0.6.6 Public Beta",
         bullets: [
